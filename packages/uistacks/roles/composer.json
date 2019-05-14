@@ -1,0 +1,17 @@
+{
+    "name": "uistacks/roles",
+    "description": "Manage Uistacks framework roles",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "ramesh@panaceatek.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Uistacks\\Roles\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,17 @@
+{
+    "name": "uistacks/location",
+    "description": "Manage Uistacks framework locations",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "ramesh@panaceatek.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Uistacks\\Locations\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

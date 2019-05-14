@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/blogs",
+    "description": "Manage Uistacks framework blogs",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Singh",
+            "email": "uistacks@gmail.com"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/blogs.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Uistacks\\Contactus\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

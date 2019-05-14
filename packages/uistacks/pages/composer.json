@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/pages",
+    "description": "Manage uistacks framework pages",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "me@uistacks.com"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/pages.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Uistacks\\Pages\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/faqs",
+    "description": "Manage uistacks framework faqs",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "me@uistacks.com"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/faqs.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "uistacks\\Pages\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

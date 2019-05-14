@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/categories",
+    "description": "Manage Uistacks framework categories",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "uistacks@gmail.com"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/categories.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Uistacks\\Categories\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

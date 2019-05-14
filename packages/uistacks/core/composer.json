@@ -1,0 +1,17 @@
+{
+    "name": "uistacks/core",
+    "description": "Manage Uistacks framework core",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "ramesh@panaceatek.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Uistacks\\Core\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

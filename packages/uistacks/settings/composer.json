@@ -1,0 +1,17 @@
+{
+    "name": "uistacks/settings",
+    "description": "Manage Uistacks framework settings",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "ramesh@panaceatek.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Uistacks\\Settings\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

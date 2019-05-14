@@ -1,0 +1,17 @@
+{
+    "name": "uistacks/media",
+    "description": "Manage Uistacks framework media",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "ramesh@panaceatek.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Uistacks\\Media\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
