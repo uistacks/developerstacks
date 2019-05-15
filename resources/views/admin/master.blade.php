@@ -51,7 +51,21 @@
 
     </div>
     <!-- /main sidebar -->
-
+    {{--<a href="{{url('/')}}/{{ App::getLocale() }}/admin" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Dashboard</a>
+    @if(isset($breadcrumbs))
+        @foreach($breadcrumbs as $breadcrumb)
+            @if(!empty($breadcrumb['url']))
+                <a href="{{$breadcrumb['url']}}" class="breadcrumb-item">
+                    @if(!empty($breadcrumb['icon']))
+                        <i class="icon-{{ $breadcrumb['icon'] }} mr-2"></i>
+                    @endif
+                    {{ $breadcrumb['name'] }}
+                </a>
+            @else
+                <span class="breadcrumb-item active">{{ $breadcrumb['name'] }}</span>
+        @endif
+    @endforeach
+@endif--}}
 
     <!-- Main content -->
     <div class="content-wrapper">
@@ -79,7 +93,7 @@
 <script src="{{ asset('assets/js/plugins/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/loaders/blockui.min.js') }}"></script>
-{{--    <script src="{{ asset('assets/js/plugins/ui/ripple.min.js') }}"></script>--}}
+    <script src="{{ asset('assets/js/plugins/ui/ripple.min.js') }}"></script>
 <!-- /core JS files -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
 @yield('footer')

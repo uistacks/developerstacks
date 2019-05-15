@@ -53,10 +53,10 @@ class SettingsController extends Controller
         $addressSetting = Setting::find(2);
         $emailSetting = Setting::find(3);
         $phoneSetting = Setting::find(4);
-        $dateFormatSetting = Setting::find(5)->value;
-        $paginationSetting = Setting::find(6)->value;
+        $dateFormatSetting = Setting::find(5);
+        $paginationSetting = Setting::find(6);
         $isMultilingual = Setting::find(7);
-//dd($addressSetting);
+
         $nameSetting->value = $name;
         $addressSetting->value = $address;
         $emailSetting->value = $email;
