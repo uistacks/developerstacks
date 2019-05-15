@@ -40,13 +40,15 @@
 
 @endphp
 
-<div class="form-group {{ $errors->has($fieldName) ? 'has-error': '' }}">
-    <label for="{{$fieldName}}">{{ $name }}</label>
-	<select id="{{$fieldName}}" name="{{$fieldName}}" class="form-control" @if(isset($dependOn)) depend-on="{{ $dependOn }}" @endif @if($isMultiple) multiple @endif>
-		 @if(count($options))
-		    @foreach($options as $option)
-		        <option @if($value == $option['value']) selected @endif value="{{ $option['value'] }}" @if(isset($option['dependencyValue'])) dependency-value="{{ $option['dependencyValue'] }}" @endif>{{ $option['name'] }}</option>
-		    @endforeach
-		@endif
-	</select>
+<div class="form-group row {{ $errors->has($fieldName) ? 'has-error': '' }}">
+	<label class="col-form-label col-lg-3" for="{{$fieldName}}">{{ $name }}</label>
+	<div class="col-lg-9">
+		<select id="{{$fieldName}}" name="{{$fieldName}}" class="form-control" @if(isset($dependOn)) depend-on="{{ $dependOn }}" @endif @if($isMultiple) multiple @endif>
+			@if(count($options))
+				@foreach($options as $option)
+					<option @if($value == $option['value']) selected @endif value="{{ $option['value'] }}" @if(isset($option['dependencyValue'])) dependency-value="{{ $option['dependencyValue'] }}" @endif>{{ $option['name'] }}</option>
+				@endforeach
+			@endif
+		</select>
+	</div>
 </div>

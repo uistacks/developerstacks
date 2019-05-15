@@ -101,7 +101,6 @@
     <script src="{{ asset('assets/js/plugins/ui/moment/moment.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/pickers/daterangepicker.js') }}"></script>
 
-    <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
     <!-- /theme JS files -->
     <!--end of page level js-->

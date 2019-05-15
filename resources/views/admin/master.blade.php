@@ -81,6 +81,7 @@
 <script src="{{ asset('assets/js/plugins/loaders/blockui.min.js') }}"></script>
 {{--    <script src="{{ asset('assets/js/plugins/ui/ripple.min.js') }}"></script>--}}
 <!-- /core JS files -->
+<script src="{{ asset('assets/js/app.js') }}"></script>
 @yield('footer')
 </body>
 </html>
