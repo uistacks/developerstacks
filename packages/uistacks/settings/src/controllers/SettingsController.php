@@ -25,9 +25,11 @@ class SettingsController extends Controller
         $address = Setting::find(2)->value;
         $email = Setting::find(3)->value;
         $phone = Setting::find(4)->value;
-        $is_multilingual = Setting::find(28)->value;
+        $date_format = Setting::find(5)->value;
+        $pagination = Setting::find(6)->value;
+        $is_multilingual = Setting::find(7)->value;
 
-        return view('Settings::info', compact('name', 'address', 'email', 'phone','is_multilingual'));
+        return view('Settings::info', compact('name', 'address', 'email', 'phone', 'date_format', 'pagination','is_multilingual'));
     }
 
     /**
@@ -43,24 +45,32 @@ class SettingsController extends Controller
         $address = $request->address;
         $email = $request->email;
         $phone = $request->phone;
+        $date_format = $request->date_format;
+        $pagination = $request->pagination;
         $is_multilingual = $request->is_multilingual;
 
         $nameSetting = Setting::find(1);
         $addressSetting = Setting::find(2);
         $emailSetting = Setting::find(3);
         $phoneSetting = Setting::find(4);
-        $isMultilingual = Setting::find(28);
+        $dateFormatSetting = Setting::find(5)->value;
+        $paginationSetting = Setting::find(6)->value;
+        $isMultilingual = Setting::find(7);
 //dd($addressSetting);
         $nameSetting->value = $name;
         $addressSetting->value = $address;
         $emailSetting->value = $email;
         $phoneSetting->value = $phone;
+        $dateFormatSetting->value = $date_format;
+        $paginationSetting->value = $pagination;
         $isMultilingual->value = $is_multilingual;
 
         $nameSetting->save();
         $addressSetting->save();
         $emailSetting->save();
         $phoneSetting->save();
+        $dateFormatSetting->save();
+        $paginationSetting->save();
         $isMultilingual->save();
 
         \Session::flash('alert-class', 'alert-success');
@@ -75,14 +85,14 @@ class SettingsController extends Controller
      */
     public function editSmtp()
     {
-        $driver = Setting::find(5)->value;
-        $host = Setting::find(6)->value;
-        $port = Setting::find(7)->value;
-        $username = Setting::find(8)->value;
-        $password = Setting::find(9)->value;
-        $address = Setting::find(10)->value;
-        $name = Setting::find(11)->value;
-        $encryption = Setting::find(12)->value;
+        $driver = Setting::find(8)->value;
+        $host = Setting::find(9)->value;
+        $port = Setting::find(10)->value;
+        $username = Setting::find(11)->value;
+        $password = Setting::find(12)->value;
+        $address = Setting::find(13)->value;
+        $name = Setting::find(14)->value;
+        $encryption = Setting::find(15)->value;
         return view('Settings::smtp', compact('driver', 'host', 'port', 'username', 'password', 'address', 'name', 'encryption'));
     }
 
@@ -104,14 +114,14 @@ class SettingsController extends Controller
         $name = $request->name;
         $encryption = $request->encryption;
 
-        $driverSetting = Setting::find(5);
-        $hostSetting = Setting::find(6);
-        $portSetting = Setting::find(7);
-        $usernameSetting = Setting::find(8);
-        $passwordSetting = Setting::find(9);
-        $addressSetting = Setting::find(10);
-        $nameSetting = Setting::find(11);
-        $encryptionSetting = Setting::find(12);
+        $driverSetting = Setting::find(8);
+        $hostSetting = Setting::find(9);
+        $portSetting = Setting::find(10);
+        $usernameSetting = Setting::find(11);
+        $passwordSetting = Setting::find(12);
+        $addressSetting = Setting::find(13);
+        $nameSetting = Setting::find(14);
+        $encryptionSetting = Setting::find(15);
 
         $driverSetting->value = $driver;
         $hostSetting->value = $host;
@@ -143,13 +153,13 @@ class SettingsController extends Controller
      */
     public function editSocialAccounts()
     {
-        $facebook = Setting::find(13)->value;
-        $twitter = Setting::find(14)->value;
-        $gplus = Setting::find(15)->value;
-        $instagram = Setting::find(16)->value;
-        $youtube = Setting::where('name', 'social_accounts')->where('key', 'youtube')->first();
-        $youtube = $youtube->value;
-        return view('Settings::social_accounts', compact('facebook', 'twitter', 'gplus', 'instagram', 'youtube'));
+        $facebook = Setting::find(16)->value;
+        $twitter = Setting::find(17)->value;
+        $gplus = Setting::find(18)->value;
+        $instagram = Setting::find(19)->value;
+//        $youtube = Setting::where('name', 'social_accounts')->where('key', 'youtube')->first();
+//        $youtube = $youtube->value;
+        return view('Settings::social_accounts', compact('facebook', 'twitter', 'gplus', 'instagram'));
     }
 
     /**
@@ -161,23 +171,23 @@ class SettingsController extends Controller
      */
     public function updateSocialAccounts(Request $request)
     {
-        $facebookSetting = Setting::find(13);
-        $twitterSetting = Setting::find(14);
-        $gplusSetting = Setting::find(15);
-        $instagramSetting = Setting::find(16);
-        $youtubeSetting = Setting::where('name', 'social_accounts')->where('key', 'youtube')->first();
+        $facebookSetting = Setting::find(16);
+        $twitterSetting = Setting::find(17);
+        $gplusSetting = Setting::find(18);
+        $instagramSetting = Setting::find(19);
+//        $youtubeSetting = Setting::where('name', 'social_accounts')->where('key', 'youtube')->first();
 
         $facebookSetting->value = $request->facebook;
         $twitterSetting->value = $request->twitter;
         $gplusSetting->value = $request->gplus;
         $instagramSetting->value = $request->instagram;
-        $youtubeSetting->value = $request->youtube;
+//        $youtubeSetting->value = $request->youtube;
 
         $facebookSetting->save();
         $twitterSetting->save();
         $gplusSetting->save();
         $instagramSetting->save();
-        $youtubeSetting->save();
+//        $youtubeSetting->save();
 
         \Session::flash('alert-class', 'alert-success');
         \Session::flash('message', trans('Settings::settings.updated_successfully'));
@@ -191,8 +201,8 @@ class SettingsController extends Controller
      */
     public function editAppLinks()
     {
-        $apple = Setting::find(17)->value;
-        $google = Setting::find(18)->value;
+        $apple = Setting::find(20)->value;
+        $google = Setting::find(21)->value;
         return view('Settings::app_links', compact('apple', 'google'));
     }
 
@@ -208,8 +218,8 @@ class SettingsController extends Controller
         $apple = $request->apple;
         $google = $request->google;
 
-        $appleSetting = Setting::find(17);
-        $googleSetting = Setting::find(18);
+        $appleSetting = Setting::find(20);
+        $googleSetting = Setting::find(21);
 
         $appleSetting->value = $apple;
         $googleSetting->value = $google;
@@ -229,8 +239,8 @@ class SettingsController extends Controller
      */
     public function editSeo()
     {
-        $keywords = Setting::find(19)->value;
-        $description = Setting::find(20)->value;
+        $keywords = Setting::find(22)->value;
+        $description = Setting::find(23)->value;
 
         return view('Settings::seo', compact('keywords', 'description'));
     }
@@ -247,8 +257,8 @@ class SettingsController extends Controller
         $keywords = $request->keywords;
         $description = $request->description;
 
-        $keywordsSetting = Setting::find(19);
-        $descriptionSetting = Setting::find(20);
+        $keywordsSetting = Setting::find(22);
+        $descriptionSetting = Setting::find(23);
 
         $keywordsSetting->value = $keywords;
         $descriptionSetting->value = $description;
@@ -272,7 +282,7 @@ class SettingsController extends Controller
             return view('errors.403');
         }
 
-        $serverKey = Setting::find(21)->value;
+        $serverKey = Setting::find(24)->value;
 
         return view('Settings::fcm', compact('serverKey'));
     }
@@ -288,7 +298,7 @@ class SettingsController extends Controller
     {
         $serverKey = $request->server_key;
 
-        $serverKeySetting = Setting::find(21);
+        $serverKeySetting = Setting::find(24);
 
         $serverKeySetting->value = $serverKey;
 
@@ -306,10 +316,10 @@ class SettingsController extends Controller
      */
     public function editSms()
     {
-        $url = Setting::find(22)->value;
-        $username = Setting::find(23)->value;
-        $password = Setting::find(24)->value;
-        $sender = Setting::find(25)->value;
+        $url = Setting::find(25)->value;
+        $username = Setting::find(26)->value;
+        $password = Setting::find(27)->value;
+        $sender = Setting::find(28)->value;
 
         return view('Settings::sms', compact('url', 'username', 'password', 'sender'));
     }
@@ -328,10 +338,10 @@ class SettingsController extends Controller
         $password = $request->password;
         $sender = $request->sender;
 
-        $urlSetting = Setting::find(22);
-        $usernameSetting = Setting::find(23);
-        $passwordSetting = Setting::find(24);
-        $senderSetting = Setting::find(25);
+        $urlSetting = Setting::find(25);
+        $usernameSetting = Setting::find(26);
+        $passwordSetting = Setting::find(27);
+        $senderSetting = Setting::find(28);
 
         $urlSetting->value = $url;
         $usernameSetting->value = $username;
@@ -355,7 +365,7 @@ class SettingsController extends Controller
      */
     public function editMaintenanceMode()
     {
-        $mode = Setting::find(26)->value;
+        $mode = Setting::find(29)->value;
         return view('Settings::maintenance_mode', compact('mode'));
     }
 
@@ -369,7 +379,7 @@ class SettingsController extends Controller
     public function updateMaintenanceMode(Request $request)
     {
         $mode = $request->mode;
-        $modeSetting = Setting::find(26);
+        $modeSetting = Setting::find(29);
         $modeSetting->value = $mode;
         $modeSetting->save();
 

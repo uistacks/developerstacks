@@ -24,7 +24,8 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin'], function() {
 Route::group(['middleware' => ['web'], 'prefix' => $locale.'/admin'], function() {
     Route::get('login', 'Uistacks\Core\Controllers\AdminLoginController@getAdmin');
     Route::post('login', 'Uistacks\Core\Controllers\AdminLoginController@postAdmin');
-    Route::get('logout', 'Uistacks\Core\Controllers\AdminLoginController@getAdminLogout');
+    Route::get('logout', 'Uistacks\Core\Controllers\AdminLoginController@getAdminLogout')
+    ->name('admin-logout');
 });
 
 $action = 'UiStacks\Core\Controllers\DashboardController@index';
@@ -41,6 +42,8 @@ Route::group(['middleware' => ['web' ,'admin']], function() use($action) {
 });
 
 Route::group(['middleware' => ['web' ,'admin'], 'prefix' => $locale.'/admin'], function() {
-    Route::POST('delete-item', 'UiStacks\Core\Controllers\OperationsController@delete');
-    Route::POST('bulk-delete-items', 'UiStacks\Core\Controllers\OperationsController@bulkDelete');
+    Route::POST('delete-item', 'UiStacks\Core\Controllers\OperationsController@delete')
+    ->name('admin-delete-item');
+    Route::POST('bulk-delete-items', 'UiStacks\Core\Controllers\OperationsController@bulkDelete')
+        ->name('admin-bulk-delete-items');
 });

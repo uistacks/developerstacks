@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title"><i class="livicon" data-name="trash" data-size="18" data-c="#F89A14" data-hc="#5CB85C" data-loop="true"></i> {{ trans('admin.bulk_delete_confirmation') }}</h4>
             </div>
-            <form id="bulkDeleteForm" action="{{ action('\Uistacks\Core\Controllers\OperationsController@bulkDelete') }}" method="POST" role="form">
+            <form id="bulkDeleteForm" action="{{ route('admin-bulk-delete-items') }}" method="POST" role="form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" id="confirm-table" name="table" value="{{ $dbTable }}">
                 <div class="modal-body">

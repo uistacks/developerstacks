@@ -50,7 +50,7 @@
                 @include('Core::fields.select', [
                     'field_name' => 'date_format',
                     'name' => 'Date Format',
-                    'value' => $is_multilingual,
+                    'value' => $date_format,
                     'options' => [
                                     ['value' => '', 'name' => 'Select Date Format'],
                                     ['value' => 'Y-m-d', 'name' => date('Y-m-d')],
@@ -67,7 +67,8 @@
                 @include('Core::fields.input_text', [
                     'field_name' => 'pagination',
                     'name' => 'Per Page Record',
-                    'placeholder' => 'Per Page Record'
+                    'placeholder' => 'Per Page Record',
+                    'value' => $pagination
                 ])
 
                 @include('Core::fields.select', [
@@ -84,8 +85,8 @@
                 </fieldset>
 
                 <div class="d-flex justify-content-end align-items-center">
-                    <button type="reset" class="btn btn-light legitRipple" id="reset">Reset <i class="icon-reload-alt ml-2"></i></button>
-                    <button type="submit" class="btn btn-primary ml-3 legitRipple">Submit <i class="icon-paperplane ml-2"></i></button>
+                    <button type="reset" class="btn btn-danger legitRipple" id="reset">Reset <i class="icon-reload-alt ml-2"></i></button>
+                    <button type="submit" class="btn btn-success ml-3 legitRipple">Submit <i class="icon-paperplane ml-2"></i></button>
                 </div>
             </form>
         </div>

@@ -34,6 +34,21 @@ class SettingsTableSeeder extends Seeder
             'key' => 'phone',
             'value' => '02049110303'
         ]);
+        \DB::table('settings')->insert([
+            'name' => 'info',
+            'key' => 'date_format',
+            'value' => 'd-m-Y H:i A'
+        ]);
+        \DB::table('settings')->insert([
+            'name' => 'info',
+            'key' => 'pagination',
+            'value' => '20'
+        ]);
+        \DB::table('settings')->insert([
+            'name' => 'info',
+            'key' => 'is_multilingual',
+            'value' => '2'
+        ]);
         // SMTP (5-12)
         \DB::table('settings')->insert([
             'name' => 'mail',
@@ -153,16 +168,5 @@ class SettingsTableSeeder extends Seeder
             'value' => '0'
         ]);
 
-        // Social Accounts ++
-        \DB::table('settings')->insert([
-            'name' => 'social_accounts',
-            'key' => 'youtube',
-            'value' => ''
-        ]);
-        \DB::table('settings')->insert([
-            'name' => 'info',
-            'key' => 'is_multilingual',
-            'value' => ''
-        ]);
     }
 }

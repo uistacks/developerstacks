@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title"><i class="livicon" data-name="trash" data-size="18" data-c="#F89A14" data-hc="#5CB85C" data-loop="true"></i> {{ trans('admin.delete_confirmation') }}</h4>
             </div>
-            <form action="{{ action('\Uistacks\Core\Controllers\OperationsController@delete') }}" method="POST" role="form">
+            <form action="{{ route('admin-delete-item') }}" method="POST" role="form">
                 <input type="hidden" id="confirm-id" name="id" value="">
                 <input type="hidden" name="table" value="{{ $dbTable }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
