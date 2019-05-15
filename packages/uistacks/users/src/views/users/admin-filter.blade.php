@@ -14,7 +14,9 @@
       'placeholder' => ''
   ])
 
-
+&nbsp;
+&nbsp;
+&nbsp;
 	{{-- Select --}}
 	@php
 		$statusValue = '';
@@ -34,6 +36,6 @@
         ]
     ])
 
-	<button type="submit" class="btn bg-primary ml-sm-2 mb-sm-0 legitRipple" style="margin-top: 6px;">{{ trans('Core::operations.filter') }}</button>
-	<a href="{{ action('\Uistacks\Users\Controllers\AdminController@index')}}" class="btn btn-default" style="margin-top: 6px;">{{ trans('Core::operations.reset') }}</a>
+	<button type="submit" class="btn bg-primary ml-sm-2 mb-sm-0 legitRipple">{{ trans('Core::operations.filter') }}</button>
+	<a href="{{ action('\Uistacks\Users\Controllers\AdminController@index')}}" class="btn btn-default" >{{ trans('Core::operations.reset') }}</a>
 </form>

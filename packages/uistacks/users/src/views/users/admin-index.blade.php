@@ -104,19 +104,21 @@
                 </table>
             </div>
 
-            <div class="form-group">
-                <label for="operation">{{ trans('Core::operations.with_select') }}</label>
-                <select name="operation" id="operation" class="form-control" required="required">
-                    <option value="">- {{ trans('Core::operations.select') }} -</option>
-                    <option value="activate">{{ trans('Core::operations.activate') }}</option>
-                    <option value="deactivate">{{ trans('Core::operations.deactivate') }}</option>
-                    <option value="delete">{{ trans('Core::operations.delete') }}</option>
-                </select>
+            <div class="form-group ">
+                <label for="operation" class="col-form-label col-lg-3">{{ trans('Core::operations.with_select') }}</label>
+                <div class="col-lg-9">
+                    <select name="operation" id="operation" class="form-control mb-2 mr-sm-2 ml-sm-2 mb-sm-0" required="required">
+                        <option value="">- {{ trans('Core::operations.select') }} -</option>
+                        <option value="activate">{{ trans('Core::operations.activate') }}</option>
+                        <option value="deactivate">{{ trans('Core::operations.deactivate') }}</option>
+                        <option value="delete">{{ trans('Core::operations.delete') }}</option>
+                    </select>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">{{ trans('Core::operations.go') }}</button>
+            <button type="submit" class="btn btn-primary ">{{ trans('Core::operations.go') }}</button>
 
-            <div class="table-footer">
-                <div class="count"><i class="fa fa-folder-o"></i> {{ $items->total() }} {{ trans('Core::operations.item') }}</div>
+            <div class="table-footer ">
+                <div class="count  ml-sm-2 mb-sm-0 legitRipple"><i class="fa fa-folder-o"></i> {{ $items->total() }} {{ trans('Core::operations.item') }}</div>
                 <div class="pagination-area"> {!! $items->render() !!} </div>
             </div>
 
