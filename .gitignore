@@ -20,4 +20,5 @@ yarn-error.log
 /.idea/php.xml
 /public/img/product/*
 /public/img/*
+/public/uploads/*
 /public/temp-json/*

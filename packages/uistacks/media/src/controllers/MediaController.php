@@ -139,8 +139,8 @@ class MediaController extends MediaApiController
             $fileOriName = end($arrFileName);
             $arrFileName = explode('.',$fileOriName);
             $ext=end($arrFileName);
-            
-            $destinationPath = 'uploads';
+
+            $destinationPath = public_path('uploads');
             $randomName = date('Y-M-d--h--i--sa') . '-' . str_random(5) . '-' . $fileOriName;
             
             // Move file to destination
@@ -177,28 +177,28 @@ class MediaController extends MediaApiController
                 $smallPath = 'uploads/small/' . $randomName;
                 $small = Image::make($movedFile)->fit(150);
                 File::exists(public_path('uploads/small')) or File::makeDirectory(public_path('uploads/small'));
-                $small->save($smallPath, 100);
+                $small->save(public_path('uploads/small/'). $randomName, 100);
                 $options['styles']['small'] = $smallPath;
 
                 // Thumbnail style
                 $thumbnailPath = 'uploads/thumbnail/' . $randomName;
                 $thumbnail = Image::make($movedFile)->fit(300);
                 File::exists(public_path('uploads/thumbnail')) or File::makeDirectory(public_path('uploads/thumbnail'));
-                $thumbnail->save($thumbnailPath, 100);
+                $thumbnail->save(public_path('uploads/thumbnail/'). $randomName, 100);
                 $options['styles']['thumbnail'] = $thumbnailPath;
 
                 // Medium style
                 $mediumPath = 'uploads/medium/' . $randomName;
                 $medium = Image::make($movedFile)->fit(380, 180);
                 File::exists(public_path('uploads/medium')) or File::makeDirectory(public_path('uploads/medium'));
-                $medium->save($mediumPath, 100);
+                $medium->save(public_path('uploads/medium/'). $randomName, 100);
                 $options['styles']['medium'] = $mediumPath;
 
                 // Large style
                 $largePath = 'uploads/large/' . $randomName;
                 $large = Image::make($movedFile)->fit(652, 470);
                 File::exists(public_path('uploads/large')) or File::makeDirectory(public_path('uploads/large'));
-                $large->save($largePath, 100);
+                $large->save(public_path('uploads/large/'). $randomName, 100);
                 $options['styles']['large'] = $largePath;
             }
 

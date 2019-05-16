@@ -45,7 +45,7 @@
         <form method="POST" action="{{ action('\Uistacks\Users\Controllers\AdminController@bulkOperations')}}" id="bulk" class="form-inline">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-striped table-hover">
                     <thead>
                     <tr>
                         <th>
@@ -75,7 +75,7 @@
                                     <img src="{{ asset('public/images/select_main_img.png') }}" width="60">
                                 @endif
                             </td>
-                            <td>{{ $item->name }}</td>
+                            <td class="user_name_col_{{$item->id}}">{{ $item->name }}</td>
                             <td>{{ $item->phone }}</td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->created_at }}</td>
@@ -94,9 +94,9 @@
                                     <a class="badge badge-danger" title="" onClick="changeStatus({!! $item->id !!}, 1);" href="javascript:void(0);" id="status_{!! $item->id !!}">{{ trans('Core::operations.inactive') }}</a>
                                 </div>
                             </td>
-                            <td class="w-25">
-                                <a class="btn btn-sm btn-outline-success" href="{{ action('\Uistacks\Users\Controllers\AdminController@edit', $item->id) }}"><i class="icon-database-edit2"></i> {{ trans('Core::operations.edit') }}</a>
-                                <a class="btn btn-sm btn-outline-danger" onclick="confirmDelete(this)" data-toggle="modal" data-href="#full-width" data-id="{{ $item->id }}" @if($item->trans) data-title="{{ $item->trans->name }}" @endif href="#full-width"><i class="fa fa-trash"></i> {{ trans('Core::operations.delete') }}</a>
+                            <td style="width: 100px;">
+                                <a class="badge badge-success" href="{{ action('\Uistacks\Users\Controllers\AdminController@edit', $item->id) }}"><i class="material-icons" >edit</i></a>
+                                <a class="badge badge-danger" onclick="confirmDelete(this)" data-toggle="modal" data-href="#full-width" data-id="{{ $item->id }}" @if($item->trans) data-title="{{ $item->trans->name }}" @endif href="#full-width"><i class="material-icons" >delete</i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -104,9 +104,9 @@
                 </table>
             </div>
 
-            <div class="form-group ">
-                <label for="operation" class="col-form-label col-lg-3">{{ trans('Core::operations.with_select') }}</label>
-                <div class="col-lg-9">
+            <div class="form-group" style="padding: 10px;">
+                <label for="operation" class="col-form-label col-lg-5">{{ trans('Core::operations.with_select') }}</label>
+                <div class="col-lg-7">
                     <select name="operation" id="operation" class="form-control mb-2 mr-sm-2 ml-sm-2 mb-sm-0" required="required">
                         <option value="">- {{ trans('Core::operations.select') }} -</option>
                         <option value="activate">{{ trans('Core::operations.activate') }}</option>
@@ -115,11 +115,11 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary ">{{ trans('Core::operations.go') }}</button>
+            <button type="submit" class="btn btn-primary mb-2 mr-sm-2 ml-sm-2 mb-sm-0">{{ trans('Core::operations.go') }}</button>
 
-            <div class="table-footer ">
-                <div class="count  ml-sm-2 mb-sm-0 legitRipple"><i class="fa fa-folder-o"></i> {{ $items->total() }} {{ trans('Core::operations.item') }}</div>
-                <div class="pagination-area"> {!! $items->render() !!} </div>
+            <div class="form-group row">
+                <div class="count @if($items->hasPages()) col-lg-4 @else mr-sm-2 ml-sm-2 mb-sm-0 @endif"><i class="fa fa-folder-o"></i> {{ $items->total() }} {{ trans('Core::operations.item') }}</div>
+                <div class="col-lg-8 justify-content-end" style="text-align: right;"> {!! $items->render() !!} </div>
             </div>
 
         </form>

@@ -69,7 +69,7 @@
                                             <div class="media v-middle">
                                                 <div class="media-left">
                                                     <div class="icon-block width-100 bg-grey-100">
-                                                        <a data-toggle="modal" data-target="#inno_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }} {{ trans('Stores::stores.store_main_img') }}" media-data-field-name="main_image_id" media-data-required>
+                                                        <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }} {{ trans('Stores::stores.store_main_img') }}" media-data-field-name="main_image_id" media-data-required>
                                                             <div class="media-item">
 {{--                                                                @if(isset($item->media) && isset($item->media->main_image) && isset($item->media->main_image->styles['small']) && file_exists(url('/').'/'.$item->media->main_image->styles['small']))--}}
                                                                 @if(isset($item->media) && isset($item->media->main_image) && isset($item->media->main_image->styles['small']))

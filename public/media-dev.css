@@ -1,0 +1,308 @@
+.media-modal {
+	padding: 0 !important;
+	z-index: 100000;
+}
+
+.media-modal .modal-dialog {
+	margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 !important;
+}
+
+.media-modal .modal-content {
+    background-color: transparent !important;
+    padding: 10px;
+}
+
+
+
+.media-modal .modal-header {
+	height: 10%;
+	background: #f1f1f1;
+	border-bottom: 0;
+}
+
+.media-modal .modal-body {
+	height: 80%;
+	background: #fff;
+}
+
+.media-modal .modal-footer {
+	height: 10%;
+	background: #f1f1f1;
+}
+
+.media-modal .nav-tabs {
+    background: #f1f1f1;
+}
+
+.media-modal .qurative-container {
+    padding: 15px;
+    /*height: 100%;*/
+}
+
+/*#qurative_upload_files_area {
+	position: absolute;
+    top: 40px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    border: 3px dashed #ccc;
+    overflow: auto;
+}*/
+#qurative_upload_files_area{ text-align: center;}
+
+#qurative_browse_button{
+    /*margin-bottom: 15px;*/
+}
+.input-group-addon {
+    padding: 0px !important;
+}
+.gallery-images-browse{
+    color: #fff !important;
+    font-size: 1em !important;
+}
+/*.media-modal .media-sidebar {*/
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    /*top: 41px;*/
+    /*background: #f1f1f1;*/
+    /*padding: 10px;*/
+    /*width: 260px;*/
+    /*overflow: auto;*/
+/*}*/
+.media-modal .media-sidebar {
+    background: #f1f1f1 none repeat scroll 0 0;
+    padding: 10px;
+}
+#qurative_media_library .media-content {
+  padding: 0 5px;
+  /*width: 1000px;*/
+}
+/*.media-modal .media-content {
+    left: 260px;
+    position: absolute;
+    right: 0;
+    padding: 10px;
+    height: 100%;
+}*/
+.media-modal .over-drage {
+    border: 3px dotted #FF5722 !important;
+    overflow: auto;
+    background-color: #FF9800;
+    background-image: url('media/images/drop.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    color: #fff;
+    font-size: 50px;
+}
+
+.media-modal .qurative-browse-form {
+    padding-top: 5%;
+    font-size: 28px;
+}
+.media-modal .qurative-drag-info {
+    display: none;
+}
+
+/*.qurative-media-list {
+    position: absolute;
+    overflow: auto;
+    bottom: 35px;
+    top: 50px;
+    right: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%
+}*/
+
+.qurative-media-list ul {
+    padding: 0;
+}
+.qurative-media-list li {
+    padding: 8px;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    list-style: none;
+    box-sizing: border-box;
+    text-align: center;
+    width: 16%;
+    display: inline-block;
+}
+.qurative-media-list li img {
+    max-width: 100%;
+}
+
+.qurative-media-list li.selected {
+    -webkit-box-shadow: inset 0 0 0 5px #fff, inset 0 0 0 7px #ccc;
+    box-shadow: inset 0 0 0 5px #fff, inset 0 0 0 7px #ccc;
+}
+.qurative-media-list li.details {
+    -webkit-box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px #FF5722;
+    box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 7px #FF5722;
+}
+.qurative-media-list li .check {
+    background: #eee;
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(0,0,0,.15);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(0,0,0,.15);
+    display: none;
+    height: 24px;
+    width: 24px;
+    padding: 0;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    outline: 0;
+    background: #eee;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+}
+.qurative-media-list li .check.active {
+    display: block;
+}
+.qurative-media-list li.details .check {
+    background-color: #FF5722;
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px #FF5722;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px #FF5722;
+}
+
+.qurative-media-list li .check .media-modal-icon {
+    display: block;
+    background-position: -1px 0;
+    height: 15px;
+    width: 15px;
+    margin: 5px;
+    background-image: url('vendor/media/images/uploader-icons.png');
+    background-repeat: no-repeat;
+}
+
+.qurative-media-list li.details .check .media-modal-icon {
+    background-position: -21px 0;
+}
+
+.qurative-media-list li .screen-reader-text {
+    position: absolute;
+    margin: -1px;
+    padding: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+    word-wrap: normal!important;
+}
+
+.qurative-media-list li.selected .check:hover .media-modal-icon {
+    background-position: -60px 0;
+}
+
+/*sidebar*/
+.file-info {
+    overflow: hidden;
+    min-height: 60px;
+    margin-bottom: 16px;
+    line-height: 18px;
+    color: #666;
+    border: 2px dashed #2F4F50;
+    padding: 5px;
+    /*border-bottom: 1px solid #ddd;*/
+    /*padding-bottom: 11px;*/
+    /*background: #2F4F50;*/
+}
+.file-info .thumbnail {
+    position: relative;
+    float: left;
+    max-width: 50%;
+    margin-bottom: 5px;
+}
+.file-info .details {
+    float: left;
+    font-size: 12px;
+    max-width: 50%;
+    padding: 5px;
+}
+
+.media-sidebar h2 {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.media-item img{
+    max-width: 100%;
+}
+
+#qurative-no-more-files {
+    padding: 8px;
+    display: block;
+    text-align: center;
+    box-shadow: inset 0px -45px 30px -40px rgba(0, 0, 0, 0.05);
+    margin: 5px 10px;
+    font-family: "museo-sans", sans-serif;
+    border: 1px solid #ddd;
+    font-weight: bold;
+}
+
+
+.qurative-media-gallery {
+    text-align: center;
+    background: #f7f7f7;
+    margin: 20px 0;
+    overflow-y: auto;
+}
+
+.qurative-media-gallery .media-item {
+    display: inline-block;
+    margin: 9px;
+    width: 95px;
+    cursor:pointer;
+}
+
+.media-item {
+    position: relative;
+}
+
+.media-item .img-delete {
+    /*position: absolute;*/
+    right: 1px;
+    padding: 0 5px;
+    background: rgba(0, 0, 0, 0.58);
+    color: #fff;
+    top: 1px;
+}
+
+.frm-edit-post .qurative-media-gallery .media-item {
+    display: inline-block;
+    margin: 9px;
+    width: 118px;
+    height: 95px;
+    cursor: move;
+}
+#ui-datepicker-div .ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all{
+    right:296px !important;
+    left: auto !important;
+}
+
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+  background: none repeat scroll 0 0 #f2f2f2;
+  color: #000;
+  width: 45%;
+}
+/*//images/ui-icons_ffffff_256x240.png*/
+/*.ui-datepicker-prev span {
+    background-image: url(admin_assets/css/images/ui-icons_ffffff_256x240.png) !important;
+        background-position: 0px 0px !important;
+}
+
+.ui-datepicker-next span {
+    background-image: url(admin_assets/css/images/ui-icons_ffffff_256x240.png) !important;
+        background-position: 0px 0px !important;
+}*/

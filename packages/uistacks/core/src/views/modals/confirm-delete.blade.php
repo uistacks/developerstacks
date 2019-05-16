@@ -1,39 +1,29 @@
 <!-- fullwidth modal-->
-<div class="modal fade in" id="full-width" tabindex="-1" role="dialog" aria-hidden="false" style="display:none;">
-    <div class="modal-dialog modal-lg">
+<div class="bootbox modal fade bootbox-alert show" id="full-width" tabindex="-1" role="dialog" aria-hidden="false" style="display:none;">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title"><i class="livicon" data-name="trash" data-size="18" data-c="#F89A14" data-hc="#5CB85C" data-loop="true"></i> {{ trans('admin.delete_confirmation') }}</h4>
+            <div class="modal-header bg-danger">
+                <h4 class="modal-title"><i class="material-icons">delete</i> {{ trans('admin.delete_confirmation') }}</h4>
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <form action="{{ route('admin-delete-item') }}" method="POST" role="form">
                 <input type="hidden" id="confirm-id" name="id" value="">
                 <input type="hidden" name="table" value="{{ $dbTable }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="modal-body">
-                    <p>
-                        {{ trans('admin.confirm_delete_msg') }}: <b><span id="confirm-title"></span></b> 
-                        @if(Lang::getlocale() == 'ar') ؟ @else ? @endif
-                    </p> 
-                    {{-- @if($Language->all()->count()> 1)
-                        <div class="form-group">
-                            <label>{{ trans('admin.select_languages_you_need_to_delete') }}</label>
-                            @foreach($Language->all() as $key => $lang)
-                            <div class="checkbox">
-                                <label for="checkboxes-0">
-                                  <input type="checkbox" name="language[{{$key}}]" value="{{$lang->code}}"@if(Lang::getlocale() == $lang->code) checked @endif>
-                                  {{$lang->name}}
-                                </label>
-                            </div>
-                            @endforeach
-                        </div>
-                    @else
-                        <input type="hidden" name="language[0]" value="{{Lang::getlocale()}}">
-                    @endif  --}}  
+                    <div class="alert alert-danger alert-styled-left alert-dismissible">
+                        <h6 class="font-weight-semibold">Please make sure, what type of action you are performing</h6>
+                        <p>Would you like to delete this item?</p>
+                        <p>You won't be able to revert this!</p>
+                    </div>
+                    {{--<div class="form-group row">
+                        <label for="captcha">I am not a robot</label>
+
+                    </div>--}}
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">{{ trans('admin.delete') }}</button>
-                    <button type="button" data-dismiss="modal" class="btn btn-warning">{{ trans('admin.cancel') }}</button>
+                    <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Do you really want to delete it?')">{{ trans('admin.delete') }}</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-outline-primary">{{ trans('admin.cancel') }}</button>
                 </div>
             </form>
         </div>

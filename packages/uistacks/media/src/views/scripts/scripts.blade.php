@@ -64,11 +64,11 @@ $('.main-img-delete').click(function() {
 
     function trueImagePath(extension)
     {
-        
+
         ret = 0;
         switch(extension)
         {
-            
+
             case "jpg":break;
             case "png":break;
             case "jpeg":break;
@@ -80,8 +80,8 @@ $('.main-img-delete').click(function() {
             case "GIF":break;
             case "BMP":break;
             default:
-                 ret = 1;    
-                
+                 ret = 1;
+
         }
         if(ret)
            return -1;
@@ -118,10 +118,10 @@ $('.main-img-delete').click(function() {
                     console.log('ERRORS: ' + data.error);
                 }
                 // Hide progress
-                $("#inno_media_modal .progress").hide();
-                $("#inno_media_modal .progress .progress-bar").css("width", +0 + "%");
-                $("#inno_media_modal .progress .progress-bar").text('');
-                $("#inno_media_modal .progress .progress-bar").attr('aria-valuenow', 0);
+                $("#qurative_media_modal .progress").hide();
+                $("#qurative_media_modal .progress .progress-bar").css("width", +0 + "%");
+                $("#qurative_media_modal .progress .progress-bar").text('');
+                $("#qurative_media_modal .progress .progress-bar").attr('aria-valuenow', 0);
             }
         });
 

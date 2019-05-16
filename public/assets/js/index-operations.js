@@ -46,7 +46,7 @@ function bulkconfirmDelete() {
                 bulkDataHtml.append( '<input type="hidden" name="ids[]" value="'+this.value+'">' );
                 // append titles
 //                bulkDataHtml.append( '<h3>' + $( this ).parent().parent().attr('data-title') + '</h3>' );
-                bulkDataHtml.append( '<h3>' + $('.user_name_col_'+this.value).text() + '</h3>' );
+                bulkDataHtml.append( '<h5>' + $('.user_name_col_'+this.value).text() + '</h5>' );
             });
 
             // Open bulk confirm modal

@@ -7,7 +7,7 @@
     @else
         <a href='#main' style="position:absolute;left:222px;display:none;" class='main-img-delete'>X</a>
     @endif
-    <a class="" data-toggle="modal" data-href="#full-width" href="#inno_media_modal" style="max-width: 100%;">
+    <a class="" data-toggle="modal" data-href="#full-width" href="#qurative_media_modal" style="max-width: 100%;">
     	@if(isset($item->media) && isset($item->media->main_image) && isset($item->media->main_image->styles['thumbnail']))
             <img id="main-image-thumbnail" src="{{url('/')}}/{{ $item->media->main_image->styles['thumbnail'] }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
     	@else
@@ -18,7 +18,7 @@
 <div class="form-group {{ $errors->has('main_image_id') ? 'has-error': '' }}" style="text-align: center;">
     <label style="display: block;">{{ trans('admin.main_image') }}</label>
     
-    <a data-toggle="modal" data-target="#inno_media_modal" href="javascript:void(0)" media-data-button-name="اختر الصورة الرئيسية" media-data-field-name="main_image_id" media-data-required>
+    <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="اختر الصورة الرئيسية" media-data-field-name="main_image_id" media-data-required>
         <div class="media-item">
             @if(isset($item->media) && isset($item->media->main_image) && isset($item->media->main_image->styles['thumbnail']))
                 <img src="{{url('/')}}/{{ $item->media->main_image->styles['thumbnail'] }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
@@ -30,7 +30,7 @@
     </a>
 {{-- 
     <label for="main_image_id" style="display: block;">الصورة المميزة</label>
-    <a data-toggle="modal" data-target="#inno_media_modal" href="javascript:void(0)" media-data-button-name="اختر الصورة المميزة" media-data-field-name="featured_image">
+    <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="اختر الصورة المميزة" media-data-field-name="featured_image">
         <div class="media-item">
             @if(isset($item->media) && isset($item->media->main_image) && isset($item->media->main_image->styles['thumbnail']))
                 <img id="main-image-thumbnail" src="/{{ $item->media->main_image->styles['thumbnail'] }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
@@ -41,7 +41,7 @@
     </a>
 
     <label for="main_image_id" style="display: block;">ملف ورد</label>
-    <a data-toggle="modal" data-target="#inno_media_modal" href="javascript:void(0)" media-data-button-name="اختر ملف الورد" media-data-field-name="word_fiels">
+    <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="اختر ملف الورد" media-data-field-name="word_fiels">
         <div class="media-item">
             @if(isset($item->media) && isset($item->media->main_image) && isset($item->media->main_image->styles['thumbnail']))
                 <img id="main-image-thumbnail" src="/{{ $item->media->main_image->styles['thumbnail'] }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">

@@ -1,16 +1,20 @@
 <!-- fullwidth modal-->
-<div class="modal fade in" id="Bulk-confirm" tabindex="-1" role="dialog" aria-hidden="false" style="display:none;">
-    <div class="modal-dialog modal-lg">
+<div class="bootbox modal fade bootbox-alert show" id="Bulk-confirm" tabindex="-1" role="dialog" aria-hidden="false" style="display:none;">
+    <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title"><i class="livicon" data-name="trash" data-size="18" data-c="#F89A14" data-hc="#5CB85C" data-loop="true"></i> {{ trans('admin.bulk_delete_confirmation') }}</h4>
+            <div class="modal-header bg-danger">
+                <h4 class="modal-title"><i class="material-icons">delete</i> {{ trans('admin.bulk_delete_confirmation') }}</h4>
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <form id="bulkDeleteForm" action="{{ route('admin-bulk-delete-items') }}" method="POST" role="form">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" id="confirm-table" name="table" value="{{ $dbTable }}">
                 <div class="modal-body">
-                    <p>{{ trans('admin.confirm_delete_msg') }} {{ trans('admin.the_following') }} @if(Lang::getlocale() == 'ar') ؟ @else ? @endif</p>  
+                    <div class="alert alert-danger alert-styled-left alert-dismissible">
+                        <h6 class="font-weight-semibold">Please make sure, what type of action you are performing</h6>
+                        <p>Would you like to delete these item(s)?</p>
+                        <p>You won't be able to revert this action!</p>
+                    </div>
                     <div id="bulk-data"></div>
                     {{-- @if($Language->all()->count()> 1)
                         <div class="form-group">
@@ -29,8 +33,8 @@
                     @endif --}}
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">{{ trans('admin.delete') }}</button>
-                    <button type="button" data-dismiss="modal" class="btn btn-warning">{{ trans('admin.cancel') }}</button>
+                    <button type="submit" class="btn btn-outline-danger">{{ trans('admin.delete') }}</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-outline-primary">{{ trans('admin.cancel') }}</button>
                 </div>
             </form>
         </div>

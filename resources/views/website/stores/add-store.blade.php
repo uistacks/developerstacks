@@ -140,7 +140,7 @@
                     <hr/>
                     <div class="form-group cust-img-thumb {{ $errors->has('main_image_id') ? 'has-error': '' }}" >
                         <label style="display: block;">{{ trans('Stores::stores.store_main_img') }}</label>
-                        <a data-toggle="modal" data-target="#inno_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }} {{ trans('Stores::stores.store_main_img') }}" media-data-field-name="main_image_id" media-data-required>
+                        <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }} {{ trans('Stores::stores.store_main_img') }}" media-data-field-name="main_image_id" media-data-required>
                             <div class="media-item">
                                 @if(isset($item->trans->media) && isset($item->trans->media->main_image) && isset($item->trans->media->main_image->styles['thumbnail']))
                                     <img src="{{url('/')}}/{{ $item->trans->media->main_image->styles['thumbnail'] }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">

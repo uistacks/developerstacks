@@ -42,13 +42,11 @@
 
 @endphp
 
-<div class="form-group row {{ $errors->has($fieldName) ? 'has-error': '' }}">
-    <label class="col-form-label col-lg-3" for="{{$fieldName}}">{{ $name }}</label>
-    <div class="col-lg-9">
-        <input type="{{$type}}" class="form-control mb-2 mr-sm-2 ml-sm-2 mb-sm-0" id="{{$fieldName}}" name="{{$fieldName}}" value="{{ $value }}" placeholder="{{$placeholder}}">
-        @if(isset($help))
-            {{--<p class="help-block">{!! $help !!}</p>--}}
-            <label id="{{$fieldName}}-error" class="validation-invalid-label" for="{{$fieldName}}">This field is required.</label>
-        @endif
-    </div>
+<div class="form-group {{ $errors->has($fieldName) ? 'has-error': '' }}">
+    <label class="" for="{{$fieldName}}">{{ $name }}</label>
+    <input type="{{$type}}" class="form-control" id="{{$fieldName}}" name="{{$fieldName}}" value="{{ $value }}" placeholder="{{$placeholder}}">
+    @if(isset($help))
+        {{--<p class="help-block">{!! $help !!}</p>--}}
+        <label id="{{$fieldName}}-error" class="validation-invalid-label" for="{{$fieldName}}">This field is required.</label>
+    @endif
 </div>

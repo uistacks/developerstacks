@@ -23,29 +23,27 @@
 @endphp
 
 @extends('admin.master')
-@section('page_title')
+@section('title')
     {{ $pageTitle }}: {{ $pageNameMode }} {{ $itemTitle }}
 @endsection
 @section('header')
-    <link rel="stylesheet" href="{{asset('public/media-dev.css')}}" />
+    <link rel="stylesheet" href="{{asset('media-dev.css')}}" />
 @endsection
 @section('content')
     <!-- Include Media model -->
     @include('Media::modals.modal')
     <!-- end include Media model -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="livicon" data-name="list" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> {{ $pageNameMode }} {{ $itemTitle }}</h3>
-                </div>
-                <div class="panel-body">
-                    <form id="frm_create_edit" action="{{ $action }}" method="POST" role="form">
-                        @if($method === 'PATCH')
-                            <input type="hidden" name="_method" value="PATCH">
-                        @endif
-                        {{ csrf_field() }}
-                        <div class="col-md-9">
+    <div class="card">
+        <div class="card-body">
+            <form id="frm_create_edit" action="{{ $action }}" method="POST" role="form">
+                @if($method === 'PATCH')
+                    <input type="hidden" name="_method" value="PATCH">
+                @endif
+                @csrf
+                <fieldset class="mb-3">
+                    <legend class="text-uppercase font-size-sm font-weight-bold">{{ $pageNameMode }}</legend>
+                    <div class="row">
+                        <div class="col-md-8">
 
                             @include('Core::fields.input_text', [
                                 'field_name' => 'name',
@@ -92,12 +90,12 @@
                             ])
                         </div>
                         <input type="hidden" name="iso2" id="phone_country_code" value="{{ old('iso2',isset($item) ? $item->iso2 : "")}}"/>
-                        <div class="col-md-3 sidbare">
+                        <div class="col-md-4">
                             <!-- Media main image -->
                             <div class="form-group {{ $errors->has('main_image_id') ? 'has-error': '' }}" style="text-align: center;">
                                 <label style="display: block;">{{ trans('Users::users.avatar') }}</label>
 
-                                <a data-toggle="modal" data-target="#inno_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }}ر{{ trans('Users::users.avatar') }}" media-data-field-name="main_image_id" media-data-required>
+                                <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }} User Image" media-data-field-name="main_image_id" media-data-required>
                                     <div class="media-item">
                                         @if(isset($item->media) && isset($item->media->main_image) && isset($item->media->main_image->styles['thumbnail']))
                                             <img src="{{url('/')}}/{{ $item->media->main_image->styles['thumbnail'] }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
@@ -192,23 +190,27 @@
                                 <label><input name="back" type="checkbox" value="1" class="minimal-blue" @if(old('back') == 1) checked @endif> {{$backFieldLabel}}</label>
                             </div>
 
-                            <button type="submit" id="btn_create" class="btn btn-block btn-primary">{{ $submitButton }}</button>
+                            <button type="submit" id="btn_create" class="btn btn-outline-success btn-block"><i class="material-icons">save</i> {{ $submitButton }}</button>
                         </div>
-                    </form>
-                </div>
-            </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
 @endsection
 @section('footer')
+    <script src="{{ asset('assets/js/jquery-ui.min.js') }}" type="text/javascript"></script>
     <!--Language -->
     @include('Core::language.scripts.scripts')
     <!--end Language -->
     <!--Media -->
-    <script src="{{asset('public/media-dev.js')}}"></script>
-    <!--end media -->
+    @include('Media::scripts.scripts')
 
-    <script src="{{ asset('public/admin-assets/js/pages/add_user.js') }}" type="text/javascript"></script>
+    <script src="{{asset('media-dev.js')}}"></script>
+    <!--end media -->
+    <script src="{{ url('/') }}/assets/js/plugins/forms/validation/validate.min.js"></script>
+    <script src="{{ asset('assets/js/pages/add_user.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/pages/components_buttons.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         // Load country states
         $('#country').off().on("change", function () {
@@ -261,8 +263,8 @@
             });
         }
     </script>
-    <link rel="stylesheet" href="{{ asset('public/website_assets/intl-telephone/css/intlTelInput.css') }}">
-    <script src="{{ asset('public/website_assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
+    <link rel="stylesheet" href="{{ asset('assets/intl-telephone/css/intlTelInput.css') }}">
+    <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
     <?php
     $countries = \Uistacks\Locations\Models\Country::where(array('active'=> 1))->get();
     $all_iso = [];

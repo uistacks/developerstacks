@@ -17,16 +17,17 @@ Route::GET('api/media', 'Uistacks\Media\Controllers\MediaApiController@listAll')
 Route::POST('api/media', 'Uistacks\Media\Controllers\MediaApiController@uploadFile');
 Route::PATCH('api/media/{id}', 'Uistacks\Media\Controllers\MediaApiController@updateFile');
 
-Route::POST('api/bulk-media', function(){
+/*Route::POST('api/bulk-media', function(){
 	return true;
-});//'Uistacks\Media\Controllers\MediaApiController@uploadFiles');
+});*/
+//'Uistacks\Media\Controllers\MediaApiController@uploadFiles');
 
 Route::POST('api/bulk-media','Uistacks\Media\Controllers\MediaApiController@uploadFiles');
 
 
-Route::GET('api/bulk-media', function(){
+/*Route::GET('api/bulk-media', function(){
 	echo "HI";
-});
+});*/
 
 Route::DELETE('api/media/{id}', 'Uistacks\Media\Controllers\MediaApiController@deleteFile');
 

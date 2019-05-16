@@ -1,6 +1,6 @@
 <div class="form-group">
-	<a class="btn btn-block btn-success gallery-images-browse" data-toggle="modal" data-target="#inno_media_modal" href="#" media-data-button-name="{{ trans('Media::media.select_files') }}" media-data-field-name="gallery_images[]" media-data-multiple>{{ trans('Media::media.select_files') }}</a>
-	<div class="inno-media-gallery">
+	<a class="btn btn-block btn-success gallery-images-browse" data-toggle="modal" data-target="#qurative_media_modal" href="#" media-data-button-name="{{ trans('Media::media.select_files') }}" media-data-field-name="gallery_images[]" media-data-multiple>{{ trans('Media::media.select_files') }}</a>
+	<div class="qurative-media-gallery">
 		@if(isset($item->media) && isset($item->media->gallery))
 			@foreach($item->media->gallery as $image)
 				<div class='media-item'>
