@@ -251,7 +251,10 @@
 }
 
 .media-item img{
-    max-width: 100%;
+    /*max-width: 100%;*/
+    width: 150px;
+    border: 2px solid #FF5622 !important;
+    /*background: radial-gradient(#71c55d 50%, rgba(113, 197, 93, 0.15) 52%)*/
 }
 
 #qurative-no-more-files {

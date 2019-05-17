@@ -150,7 +150,8 @@
                                                     <span class="ladda-label">{{trans('Media::media.go')}}</span>
                                                 </button>
                                             </span>
-                                            <i class="icon-spinner3 spinner" id="go_spin" style="display:none;"></i>
+                                            {{--<i class="icon-spinner9 spinner" id="go_spin" style="display:none;"></i>--}}
+                                            <img src="{{ url('/') }}/assets/images/loader.gif" id="go_spin" style="display:none;" />
                                         </div>
                                     </div>
                                 </div>

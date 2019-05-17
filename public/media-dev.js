@@ -413,7 +413,7 @@ function uploadedSuccess(data, dataPosition, newData) {
     // Add new uploaded files to mediaLibrary
     addUploadedDataToMediaLibrary(data, dataPosition, newData);
     // Show successfull upload message at side menu
-    var successUploadMessage = 'A file has been successfully added';
+    var successUploadMessage = ' file(s) has been successfully added';
     var successUpload = '';
     successUpload += '<div class="upload-success-message alert alert-success alert-dismissable"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
     successUpload += '<strong>' + data.length + '</strong> ' + successUploadMessage + '</div>';
@@ -777,7 +777,7 @@ function activeOtherSelectedFileDetails() {
  */
 function listenToDeleteFile() {
     $('body').off('click').on('click', '#delete_file', function() {
-        if (confirm('Do you really want this image?')) {
+        if (confirm('Do you really want to delete this image?')) {
             $.ajax({
                 url: javascript_site_path + 'api/media/' + $('#delete_file').attr('data-file-id'),
                 type: 'DELETE',
