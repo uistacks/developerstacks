@@ -33,6 +33,9 @@
         border-top-width: 0;
         padding: 10px;
     }
+    .media-tab .active a, .media-tab .active a:hover, .media-tab .active a:focus {
+        border-bottom: 2px solid #0a6ebd;
+    }
 </style>
 <input type="hidden" id="max_file_size_validation" value="{{trans('Media::media.max_file_size_validation')}}"/>
 <div class="bootbox modal fade bootbox-alert show" id="qurative_media_modal" tabindex="-1" role="dialog" aria-hidden="false" style="display:none;">
@@ -48,7 +51,7 @@
 
             </div>
             <div class="modal-body">
-                <ul class="nav nav-tabs nav-tabs-highlight mb-0">
+                <ul class="nav nav-tabs nav-tabs-highlight mb-0 media-tab">
                     <li class="nav-item">
                         <a class="nav-link" href="#" id="qurative_media_library_tab">{{trans('Media::media.media_library')}}</a>
                     </li>
@@ -73,7 +76,7 @@
                                             <div class="file-size"></div>
                                             <div class="dimensions"></div>
                                             {{-- <a class="edit" href="">Edit</a> --}}
-                                            <a id="delete_file" href="javascript:void(0);" data-file-id="">{{trans('Media::media.delete')}}</a>
+                                            <a id="delete_file" class="btn btn-sm btn-outline-danger" href="javascript:void(0);" data-file-id=""><i class="icon-trash"></i> {{trans('Media::media.delete')}}</a>
                                             <div class="compat-meta"></div>
                                         </div>
                                         <div style="clear: both;"></div>
@@ -106,7 +109,7 @@
                                     {{--</div>--}}
                                 </div>
                             </div>
-                            <div class="col-md-9 ">
+                            <div class="col-md-9 media-img-content">
                                 <div class="media-content">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="qurative_media_search" placeholder="Search...">

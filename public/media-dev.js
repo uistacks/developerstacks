@@ -183,6 +183,7 @@ function enableDisableSetChoosedButton() {
     } else if ($('.qurative-media-list li.selected').length === 0) {
         // hide info at sidebar
         $('#qurative_media_modal .file-info').hide();
+        $('.media-img-content').removeClass('col-md-9').addClass('col-md-12');
     }
 }
 
@@ -497,13 +498,13 @@ function getThumbnailCoverImage(file) {
  * 
  */
 function loadFiles(q,page) {
-    
+
     if(q=="")
         q = "";
-    
+
     if(page=="")
-    page = 1;
-    
+        page = 1;
+
     $.ajax({
         url: javascript_site_path + 'api/media',
         type: 'GET',
@@ -604,7 +605,7 @@ function toggleSelectFile() {
             $(this).parent().removeClass('details');
             activeOtherSelectedFileDetails();
         } else if (($(this).parent().hasClass('selected') === false && $(this).parent().hasClass('details') === false)
-                || ($(this).parent().hasClass('selected') === true && $(this).parent().hasClass('details') === false)) {
+            || ($(this).parent().hasClass('selected') === true && $(this).parent().hasClass('details') === false)) {
             activeFileDetails($(this));
         }
 
@@ -658,6 +659,7 @@ function activeFileDetails($selectedListItemDiv) {
     $('#media_item_alt').val(activeItem.alt);
     $('#media_item_description').val(activeItem.description);
     // Show info at sidebar
+    $('.media-img-content').removeClass('col-md-12').addClass('col-md-9');
     $('#qurative_media_modal .file-info').show();
 
     // Listen to events
@@ -775,30 +777,32 @@ function activeOtherSelectedFileDetails() {
  */
 function listenToDeleteFile() {
     $('body').off('click').on('click', '#delete_file', function() {
-
-        $.ajax({
-            url: javascript_site_path + 'api/media/' + $('#delete_file').attr('data-file-id'),
-            type: 'DELETE',
-            //data: item,
-            cache: false,
-            dataType: 'json',
-            success: function(data, textStatus, jqXHR) {
-                if (typeof data.error === 'undefined') {
-                    // Success
-                    // hide info at sidebar
-                    $('#qurative_media_modal .file-info').hide();
-                    $('li.details.selected').remove();
-                } else {
+        if (confirm('Do you really want this image?')) {
+            $.ajax({
+                url: javascript_site_path + 'api/media/' + $('#delete_file').attr('data-file-id'),
+                type: 'DELETE',
+                //data: item,
+                cache: false,
+                dataType: 'json',
+                success: function (data, textStatus, jqXHR) {
+                    if (typeof data.error === 'undefined') {
+                        // Success
+                        // hide info at sidebar
+                        $('#qurative_media_modal .file-info').hide();
+                        $('.media-img-content').removeClass('col-md-9').addClass('col-md-12');
+                        $('li.details.selected').remove();
+                    } else {
+                        // Handle errors here
+                        console.log('ERRORS: ' + data.error);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
                     // Handle errors here
-                    console.log('ERRORS: ' + data.error);
+                    console.log('ERRORS: ' + textStatus);
+                    // STOP LOADING SPINNER
                 }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                // Handle errors here
-                console.log('ERRORS: ' + textStatus);
-                // STOP LOADING SPINNER
-            }
-        });
+            });
+        }
     });
 }
 
@@ -821,7 +825,7 @@ closeModalEvent();
 
 function sortMediaGallery() {
     $(".qurative-media-gallery").sortable(
-            {helper: "clone"}
+        {helper: "clone"}
     );
 }
 sortMediaGallery();
