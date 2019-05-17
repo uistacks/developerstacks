@@ -10,7 +10,6 @@ use Uistacks\Users\Models\UserRole;
 use Uistacks\Locations\Models\Country;
 use Uistacks\Locations\Models\State;
 use Uistacks\Locations\Models\City;
-use Auth;
 use Response;
 use Illuminate\Support\Facades\Lang;
 use Validator;

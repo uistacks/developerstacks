@@ -18,8 +18,8 @@
 @endphp
 
 @extends('admin.master')
-@section('page_title')
-    {{ trans('Pages::pages.pages') }}: {{ $pageNameMode }} {{ trans('Pages::pages.page') }}
+@section('title')
+    {{ trans('Pages::pages.pages') }}: {{ $pageNameMode }} CMS
 @endsection
 @section('content')
     <!-- Include Media model -->
@@ -29,21 +29,21 @@
     <!-- Include Media model -->
     @include('Media::modals.gallery-modal')
     <!-- end include Media model -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="livicon" data-name="list" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> {{ $pageNameMode }} {{ trans('Pages::pages.page') }}</h3>
-                </div>
-                <div class="panel-body">
-                    <form action="{{ $action }}" method="POST" role="form">
-                        @if($method === 'PATCH')
-                            <input type="hidden" name="_method" value="PATCH">
-                        @endif
-                        {{ csrf_field() }}
+
+    <div class="card">
+        <div class="card-body">
+            <form id="frm_create_edit" action="{{ $action }}" method="POST" role="form">
+                @if($method === 'PATCH')
+                    <input type="hidden" name="_method" value="PATCH">
+                @endif
+                @csrf
+                <fieldset class="mb-3">
+                    <legend class="text-uppercase font-size-sm font-weight-bold">{{ $pageNameMode }} CMS Page</legend>
+                    <div class="row">
                         <!-- Language field -->
-                            @include('Core::fields.languages')
+                        @include('Core::fields.languages')
                         <div class="col-md-12">
+
                             @include('Core::groups.languages', [
                                 'fields' => [
                                     0 => [
@@ -100,8 +100,7 @@
                                     ]
                                 ]
                             ])
-                        </div>
-                        <div class="col-md-12">
+
                             <div class="form-group ">
                                 <label for="section">{{trans('Pages::pages.page_status')}}</label>
                                 <select id="page_status" class="form-control" name="page_status_ar">
@@ -111,15 +110,17 @@
                                 </select>
                             </div>
                             <div class="checkbox">
-                                <label><input name="back" type="checkbox" value="1" class="minimal-blue" @if(old('back') == 1) checked @endif> {{$backFieldLabel}}</label>
+                                <label><input name="back" type="checkbox" value="1" class="minimal-blue mb-1" @if(old('back') == 1) checked @endif> {{$backFieldLabel}}</label>
                             </div>
+
+                            <button type="submit" id="btn_create" class="btn btn-outline-success btn-block"><i class="material-icons">save</i> {{ $submitButton }}</button>
                         </div>
-                        <button type="submit" class="btn btn-block btn-primary">{{ $submitButton }}</button>
-                    </form>
-                </div>
-            </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
+
 @endsection
 
 @section('footer')

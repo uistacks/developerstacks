@@ -16,6 +16,8 @@ class RolesTableSeeder extends Seeder
     	// Adminstrator Role 1
         \DB::table('roles')->insert([
         	'id' => 1,
+            'created_at' => Carbon::now()->format('Y-m-d'),
+            'updated_at' => Carbon::now()->format('Y-m-d')
         ]);
 
         \DB::table('roles_trans')->insert([
@@ -31,6 +33,8 @@ class RolesTableSeeder extends Seeder
     	// Developer Role 2
         \DB::table('roles')->insert([
         	'id' => 2,
+            'created_at' => Carbon::now()->format('Y-m-d'),
+            'updated_at' => Carbon::now()->format('Y-m-d')
         ]);
 
         \DB::table('roles_trans')->insert([
@@ -46,6 +50,8 @@ class RolesTableSeeder extends Seeder
         // Visitor/Member Role 3
         \DB::table('roles')->insert([
         	'id' => 3,
+            'created_at' => Carbon::now()->format('Y-m-d'),
+            'updated_at' => Carbon::now()->format('Y-m-d')
         ]);
 
         \DB::table('roles_trans')->insert([

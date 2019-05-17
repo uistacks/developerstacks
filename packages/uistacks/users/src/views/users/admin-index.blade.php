@@ -65,7 +65,6 @@
                         <tbody>
                         @foreach($items as $k => $item)
                             <tr class="@if($k % 2 == 0) even @else odd @endif pointer" @if($item->trans) data-title="{{ $item->trans->name }}" @endif>
-
                                 <td>
                                     <input type="checkbox" name="ids[]" class="check_list" value="{{$item->id}}">
                                 </td>

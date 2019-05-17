@@ -6,9 +6,6 @@ use Uistacks\Roles\Controllers\RolesApiController as API;
 use Uistacks\Roles\Models\Role;
 use Uistacks\Roles\Models\RoleTrans;
 use Uistacks\Users\Models\Permission;
-use Uistacks\Users\Models\PermissionRole;
-use Uistacks\Users\Models\PermissionUser;
-use Uistacks\Users\Models\PermissionTrans;
 
 class RolesController extends RolesApiController
 {
@@ -36,7 +33,6 @@ class RolesController extends RolesApiController
     {
         $request->request->add(['paginate' => 20]);
         $items = $this->api->listItems($request);
-//        dd($items);
         return view('Roles::roles.index', compact('items'));
     }
 
@@ -101,7 +97,6 @@ class RolesController extends RolesApiController
         foreach ($user_permission as $key => $value) {
             $arr_role_permission[] = $user_permission{$key}->getPermission->id;
         }
-//        dd($arr_role_permission);
         $permissions = Permission::where('active','1')->orderBy('id','ASC')->get();
         return view('Roles::roles.create-edit', compact('item', 'trans','permissions','arr_role_permission'));
     }
@@ -114,10 +109,10 @@ class RolesController extends RolesApiController
      */
     public function update(Request $request, $id)
     {
-        $update = $this->api->updateRole($request, '', $id);
-
-        if($update == "Duplicate Entry Present")
+        $update = $this->api->updateRole($request, $id);
+        if ($update == "Duplicate Entry Present") {
             return back();
+        }
         $update = $update->getData();
 
         if(isset($update->errors)){

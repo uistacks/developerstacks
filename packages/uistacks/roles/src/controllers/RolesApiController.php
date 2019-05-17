@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Uistacks\Roles\Models\Role;
 use Uistacks\Roles\Models\RoleTrans;
 use Illuminate\Support\Facades\Input;
-use Auth;
 use Uistacks\Users\Models\PermissionRole;
+use Response;
 
 class RolesApiController extends Controller {
     /*
@@ -29,6 +29,7 @@ class RolesApiController extends Controller {
         $languages = config('uistacks.locales');
 
         $rules['language'] = 'required';
+        $messages = [];
 
 //        $rules['name'] = 'unique:roles_trans';
         if (count($languages)) {
@@ -36,17 +37,19 @@ class RolesApiController extends Controller {
                 $code = $language['code'];
                 if ($request->language) {
                     foreach ($request->language as $lang) {
-                        $rules['name_' . $code . ''] = 'required|max:255';
+                        $rules['title_' . $code . ''] = 'required|max:255';
+                        $messages['title_' . $code . '.required'] = 'Please enter role name';
                     }
                 }
             }
         }
         $rules['permissions'] = 'required';
+        $messages['permissions.required'] = 'Please select at-least 1 permission.';
         if ($request->segment(2) === 'api') {
             $rules['author'] = 'required|integer';
         }
 
-        return \Validator::make($request->all(), $rules);
+        return \Validator::make($request->all(), $rules, $messages);
     }
 
     /**
@@ -56,7 +59,11 @@ class RolesApiController extends Controller {
      * @return
      */
     public function listItems(Request $request) {
-        $roles = Role::where('id','!=',5)->where('id','!=',3)->FilterName()->FilterStatus()->orderBy('id', 'DESC')->paginate($request->get('paginate'));
+        $roles = Role::where('id','!=',5)
+            ->where('id','!=',3)
+            ->FilterName()
+            ->FilterStatus()
+            ->orderBy('id', 'DESC')->paginate($request->get('paginate'));
         $roles->appends(Input::except('page'));
         return $roles;
     }
@@ -72,8 +79,8 @@ class RolesApiController extends Controller {
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
-        $cn = RoleTrans::where('name', ucfirst(strtolower($request->name_ar)))->first();
-        if (isset($cn->name)) {
+        $cn = RoleTrans::where('title', ucfirst(strtolower($request->title)))->first();
+        if (isset($cn->title)) {
             \Session::flash('alert-class', 'alert-danger');
             \Session::flash('message', trans('duplicate_role_msg'));
             $store = "Duplicate Entry Present";
@@ -98,11 +105,11 @@ class RolesApiController extends Controller {
 
         // Translation
         foreach ($request->language as $langCode) {
-            $name = 'name_' . $langCode;
+            $name = 'title_' . $langCode;
 
             $roleTrans = new RoleTrans;
             $roleTrans->role_id = $role->id;
-            $roleTrans->name = ucfirst(strtolower($request->$name));
+            $roleTrans->title = ucfirst(strtolower($request->$name));
             $roleTrans->lang = $langCode;
             $roleTrans->save();
         }
@@ -117,7 +124,7 @@ class RolesApiController extends Controller {
             }
         }
 
-        $response = ['message' => trans('Roles::roles.saved_successfully')];
+        $response = ['message' => trans('New role added successfully.')];
         return response()->json($response, 201);
     }
 
@@ -127,7 +134,7 @@ class RolesApiController extends Controller {
      * @param
      * @return
      */
-    public function updateRole(Request $request, $apiKey = '', $id) {
+    public function updateRole(Request $request, $id) {
         $role = Role::find($id);
         if ($request->author) {
             $author = $request->author;
@@ -144,7 +151,7 @@ class RolesApiController extends Controller {
         $role->save();
         // Translation
         foreach ($request->language as $langCode) {
-            $name = 'name_' . $langCode;
+            $name = 'title_' . $langCode;
 
             $roleTrans = RoleTrans::where('role_id', $role->id)->where('lang', $langCode)->first();
             if (empty($roleTrans)) {
@@ -152,7 +159,7 @@ class RolesApiController extends Controller {
                 $roleTrans->role_id = $role->id;
                 $roleTrans->lang = $langCode;
             }
-            $roleTrans->name = ucfirst(strtolower($request->$name));
+            $roleTrans->title = ucfirst(strtolower($request->$name));
             $roleTrans->save();
         }
         $users_all_permissions = PermissionRole::where('role_id', $role->id)->get();
@@ -170,9 +177,8 @@ class RolesApiController extends Controller {
                 $new_permission->save();
             }
         }
-
-        $response = ['message' => trans('Roles::roles.updated_successfully')];
-        return response()->json($response, 201);
+        $response = ['message' => trans('Role updated successfully')];
+        return response()->json($response);
     }
 
 }

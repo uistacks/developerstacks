@@ -18,7 +18,7 @@
 @endphp
 
 @extends('admin.master')
-@section('page_title')
+@section('title')
     {{ trans('Roles::roles.roles') }}: {{ $pageNameMode }} {{ trans('Roles::roles.role') }}
 @endsection
 @section('content')
@@ -29,31 +29,32 @@
     <!-- Include Media model -->
     @include('Media::modals.gallery-modal')
     <!-- end include Media model -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="livicon" data-name="list" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> {{ $pageNameMode }} {{ trans('Roles::roles.role') }}</h3>
-                </div>
-                <div class="panel-body">
-                    <form action="{{ $action }}" method="POST" role="form" >
-                        @if($method === 'PATCH')
-                            <input type="hidden" name="_method" value="PATCH">
-                        @endif
-                        {{ csrf_field() }}
-                        <div class="col-md-9">
+
+    <div class="card">
+        <div class="card-body">
+            <form id="frm_create_edit" action="{{ $action }}" method="POST" role="form">
+                @if($method === 'PATCH')
+                    <input type="hidden" name="_method" value="PATCH">
+                @endif
+                @csrf
+                <fieldset class="mb-3">
+                    <legend class="text-uppercase font-size-sm font-weight-bold">{{ $pageNameMode }}</legend>
+                    <div class="row">
+                        <div class="col-md-8">
+
                             @include('Core::groups.languages', [
                                 'fields' => [
                                     0 => [
                                         'type' => 'input_text',
                                         'properties' => [
-                                            'field_name' => 'name',
+                                            'field_name' => 'title',
                                             'name' => trans('Core::operations.name'),
                                             'placeholder' => ''
                                         ]
                                     ]
                                 ]
                             ])
+
                             <hr/>
                             <h4><i>{{trans('Roles::roles.all_permissions')}}</i></h4>
 
@@ -76,36 +77,38 @@
                                 {{--</div>--}}
                             @endif
                             <hr/>
+
                         </div>
-                        <div class="col-md-3 sidbare">
+
+                        <div class="col-md-4">
+
                             <!-- Language field -->
-                        @include('Core::fields.languages')
-                        <!-- End Language field -->
+                            @include('Core::fields.languages')
+                            <!-- End Language field -->
 
                             @include('Core::fields.checkbox', [
                                 'field_name' => 'active',
                                 'name' => trans('admin.active'),
                                 'placeholder' => ''
                             ])
+
                             <div class="checkbox">
                                 <label><input name="back" type="checkbox" value="1" class="minimal-blue" @if(old('back') == 1) checked @endif> {{$backFieldLabel}}</label>
                             </div>
-                            <button type="submit" class="btn btn-block btn-primary">{{ $submitButton }}</button>
+
+                            <button type="submit" id="btn_create" class="btn btn-outline-success btn-block"><i class="material-icons">save</i> {{ $submitButton }}</button>
                         </div>
-                    </form>
-                </div>
-            </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
+
 @endsection
 
 @section('footer')
-    <!--Language -->
-    @include('Core::language.scripts.scripts')
-    <!--end Language -->
-    <script src="{{asset('public/media-dev.js')}}"></script>
     <!--jquery-dependency-fields -->
-    <script src="{{ asset('public/admin-assets/js/index-operations.js') }}"></script>
+    <script src="{{ asset('assets/js/index-operations.js') }}"></script>
     <!--end jquery-dependency-fields -->
     <script type="text/javascript">
         $(document).ready(function () {

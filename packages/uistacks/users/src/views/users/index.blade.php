@@ -28,11 +28,6 @@
             <h5 class="card-title">{{ $pageTitle }}</h5>
             <div class="header-elements">
                 <a class="btn btn-sm btn-outline-primary" href="{{ action('\Uistacks\Users\Controllers\UsersController@create')}}"><i class="material-icons">add</i> {{ trans('Core::operations.create') }} {{ $itemTitle }}</a>
-                {{--<div class="list-icons">
-                    <a class="list-icons-item" data-action="collapse"></a>
-                    <a class="list-icons-item" data-action="reload"></a>
-                    <a class="list-icons-item" data-action="remove"></a>
-                </div>--}}
             </div>
         </div>
 

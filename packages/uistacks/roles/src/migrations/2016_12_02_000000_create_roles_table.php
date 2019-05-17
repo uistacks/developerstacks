@@ -29,7 +29,7 @@ class CreateRolesTable extends Migration
             $table->increments('id');
             $table->integer('role_id')->unsigned()->index()->nullable();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
-            $table->string('name')->nullable();
+            $table->string('title')->nullable();
             $table->string('lang');
             $table->timestamps();
         });

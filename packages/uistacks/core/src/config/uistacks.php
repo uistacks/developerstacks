@@ -15,7 +15,7 @@ return [
             'name' => 'English',
             'content_default' => true
         ],
-        1 => [
+        /*1 => [
             'code' => 'hi',
             'name' => 'हिंदी',
             'content_default' => false
@@ -24,7 +24,7 @@ return [
             'code' => 'es',
             'name' => 'Spanish',
             'content_default' => false
-        ]
+        ]*/
     ],
 
     /*

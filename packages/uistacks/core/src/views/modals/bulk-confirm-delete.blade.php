@@ -14,6 +14,12 @@
                         <h6 class="font-weight-semibold">Please make sure, what type of action you are performing</h6>
                         <p>Would you like to delete these item(s)?</p>
                         <p>You won't be able to revert this action!</p>
+                        {{--<div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" value="1">
+                                <span class="mb-2">You must accept the Terms of Service in order to perform this action.</span>
+                            </label>
+                        </div>--}}
                     </div>
                     <div id="bulk-data"></div>
                     {{-- @if($Language->all()->count()> 1)

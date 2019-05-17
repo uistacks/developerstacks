@@ -15,9 +15,12 @@ $locale = \Request::segment(1);
 //control language start here
 Route::group(['middleware' => ['web', 'admin'], 'prefix' => $locale . '/admin'], function() {
     //Pages
-    Route::GET('pages', 'Uistacks\Pages\Controllers\PagesController@index');
-    Route::GET('pages/dynamic', 'Uistacks\Pages\Controllers\PagesController@dynamic');
-    Route::GET('pages/create', 'Uistacks\Pages\Controllers\PagesController@create');
+    Route::GET('pages', 'Uistacks\Pages\Controllers\PagesController@index')
+        ->name('admin.list-cms-page');
+    Route::GET('pages/dynamic', 'Uistacks\Pages\Controllers\PagesController@dynamic')
+        ->name('admin.create-dynamic-page');
+    Route::GET('pages/create', 'Uistacks\Pages\Controllers\PagesController@create')
+        ->name('admin.create-static-page');
     Route::POST('pages', 'Uistacks\Pages\Controllers\PagesController@store');
     Route::GET('pages/{id}/edit', 'Uistacks\Pages\Controllers\PagesController@edit');
     Route::PATCH('pages/{id}', 'Uistacks\Pages\Controllers\PagesController@update');
