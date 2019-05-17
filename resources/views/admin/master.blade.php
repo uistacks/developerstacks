@@ -16,8 +16,10 @@
     <link href="{{ asset('assets/css/components.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
+
+    <script src="{{ asset('assets/js/plugins/jquery.min.js') }}"></script>
     <style>
-        .material-icons { font-size: 14px; }
+        .material-icons { font-size: 10px; }
         /*.hint-text {
             float: left;
             margin-top: 10px;
@@ -35,27 +37,28 @@
         .pagination > li {
             display: inline;
         }*/
-
+        .page-filter .form-group input, .page-filter .form-group select {
+            margin-left: .625rem !important;
+        }
+        .error {
+            color: #da2b6a;
+        }
     </style>
     <script>
         var javascript_site_path = "{{url('/')}}" + "/";
     </script>
     @yield('header')
 </head>
-
 <body>
 
 <!-- Main navbar -->
 @include('admin.regions.header')
 <!-- /main navbar -->
 
-
 <!-- Page content -->
 <div class="page-content">
-
     <!-- Main sidebar -->
     <div class="sidebar sidebar-light sidebar-main sidebar-expand-md">
-
         <!-- Sidebar mobile toggler -->
         <div class="sidebar-mobile-toggler text-center">
             <a href="#" class="sidebar-mobile-main-toggle">
@@ -68,41 +71,21 @@
             </a>
         </div>
         <!-- /sidebar mobile toggler -->
-
-
         <!-- Sidebar content -->
     @include('admin.regions.sidebar')
     <!-- /sidebar content -->
-
     </div>
     <!-- /main sidebar -->
-{{--<a href="{{url('/')}}/{{ App::getLocale() }}/admin" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Dashboard</a>
-@if(isset($breadcrumbs))
-    @foreach($breadcrumbs as $breadcrumb)
-        @if(!empty($breadcrumb['url']))
-            <a href="{{$breadcrumb['url']}}" class="breadcrumb-item">
-                @if(!empty($breadcrumb['icon']))
-                    <i class="icon-{{ $breadcrumb['icon'] }} mr-2"></i>
-                @endif
-                {{ $breadcrumb['name'] }}
-            </a>
-        @else
-            <span class="breadcrumb-item active">{{ $breadcrumb['name'] }}</span>
-    @endif
-@endforeach
-@endif--}}
 
-<!-- Main content -->
+    <!-- Main content -->
     <div class="content-wrapper">
-
         <!-- Page header -->
     @include('admin.regions.breadcrumb')
     <!-- /page header -->
 
-
         <!-- Content area -->
         <div class="content">
-
+            @include('admin.blocks.message')
             @yield('content')
 
         </div>
@@ -115,7 +98,7 @@
 </div>
 <!-- /page content -->
 <!-- Core JS files -->
-<script src="{{ asset('assets/js/plugins/jquery.min.js') }}"></script>
+{{--<script src="{{ asset('assets/js/plugins/jquery.min.js') }}"></script>--}}
 <script src="{{ asset('assets/js/plugins/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/loaders/blockui.min.js') }}"></script>
 {{--<script src="{{ asset('assets/js/plugins/ui/ripple.min.js') }}"></script>--}}

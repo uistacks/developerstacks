@@ -3,6 +3,7 @@
 namespace Uistacks\Users\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Uistacks\Users\Controllers\AdminApiController as API;
 use Uistacks\Users\Models\User;
 use Uistacks\Roles\Models\Role;
@@ -91,10 +92,27 @@ class AdminController extends AdminApiController {
      */
     public function edit(Request $request, $id) {
         $item = User::findOrFail($id);
-        $countries = Country::where('active', 1)->get();
-        $states = State::where('active', 1)->get();
-        $cities = City::where('active', 1)->get();
-        $roles = Role::where('id' , '!=', 5)->where('id' , '!=', 3)->get();
+//        $countries = Country::where('active', 1)->get();
+        $countries = DB::table('countries as c')
+            ->join('countries_trans AS ct', 'ct.country_id', 'c.id')
+            ->where('c.active', 1)
+            ->where('ct.lang', app()->getLocale())
+            ->get();
+        /*$states = State::where('active', 1)->get();
+        $cities = City::where('active', 1)->get();*/
+        $states = DB::table('states AS s')
+            ->join('states_trans AS st', 'st.state_id', 's.id')
+            ->where('s.country_id', $item->country_id)
+            ->where('s.active', 1)
+            ->where('st.lang', app()->getLocale())
+            ->get();
+        $cities = DB::table('cities AS c')
+            ->join('cities_trans AS ct', 'ct.city_id', 'c.id')
+            ->where('c.state_id', $item->state_id)
+            ->where('c.active', 1)
+            ->where('ct.lang', app()->getLocale())
+            ->get();
+        $roles = Role::where('id' , '!=', 3)->get();
         $edit = 1;
 //        dd($roles[1]->userRole);
         return view('Users::users.admin-create-edit', compact('item', 'countries', 'states','cities', 'edit','roles'));

@@ -64,7 +64,7 @@
 
                                     <div class="">
                                         <div class="form-group-feedback form-group-feedback-right quform-input">
-                                            <input type="email" class="form-control bg-light" name="email" id="email" placeholder="Enter email" value="{{ old('email') }}"/>
+                                            <input type="email" class="form-control bg-light @error('email') is-invalid @enderror" name="email" id="email" placeholder="Enter email" value="{{ old('email') }}"/>
                                             <div class="form-control-feedback">
                                                 <i class="icon-mention text-muted"></i>
                                             </div>
@@ -81,7 +81,7 @@
 
                                     <div class="">
                                         <div class="form-group-feedback form-group-feedback-right quform-input">
-                                            <input type="password" class="form-control bg-light" name="password" id="password" placeholder="Enter password">
+                                            <input type="password" class="form-control bg-light @error('password') is-invalid @enderror" name="password" id="password" placeholder="Enter password">
                                             <div class="form-control-feedback">
                                                 <i class="icon-key text-muted"></i>
                                             </div>

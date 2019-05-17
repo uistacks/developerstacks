@@ -64,8 +64,8 @@
                             ])
 
                             <div class="form-group {{ $errors->has('role') ? 'has-error': '' }}">
-                                <label for="role">{{ trans("Roles::roles.role") }}</label>
-                                <select id="role" name="role" class="form-control">
+                                <label class="" for="role">{{ trans("Roles::roles.role") }}</label>
+                                <select id="role" name="role" class="form-control @error('role') is-invalid @enderror">
                                     <option value="">- {{trans('Core::operations.select').' '.ucfirst(trans('Roles::roles.role'))}} -</option>
                                     @if(count($roles))
                                         @foreach($roles as $role)
@@ -116,9 +116,7 @@
                                 if(isset($countries) && $countries->count()){
                                     foreach ($countries as $country) {
                                         $countryName = '';
-                                        if($country->trans){
-                                            $countryName = ucwords(strtolower($country->trans->name));
-                                        }
+                                            $countryName = ucwords(strtolower($country->name));
                                         $options[] = ['value' => $country->id, 'name' => $countryName];
                                     }
                                 }
@@ -126,37 +124,36 @@
 
                             @include('Core::fields.select', [
                                 'field_name' => 'country',
-                                'name' => trans('Countries::countries.country'),
+                                'name' => 'Country',
                                 'options' => $options
                             ])
                             <div class="form-group clearfix">
-                                <label for="state" > {{ucfirst(trans('States::states.state'))}}</label>
-                                <select id="state" name="state" class="form-control">
-                                    <option value="">- {{trans('Core::operations.select').' '.ucfirst(trans('States::states.state'))}} -</option>
+                                <label for="state" >State</label>
+                                <select id="state" name="state" class="form-control @error('state') is-invalid @enderror">
+                                    <option value="">- {{trans('Core::operations.select').' State' }} -</option>
                                     @if(isset($states) && $states->count())
                                         @foreach($states as $state)
                                             @if(isset($item->state_id))
-                                                <option value="{{ $state->id }}" @if($state->id == old('state',$item->state_id)) selected @endif>{{ $state->trans->name }}</option>
+                                                <option value="{{ $state->id }}" @if($state->id == old('state',$item->state_id)) selected @endif>{{ $state->name }}</option>
                                             @endif
                                         @endforeach
                                     @else
-                                        <option value="">- {{ucfirst(trans('States::states.state'))}} -</option>
+                                        <option value="">- State -</option>
                                     @endif
                                 </select>
                             </div>
-
                             <div class="form-group clearfix">
-                                <label for="city" > {{ucfirst(trans('Cities::cities.city'))}}</label>
-                                <select id="city" name="city" class="form-control">
-                                    <option value="">- {{trans('Core::operations.select').' '.ucfirst(trans('Cities::cities.city'))}} -</option>
+                                <label for="city" >City</label>
+                                <select id="city" name="city" class="form-control @error('city') is-invalid @enderror">
+                                    <option value="">- {{trans('Core::operations.select').' City'}} -</option>
                                     @if(isset($cities) && $cities->count())
                                         @foreach($cities as $city)
                                             @if(isset($item->city_id))
-                                                <option value="{{ $city->id }}" @if($city->id == old('city',$item->city_id)) selected @endif>{{ $city->trans->name }}</option>
+                                                <option value="{{ $city->id }}" @if($city->id == old('city',$item->city_id)) selected @endif>{{ $city->name }}</option>
                                             @endif
                                         @endforeach
                                     @else
-                                        <option value="">- {{ucfirst(trans('Cities::cities.city'))}} -</option>
+                                        <option value="">- City -</option>
                                     @endif
                                 </select>
                             </div>
@@ -209,8 +206,10 @@
     <script src="{{asset('media-dev.js')}}"></script>
     <!--end media -->
     <script src="{{ url('/') }}/assets/js/plugins/forms/validation/validate.min.js"></script>
-    <script src="{{ asset('assets/js/pages/add_user.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('assets/js/pages/components_buttons.js') }}" type="text/javascript"></script>
+    {{--<script src="{{ asset('assets/js/pages/add_user.js') }}" type="text/javascript"></script>--}}
+
+    <link rel="stylesheet" href="{{ asset('assets/intl-telephone/css/intlTelInput.css') }}">
+    <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         // Load country states
         $('#country').off().on("change", function () {
@@ -263,40 +262,35 @@
             });
         }
     </script>
-    <link rel="stylesheet" href="{{ asset('assets/intl-telephone/css/intlTelInput.css') }}">
-    <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
     <?php
-    $countries = \Uistacks\Locations\Models\Country::where(array('active'=> 1))->get();
     $all_iso = [];
     if(count($countries)){
         foreach ($countries as $cntry => $country){
 //            echo $country->trans['iso_code'];
-            $all_iso[] = strtolower($country->trans['iso_code']);
+            $all_iso[] = strtolower($country->iso2);
         }
         $isoCodes = json_encode($all_iso);
     }else{
-        $isoCodes = [];
+        $isoCodes = '';
     }
-
     if(isset($item)){
         $cntry = strtolower($item->iso2);
     }else{
         $cntry = "";
     }
     ?>
-    {{--<script>
+    <script>
         var selectedFlag = '{{$cntry}}'
         $("#phone").intlTelInput({
 //        preferredCountries: ['in','ae', 'us'],
-            preferredCountries: ['in','ae', 'us'],
+            preferredCountries: ['in','us', 'au', 'ae'],
             autoPlaceholder: true,
             onlyCountries: {!! $isoCodes !!},
             initialCountry: selectedFlag,
             utilsScript: '{{ asset('public/website_assets/intl-telephone/js/utils.js') }}'
         });
         $("#phone").on("countrychange", function (e, countryData) {
-//        alert(countryData.iso2);
             $("#phone_country_code").val(countryData.iso2);
         });
-    </script>--}}
+    </script>
 @endsection

@@ -89,7 +89,12 @@ class UsersController extends UsersApiController {
      */
    public function edit($id) {
         $item = User::findOrFail($id);
-        $countries = Country::where('active', 1)->get();
+//        $countries = Country::where('active', 1)->get();
+       $countries = DB::table('countries as c')
+           ->join('countries_trans AS ct', 'ct.country_id', 'c.id')
+           ->where('c.active', 1)
+           ->where('ct.lang', app()->getLocale())
+           ->get();
         $states = DB::table('states AS s')
             ->join('states_trans AS st', 'st.state_id', 's.id')
             ->where('s.country_id', $item->country_id)
@@ -104,12 +109,8 @@ class UsersController extends UsersApiController {
             ->where('c.active', 1)
             ->where('ct.lang', App::getLocale())
             ->get();
-//        $roles = Role::where('id' , '!=', 5)->where('id' , '!=', 3)->get();
-        $roles = Role::where('id' , '!=', 5)->get();
-
         $edit = 1;
-
-        return view('Users::users.create-edit', compact('item', 'countries', 'states','cities', 'edit','roles'));
+        return view('Users::users.create-edit', compact('item', 'countries', 'states','cities', 'edit'));
     }
 
     /**

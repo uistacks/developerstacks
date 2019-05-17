@@ -25,13 +25,14 @@
 
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title">Dashed border</h5>
+            <h5 class="card-title">{{ $pageTitle }}</h5>
             <div class="header-elements">
-                <div class="list-icons">
+                <a class="btn btn-sm btn-outline-primary" href="{{ action('\Uistacks\Users\Controllers\AdminController@create')  }}"><i class="material-icons">add</i> Add Admin</a>
+                {{--<div class="list-icons">
                     <a class="list-icons-item" data-action="collapse"></a>
                     <a class="list-icons-item" data-action="reload"></a>
                     <a class="list-icons-item" data-action="remove"></a>
-                </div>
+                </div>--}}
             </div>
         </div>
 

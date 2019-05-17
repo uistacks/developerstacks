@@ -44,7 +44,7 @@
 
 <div class="form-group {{ $errors->has($fieldName) ? 'has-error': '' }}">
     <label class="" for="{{$fieldName}}">{{ $name }}</label>
-    <input type="{{$type}}" class="form-control" id="{{$fieldName}}" name="{{$fieldName}}" value="{{ $value }}" placeholder="{{$placeholder}}">
+    <input type="{{$type}}" class="form-control @error($fieldName) is-invalid @enderror" id="{{$fieldName}}" name="{{$fieldName}}" value="{{ $value }}" placeholder="{{$placeholder}}">
     @if(isset($help))
         {{--<p class="help-block">{!! $help !!}</p>--}}
         <label id="{{$fieldName}}-error" class="validation-invalid-label" for="{{$fieldName}}">This field is required.</label>

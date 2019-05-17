@@ -76,7 +76,7 @@
                                             <div class="file-size"></div>
                                             <div class="dimensions"></div>
                                             {{-- <a class="edit" href="">Edit</a> --}}
-                                            <a id="delete_file" class="btn btn-sm btn-outline-danger" href="javascript:void(0);" data-file-id=""><i class="icon-trash"></i> {{trans('Media::media.delete')}}</a>
+                                            <a id="delete_file" class="btn btn-sm btn-outline-danger" href="javascript:void(0);" data-file-id=""><i class="material-icons">delete</i> {{trans('Media::media.delete')}}</a>
                                             <div class="compat-meta"></div>
                                         </div>
                                         <div style="clear: both;"></div>

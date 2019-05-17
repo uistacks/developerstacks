@@ -42,7 +42,7 @@
 
 <div class="form-group {{ $errors->has($fieldName) ? 'has-error': '' }}">
 	<label class="" for="{{$fieldName}}">{{ $name }}</label>
-	<select id="{{$fieldName}}" name="{{$fieldName}}" class="form-control" @if(isset($dependOn)) depend-on="{{ $dependOn }}" @endif @if($isMultiple) multiple @endif>
+	<select id="{{$fieldName}}" name="{{$fieldName}}" class="form-control @error($fieldName) is-invalid @enderror" @if(isset($dependOn)) depend-on="{{ $dependOn }}" @endif @if($isMultiple) multiple @endif>
 		@if(count($options))
 			@foreach($options as $option)
 				<option @if($value == $option['value']) selected @endif value="{{ $option['value'] }}" @if(isset($option['dependencyValue'])) dependency-value="{{ $option['dependencyValue'] }}" @endif>{{ $option['name'] }}</option>
