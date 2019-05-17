@@ -131,7 +131,7 @@ class UsersApiController extends Controller {
             'confirmed' => 1,
             'active' => 1
         ];
-        if (Auth::attempt($credentials, $request->has('remember'))) {
+        if (auth()->attempt($credentials, $request->has('remember'))) {
             $user = User::where('email', $username)
                 ->where('active', 1)
                 ->where('confirmed', 1)
@@ -196,7 +196,7 @@ class UsersApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $user->created_by = $author;
@@ -268,7 +268,7 @@ class UsersApiController extends Controller {
         if ($request->updatedBy) {
             $updatedBy = $request->updatedBy;
         } else {
-            $updatedBy = Auth::user()->id;
+            $updatedBy = auth()->user()->id;
         }
 
         $user->updated_by = $updatedBy;

@@ -201,7 +201,7 @@ class __UsersApiController extends Controller
                 'confirmed' => 1,
                 'active' => 1
             ];
-            if (Auth::attempt($credentials, $request->has('remember'))) {
+            if (auth()->attempt($credentials, $request->has('remember'))) {
                 $user = User::where('phone', $phone)
                 ->where('active', 1)
                 ->where('confirmed', 1)
@@ -220,7 +220,7 @@ class __UsersApiController extends Controller
                 'confirmed' => 1,
                 'active' => 1
             ];
-            if (Auth::attempt($credentials, $request->has('remember'))) {
+            if (auth()->attempt($credentials, $request->has('remember'))) {
                 $user = User::where('email', $username)
                 ->where('active', 1)
                 ->where('confirmed', 1)

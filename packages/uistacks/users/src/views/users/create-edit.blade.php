@@ -1,6 +1,6 @@
 @php
-    $pageTitle = trans('Users::users.admin');
-    $itemTitle = trans('Users::users.admin');
+    $pageTitle = 'Users';
+    $itemTitle = 'User';
 
     $pageNameMode = trans('Core::operations.create');
     $breadcrumbs[] =  ['url' => url('/').'/'.Lang::getLocale().'/admin/users/', 'name' => $pageTitle];
@@ -23,29 +23,29 @@
 @endphp
 
 @extends('admin.master')
-@section('page_title')
+@section('title')
     {{ $pageTitle }}: {{ $pageNameMode }} {{ $itemTitle }}
 @endsection
 @section('header')
-    <link rel="stylesheet" href="{{asset('public/media-dev.css')}}" />
+    <link rel="stylesheet" href="{{asset('media-dev.css')}}" />
 @endsection
 @section('content')
     <!-- Include Media model -->
     @include('Media::modals.modal')
     <!-- end include Media model -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="livicon" data-name="list" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> {{ $pageNameMode }} {{ $itemTitle }}</h3>
-                </div>
-                <div class="panel-body">
-                    <form id="frm_create_edit" action="{{ $action }}" method="POST" role="form">
-                        @if($method === 'PATCH')
-                            <input type="hidden" name="_method" value="PATCH">
-                        @endif
-                        {{ csrf_field() }}
-                        <div class="col-md-9">
+
+    <div class="card">
+        <div class="card-body">
+            <form id="frm_create_edit" action="{{ $action }}" method="POST" role="form">
+                @if($method === 'PATCH')
+                    <input type="hidden" name="_method" value="PATCH">
+                @endif
+                @csrf
+                <input type="hidden" name="role" value="3"/>
+                <fieldset class="mb-3">
+                    <legend class="text-uppercase font-size-sm font-weight-bold">{{ $pageNameMode }} {{ $itemTitle }}</legend>
+                    <div class="row">
+                        <div class="col-md-8">
 
                             @include('Core::fields.input_text', [
                                 'field_name' => 'name',
@@ -79,19 +79,19 @@
                                 'type' => 'password'
                             ])
                         </div>
-                        <input type="hidden" name="iso2" id="phone_country_code" value="{{ old('iso2',isset($item) ? $item->iso2 : "")}}"/>
-                        <div class="col-md-3 sidbare">
+                        <input type="hidden" name="iso2" id="phone_country_code" value="{{ old('iso2',isset($item) ? $item->iso2 : "in")}}"/>
+                        <div class="col-md-4">
                             <!-- Media main image -->
                             <div class="form-group {{ $errors->has('main_image_id') ? 'has-error': '' }}" style="text-align: center;">
                                 <label style="display: block;">{{ trans('Users::users.avatar') }}</label>
 
-                                <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }}ر{{ trans('Users::users.avatar') }}" media-data-field-name="main_image_id" media-data-required>
+                                <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }} User Image" media-data-field-name="main_image_id" media-data-required>
                                     <div class="media-item">
                                         @if(isset($item->media) && isset($item->media->main_image) && isset($item->media->main_image->styles['thumbnail']))
                                             <img src="{{url('/')}}/{{ $item->media->main_image->styles['thumbnail'] }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
                                             <input type="hidden" name="main_image_id" value="{{$item->media->main_image->id}}">
                                         @else
-                                            <img src="{{ asset('public/admin-assets/images/user.png') }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
+                                            <img src="{{ asset('assets/images/user.png') }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
                                         @endif
                                     </div>
                                 </a>
@@ -106,9 +106,7 @@
                                 if(isset($countries) && $countries->count()){
                                     foreach ($countries as $country) {
                                         $countryName = '';
-                                        if($country->trans){
-                                            $countryName = ucwords(strtolower($country->trans->name));
-                                        }
+                                            $countryName = ucwords(strtolower($country->name));
                                         $options[] = ['value' => $country->id, 'name' => $countryName];
                                     }
                                 }
@@ -116,40 +114,52 @@
 
                             @include('Core::fields.select', [
                                 'field_name' => 'country',
-                                'name' => trans('Countries::countries.country'),
+                                'name' => 'Country',
                                 'options' => $options
                             ])
                             <div class="form-group clearfix">
-                                <label for="state" > {{ucfirst(trans('States::states.state'))}}</label>
-                                <select id="state" name="state" class="form-control">
-                                    <option value="">- {{trans('Core::operations.select').' '.ucfirst(trans('States::states.state'))}} -</option>
+                                <label for="state" >State</label>
+                                <select id="state" name="state" class="form-control @error('state') is-invalid @enderror">
                                     @if(isset($states) && $states->count())
+                                        <option value="">- {{trans('Core::operations.select').' State' }} -</option>
                                         @foreach($states as $state)
                                             @if(isset($item->state_id))
                                                 <option value="{{ $state->id }}" @if($state->id == old('state',$item->state_id)) selected @endif>{{ $state->name }}</option>
                                             @endif
                                         @endforeach
                                     @else
-                                        <option value="">- {{ucfirst(trans('States::states.state'))}} -</option>
+                                        <option value="">- State -</option>
                                     @endif
                                 </select>
                             </div>
-
                             <div class="form-group clearfix">
-                                <label for="city" > {{ucfirst(trans('Cities::cities.city'))}}</label>
-                                <select id="city" name="city" class="form-control">
-                                    <option value="">- {{trans('Core::operations.select').' '.ucfirst(trans('Cities::cities.city'))}} -</option>
+                                <label for="city" >City</label>
+                                <select id="city" name="city" class="form-control @error('city') is-invalid @enderror">
                                     @if(isset($cities) && $cities->count())
+                                        <option value="">- {{trans('Core::operations.select').' City'}} -</option>
                                         @foreach($cities as $city)
                                             @if(isset($item->city_id))
                                                 <option value="{{ $city->id }}" @if($city->id == old('city',$item->city_id)) selected @endif>{{ $city->name }}</option>
                                             @endif
                                         @endforeach
                                     @else
-                                        <option value="">- {{ucfirst(trans('Cities::cities.city'))}} -</option>
+                                        <option value="">- City -</option>
                                     @endif
                                 </select>
                             </div>
+
+                            {{--@include('Core::fields.checkbox', [--}}
+                            {{--'field_name' => 'phone_show',--}}
+                            {{--'name' => trans('Users::users.phone_show'),--}}
+                            {{--'placeholder' => ''--}}
+                            {{--])--}}
+
+                            {{--@include('Core::fields.checkbox', [--}}
+                            {{--'field_name' => 'email_show',--}}
+                            {{--'name' => trans('Users::users.email_show'),--}}
+                            {{--'placeholder' => ''--}}
+                            {{--])--}}
+
                             <hr/>
 
                             @include('Core::fields.checkbox', [
@@ -167,23 +177,30 @@
                                 <label><input name="back" type="checkbox" value="1" class="minimal-blue" @if(old('back') == 1) checked @endif> {{$backFieldLabel}}</label>
                             </div>
 
-                            <button type="submit" id="btn_create" class="btn btn-block btn-primary">{{ $submitButton }}</button>
+                            <button type="submit" id="btn_create" class="btn btn-outline-success btn-block"><i class="material-icons">save</i> {{ $submitButton }}</button>
                         </div>
-                    </form>
-                </div>
-            </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
+
 @endsection
 @section('footer')
+    <script src="{{ asset('assets/js/jquery-ui.min.js') }}" type="text/javascript"></script>
     <!--Language -->
     @include('Core::language.scripts.scripts')
     <!--end Language -->
     <!--Media -->
-    <script src="{{asset('public/media-dev.js')}}"></script>
-    <!--end media -->
+    @include('Media::scripts.scripts')
 
-    <script src="{{ asset('public/admin-assets/js/pages/add_user.js') }}" type="text/javascript"></script>
+    <script src="{{asset('media-dev.js')}}"></script>
+    <!--end media -->
+    <script src="{{ url('/') }}/assets/js/plugins/forms/validation/validate.min.js"></script>
+    {{--<script src="{{ asset('assets/js/pages/add_user.js') }}" type="text/javascript"></script>--}}
+
+    <link rel="stylesheet" href="{{ asset('assets/intl-telephone/css/intlTelInput.css') }}">
+    <script src="{{ asset('assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         // Load country states
         $('#country').off().on("change", function () {
@@ -236,21 +253,17 @@
             });
         }
     </script>
-    <link rel="stylesheet" href="{{ asset('public/website_assets/intl-telephone/css/intlTelInput.css') }}">
-    <script src="{{ asset('public/website_assets/intl-telephone/js/intlTelInput.js') }}" type="text/javascript"></script>
     <?php
-    $countries = \Uistacks\Locations\Models\Country::where(array('active'=> 1))->get();
     $all_iso = [];
     if(count($countries)){
         foreach ($countries as $cntry => $country){
 //            echo $country->trans['iso_code'];
-            $all_iso[] = strtolower($country->trans['iso_code']);
+            $all_iso[] = strtolower($country->iso2);
         }
         $isoCodes = json_encode($all_iso);
     }else{
-        $isoCodes = [];
+        $isoCodes = '';
     }
-
     if(isset($item)){
         $cntry = strtolower($item->iso2);
     }else{
@@ -261,14 +274,13 @@
         var selectedFlag = '{{$cntry}}'
         $("#phone").intlTelInput({
 //        preferredCountries: ['in','ae', 'us'],
-            preferredCountries: ['in','ae', 'us'],
+            preferredCountries: ['in','us', 'au', 'ae'],
             autoPlaceholder: true,
             onlyCountries: {!! $isoCodes !!},
             initialCountry: selectedFlag,
             utilsScript: '{{ asset('public/website_assets/intl-telephone/js/utils.js') }}'
         });
         $("#phone").on("countrychange", function (e, countryData) {
-//        alert(countryData.iso2);
             $("#phone_country_code").val(countryData.iso2);
         });
     </script>

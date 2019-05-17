@@ -433,7 +433,7 @@ class SettingsController extends Controller
                     if($countryCount == 0){
                         // Insert record
                         $country = new \Uistacks\Locations\Models\Country;
-                        $author = \Auth::user()->id;
+                        $author = \auth()->user()->id;
 
                         $country->created_by = $author;
                         $country->updated_by = $author;
@@ -495,7 +495,7 @@ class SettingsController extends Controller
                     if($stateCount == 0){
                         // Insert record
                         $state = new \Uistacks\Locations\Models\State;
-                        $author = \Auth::user()->id;
+                        $author = \auth()->user()->id;
                         $state->country_id = $countryId;
                         $state->created_by = $author;
                         $state->updated_by = $author;
@@ -553,7 +553,7 @@ class SettingsController extends Controller
                     if($cityCount == 0){
                         // Insert record
                         $city = new \Uistacks\Locations\Models\City;
-                        $author = \Auth::user()->id;
+                        $author = \auth()->user()->id;
 //                        $city->country_id = $countryId;
                         $city->state_id = $stateId;
                         $city->created_by = $author;

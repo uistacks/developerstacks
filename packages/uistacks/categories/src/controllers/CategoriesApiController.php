@@ -93,7 +93,7 @@ class CategoriesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
         $category->slug = $this->seoUrl($request->name_en);
         $category->created_by = $author;
@@ -176,7 +176,7 @@ class CategoriesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 //dd($request);
         $category->updated_by = $author;

@@ -89,7 +89,7 @@
                                 'type' => 'password'
                             ])
                         </div>
-                        <input type="hidden" name="iso2" id="phone_country_code" value="{{ old('iso2',isset($item) ? $item->iso2 : "")}}"/>
+                        <input type="hidden" name="iso2" id="phone_country_code" value="{{ old('iso2',isset($item) ? $item->iso2 : "in")}}"/>
                         <div class="col-md-4">
                             <!-- Media main image -->
                             <div class="form-group {{ $errors->has('main_image_id') ? 'has-error': '' }}" style="text-align: center;">
@@ -101,7 +101,7 @@
                                             <img src="{{url('/')}}/{{ $item->media->main_image->styles['thumbnail'] }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
                                             <input type="hidden" name="main_image_id" value="{{$item->media->main_image->id}}">
                                         @else
-                                            <img src="{{ asset('public/admin-assets/images/user.png') }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
+                                            <img src="{{ asset('assets/images/user.png') }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
                                         @endif
                                     </div>
                                 </a>
@@ -130,8 +130,8 @@
                             <div class="form-group clearfix">
                                 <label for="state" >State</label>
                                 <select id="state" name="state" class="form-control @error('state') is-invalid @enderror">
-                                    <option value="">- {{trans('Core::operations.select').' State' }} -</option>
                                     @if(isset($states) && $states->count())
+                                        <option value="">- {{trans('Core::operations.select').' State' }} -</option>
                                         @foreach($states as $state)
                                             @if(isset($item->state_id))
                                                 <option value="{{ $state->id }}" @if($state->id == old('state',$item->state_id)) selected @endif>{{ $state->name }}</option>
@@ -145,8 +145,8 @@
                             <div class="form-group clearfix">
                                 <label for="city" >City</label>
                                 <select id="city" name="city" class="form-control @error('city') is-invalid @enderror">
-                                    <option value="">- {{trans('Core::operations.select').' City'}} -</option>
                                     @if(isset($cities) && $cities->count())
+                                        <option value="">- {{trans('Core::operations.select').' City'}} -</option>
                                         @foreach($cities as $city)
                                             @if(isset($item->city_id))
                                                 <option value="{{ $city->id }}" @if($city->id == old('city',$item->city_id)) selected @endif>{{ $city->name }}</option>

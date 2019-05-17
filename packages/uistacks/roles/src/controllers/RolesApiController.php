@@ -84,7 +84,7 @@ class RolesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $role->created_by = $author;
@@ -132,7 +132,7 @@ class RolesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $role->updated_by = $author;

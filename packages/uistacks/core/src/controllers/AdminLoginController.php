@@ -65,7 +65,7 @@ class AdminLoginController extends Controller
 
      //   dd($credentials);
         /*try{
-            $abc = Auth::attempt($credentials, $request->has('remember'));
+            $abc = auth()->attempt($credentials, $request->has('remember'));
         }
         catch (Exception $e){
             echo $e->getMessage(); die;
@@ -73,7 +73,7 @@ class AdminLoginController extends Controller
 
 
 
-        if (Auth::attempt($credentials, $request->has('remember'))) {
+        if (auth()->attempt($credentials, $request->has('remember'))) {
 //            return redirect(Lang::getLocale().'/admin');
             return redirect('admin');
         }
@@ -101,7 +101,7 @@ class AdminLoginController extends Controller
      */
     public function getAdminLogout()
     {
-        Auth::logout();
+        auth()->logout();
 //        return redirect(Lang::getLocale().'/admin')->withErrors(['User' => 'This user has been logged out']);
         return redirect('admin')->withErrors(['User' => 'This user has been logged out']);
     }

@@ -33,7 +33,7 @@
                     
                   @if(isset($areas) && $areas->count())
                         @foreach($areas as $ar)
-                             <option value="{{ $ar->id }}" @if(Auth::user()->area_id == old('area',$ar->id)) selected @endif>{{ $ar->trans->name }}</option>
+                             <option value="{{ $ar->id }}" @if(auth()->user()->area_id == old('area',$ar->id)) selected @endif>{{ $ar->trans->name }}</option>
                         @endforeach
                     @endif
                 

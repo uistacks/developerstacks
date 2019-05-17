@@ -73,26 +73,26 @@ class LoginController extends Controller
             /*'confirmed' => 1,
             'active' => 1*/
         ];
-        if (Auth::attempt($credentials1, $request->has('remember'))) {
+        if (auth()->attempt($credentials1, $request->has('remember'))) {
             \Session::flash('alert-class', 'alert-success');
             \Session::flash('message', trans('project.login_successfully'));
-            if (Auth::user()->userRole->role_id < 2) {
+            if (auth()->user()->userRole->role_id < 2) {
                 return redirect('/' . Lang::getlocale() . '/admin');
             }
-            $user = Auth::user();
+            $user = auth()->user();
             $userCategories = UserCategory::where('user_id', $user->id)->get()->count();
             if($user->user_type == '2' && $userCategories == 0) {
                 return redirect(action('UserController@completeProfile', $user->username));
             }
             return redirect()->intended('/usd/users');
         }
-        elseif (Auth::attempt($credentials2, $request->has('remember'))) {
+        elseif (auth()->attempt($credentials2, $request->has('remember'))) {
             \Session::flash('alert-class', 'alert-success');
             \Session::flash('message', trans('project.login_successfully'));
-            if (Auth::user()->userRole->role_id < 2) {
+            if (auth()->user()->userRole->role_id < 2) {
                 return redirect('/' . Lang::getlocale() . '/admin');
             }
-            $user = Auth::user();
+            $user = auth()->user();
             $userCategories = UserCategory::where('user_id', $user->id)->get()->count();
             if($user->user_type == '2' && $userCategories == 0) {
                 return redirect(action('UserController@completeProfile', $user->username));
@@ -100,9 +100,9 @@ class LoginController extends Controller
             return redirect()->intended('/usd/users');
         }
         else {
-            $user = Auth::user();
+            $user = auth()->user();
 
-            if(isset($user) && (Auth::user()->confirmed !== '1' || Auth::user()->active !== '1')) {
+            if(isset($user) && (auth()->user()->confirmed !== '1' || auth()->user()->active !== '1')) {
                 \Session::flash('alert-class', 'alert-danger');
                 \Session::flash('message', 'Your account is inactive Please contact your webmaster.');
             } else {

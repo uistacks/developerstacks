@@ -65,8 +65,8 @@ class MediaApiController extends Controller {
             // ->orWhere('description', 'LIKE', '%'.$request->q.'%');
         }
 
-        if(Auth::user() && (Auth::user()->userRole->role_id != '3' && Auth::user()->userRole->role_id != '4')){
-            $media->where('uploaded_by',Auth::user()->id);
+        if(auth()->user() && (auth()->user()->userRole->role_id != '3' && auth()->user()->userRole->role_id != '4')){
+            $media->where('uploaded_by',auth()->user()->id);
         }
 
         $media = $media->orderBy('id', 'desc')->paginate($paginate);
@@ -162,8 +162,8 @@ class MediaApiController extends Controller {
         $options['styles']['small'] = $smallPath;
 
         $media->options = $options;
-        if (Auth::user()) {
-            $media->uploaded_by = Auth::user()->id;
+        if (auth()->user()) {
+            $media->uploaded_by = auth()->user()->id;
         }
         $media->save();
 
@@ -240,8 +240,8 @@ class MediaApiController extends Controller {
 
 
             $media->options = $options;
-            if (Auth::user()) {
-                $media->uploaded_by = Auth::user()->id;
+            if (auth()->user()) {
+                $media->uploaded_by = auth()->user()->id;
             }
 //            
             $media->save();
@@ -321,8 +321,8 @@ class MediaApiController extends Controller {
                     }
 
                     $media->options = $options;
-                    if (Auth::user()) {
-                        $media->uploaded_by = Auth::user()->id;
+                    if (auth()->user()) {
+                        $media->uploaded_by = auth()->user()->id;
                     }
 //            
                     $media->save();
@@ -397,8 +397,8 @@ class MediaApiController extends Controller {
                 }
 
                 $media->options = $options;
-                if (Auth::user()) {
-                    $media->uploaded_by = Auth::user()->id;
+                if (auth()->user()) {
+                    $media->uploaded_by = auth()->user()->id;
                 }
 //            
                 $media->save();

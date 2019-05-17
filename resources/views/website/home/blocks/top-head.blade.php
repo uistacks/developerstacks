@@ -1,11 +1,11 @@
 <div class="login-blok-head animate">
-    @if(Auth::guest())
+    @if(auth()->guest())
     {{--<a href="javascript:void(0)" data-toggle="modal" data-target="#myModallogin"> <span class="user-nav animate">{{ trans('project.login_register') }}</span> <i class="fa fa-user animate"></i> </a>--}}
     <a href="javascript:void(0)" data-toggle="modal" data-target="#myModallogin"> <span class="user-nav animate">{{ trans('project.login_register') }}</span> </a>
     @else
         <ul class="navbar-nav navbar-right user-nav animate">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle user-name-nav" data-toggle="dropdown">{{Auth::user()->name}} <b class="caret"></b>&nbsp; </a>
+                <a href="#" class="dropdown-toggle user-name-nav" data-toggle="dropdown">{{auth()->user()->name}} <b class="caret"></b>&nbsp; </a>
                 <ul class="dropdown-menu user-menu-nav">
                     <li><a href="{{ action('WebsiteController@dashboard') }}">{{ trans('admin.my_profile') }}</a></li>
                     <li><a href="{{ action('WebsiteController@logout') }}">{{ trans('admin.logout') }}</a></li>

@@ -90,7 +90,7 @@ class StatesApiController extends Controller {
         }
 
         $state = new State;
-        $author = Auth::user()->id;
+        $author = auth()->user()->id;
 
         $state->created_by = $author;
         $state->updated_by = $author;
@@ -135,7 +135,7 @@ class StatesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $state->updated_by = $author;

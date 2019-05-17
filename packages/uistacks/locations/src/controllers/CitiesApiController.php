@@ -87,7 +87,7 @@ class CitiesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $city->created_by = $author;
@@ -132,7 +132,7 @@ class CitiesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $city->updated_by = $author;

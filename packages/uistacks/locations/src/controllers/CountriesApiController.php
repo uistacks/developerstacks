@@ -87,7 +87,7 @@ class CountriesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $country->created_by = $author;
@@ -159,7 +159,7 @@ class CountriesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $country->updated_by = $author;

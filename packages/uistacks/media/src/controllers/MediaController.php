@@ -204,8 +204,8 @@ class MediaController extends MediaApiController
 
             $media->options = $options;
             
-            if (Auth::user()) {
-                $media->uploaded_by = Auth::user()->id;
+            if (auth()->user()) {
+                $media->uploaded_by = auth()->user()->id;
             }
 //            
             $media->save();

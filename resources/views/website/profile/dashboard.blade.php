@@ -42,7 +42,7 @@
                             </div>
                             <form id="frm_update_profile" method="post" action="{{ action('WebsiteController@updateProfile') }}">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"/>
+                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"/>
                                 <div class="view-user-img-blk">
                                     <div class="view-user-img relative user-upl-img">
                                         {{--<img src="{{url('/')}}/public/website_assets/images/user.png" />--}}

@@ -75,7 +75,7 @@ class BannersApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $banner->created_by = $author;
@@ -129,7 +129,7 @@ class BannersApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
         $banner->updated_by = $author;
         $banner->active = false;

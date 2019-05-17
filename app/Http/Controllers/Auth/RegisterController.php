@@ -236,7 +236,7 @@ class RegisterController extends Controller
                 $user_informations->save();
                 \Session::flash('alert-class', 'alert-success');
                 $successMsg = trans('project.account_confirmed_successfully');
-//                Auth::logout();
+//                auth()->logout();
                 \Session::flash('message', $successMsg);
                 return redirect(action('Auth\LoginController@login'));
             } else {
@@ -245,14 +245,14 @@ class RegisterController extends Controller
                 $user_informations->save();
                 \Session::flash('alert-class', 'alert-danger');
                 \Session::flash('message', trans('project.confirmation_link_invalid'));
-//                Auth::logout();
+//                auth()->logout();
                 return redirect(action('Auth\LoginController@login'));
             }
         } else {
 //            dd("3rd");
             \Session::flash('alert-class', 'alert-danger');
             \Session::flash('message', trans('project.confirmation_link_invalid'));
-//            Auth::logout();
+//            auth()->logout();
             return redirect(action('Auth\LoginController@login'));
         }
     }

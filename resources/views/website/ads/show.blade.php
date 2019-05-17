@@ -84,7 +84,7 @@
                                 @endif
                             </h3>
                             <div class="action add-fav">
-                                @if(isset(Auth::user()->id))
+                                @if(isset(auth()->user()->id))
                                 @if(!isset($my_favourite))
                                 <a href="{{ url('/')}}/ar/favourite-toogle/{{ $ads->section}}/{{  $ads->id }}"   class="btn btn-raised btn-warning"><span class="fa fa-heart"></span>اضف الى المفضلة</a>
                                 @else
@@ -237,7 +237,7 @@
                                     </tr>
                                     <tr>
 
-                                        @if(isset(Auth::user()->id))
+                                        @if(isset(auth()->user()->id))
                                         <td colspan="2"  class="title-color report-ads"> <a href="javascript:void(0)" class="btn btn-raised btn-danger" onclick="showModal()">ابلاغ عن محتوى</a> </td>
                                         @endif
                                     </tr>
@@ -493,8 +493,8 @@
 
 
                                     </div>
-                                    @if(isset(Auth::user()->id))                                       
-                                    @if($user_details[$key]['u_id'] == Auth::user()->id)
+                                    @if(isset(auth()->user()->id))
+                                    @if($user_details[$key]['u_id'] == auth()->user()->id)
                                     <a href="javascript:void(0);" class="edit-icon  fav-icon-active "> <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"  onclick="showEditModal('{{  $user_details[$key]["comment"]  }}','{{ $user_details[$key]["id"]  }}')"></i></a>   
 
                                     <a href="{{url('/')}}/{{Lang::getLocale()}}/my-delete-comment/{{$user_details[$key]["id"]}}" class=" delete-icon fav-icon-active " onclick="return confirm('هل أنت متأكد أنك تريد حذف؟')"> 

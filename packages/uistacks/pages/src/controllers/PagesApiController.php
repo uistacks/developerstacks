@@ -87,7 +87,7 @@ class PagesApiController extends Controller
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
         $page->page_url = $this->seoUrl($request->name_en);
         $page->active = false;
@@ -158,7 +158,7 @@ class PagesApiController extends Controller
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 //        $page->page_url = strtolower($request->name_en);
         $page->active = false;

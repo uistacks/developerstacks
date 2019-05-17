@@ -3,6 +3,7 @@
 namespace Uistacks\Users\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Uistacks\Users\Controllers\UsersApiController as API;
 use Uistacks\Users\Models\User;
 use Uistacks\Roles\Models\Role;
@@ -54,9 +55,13 @@ class UsersController extends UsersApiController {
      * @return
      */
     public function create(Request $request) {
-        $countries = Country::where('active', 1)->get();
-        $states = State::where('active', 1)->get();
-        $cities = City::where('active', 1)->get();
+        $countries = DB::table('countries as c')
+            ->join('countries_trans AS ct', 'ct.country_id', 'c.id')
+            ->where('c.active', 1)
+            ->where('ct.lang', app()->getLocale())
+            ->get();
+        $states = new Collection();
+        $cities = new Collection();
         return view('Users::users.create-edit', compact('items','countries', 'states','cities'));
     }
 
@@ -80,7 +85,7 @@ class UsersController extends UsersApiController {
         if ($request->back) {
             return back();
         }
-        return redirect(action('\Uistacks\Users\Controllers\UsersController@index', $role));
+        return redirect(action('\Uistacks\Users\Controllers\UsersController@index'));
     }
 
     /**
@@ -174,12 +179,12 @@ class UsersController extends UsersApiController {
                     // Do something with your model by filter operation
                     if ($request->operation && $request->operation === 'activate') {
                         $item->active = true;
-                        $item->updated_by = Auth::user()->id;
+                        $item->updated_by = auth()->user()->id;
                         $item->save();
                         \Session::flash('message', trans('Core::operations.activated_successfully'));
                     } elseif ($request->operation && $request->operation === 'deactivate') {
                         $item->active = false;
-                        $item->updated_by = Auth::user()->id;
+                        $item->updated_by = auth()->user()->id;
                         $item->save();
                         \Session::flash('message', trans('Core::operations.deactivated_successfully'));
                     }

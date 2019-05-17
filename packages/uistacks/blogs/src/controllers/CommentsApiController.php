@@ -80,7 +80,7 @@ class CommentsApiController extends Controller
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $blogs->created_by = $author;
@@ -135,7 +135,7 @@ class CommentsApiController extends Controller
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
         $blog->updated_by = $author;
         $blog->active = false;
@@ -191,7 +191,7 @@ class CommentsApiController extends Controller
                 $obj->reply_email = $request->email;
 
                 $obj->reply_subject = '';
-                $obj->from_user_id = Auth::user()->id;
+                $obj->from_user_id = auth()->user()->id;
                 $obj->reply_message = $request->message;
                 $obj->contact_request_id = $id;
                 $obj->lang= Lang::getlocale();

@@ -90,7 +90,7 @@ class SubCategoriesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
         $category->slug = $this->seoUrl($request->name_en);
         $category->category_id = $catId;
@@ -171,7 +171,7 @@ class SubCategoriesApiController extends Controller {
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 
         $category->updated_by = $author;

@@ -41,7 +41,7 @@
                 @include('Users::users.filter')
             @endif
         </div>
-
+        @if($items->count())
         <form method="POST" action="{{ action('\Uistacks\Users\Controllers\UsersController@bulkOperations')}}" id="bulk" class="form-inline">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="table-responsive">
@@ -95,7 +95,7 @@
                                 </div>
                             </td>
                             <td style="width: 100px;">
-                                <a class="badge badge-success" href="{{ action('\Uistacks\Users\Controllers\AdminController@edit', $item->id) }}"><i class="material-icons" >edit</i></a>
+                                <a class="badge badge-success" href="{{ action('\Uistacks\Users\Controllers\UsersController@edit', $item->id) }}"><i class="material-icons" >edit</i></a>
                                 <a class="badge badge-danger" onclick="confirmDelete(this)" data-toggle="modal" data-href="#full-width" data-id="{{ $item->id }}" @if($item->trans) data-title="{{ $item->trans->name }}" @endif href="#full-width"><i class="material-icons" >delete</i></a>
                             </td>
                         </tr>
@@ -123,14 +123,20 @@
             </div>
 
         </form>
+        @else
+            <div class="text-center">
+                @if($_GET)
+                    <h1>{{ trans('admin.no_results_found') }} <a href="{{ action('\Uistacks\Users\Controllers\UsersController@index', $role)}}">{{ trans('admin.back') }}</a></h1>
+                @else
+                    <h1>{{ trans('admin.no_data_added_before') }} <a href="{{ action('\Uistacks\Users\Controllers\UsersController@create', $role)}}">{{ trans('Users::users.create') }} {{ $itemTitle }}</a></h1>
+                @endif
+            </div>
+        @endif
     </div>
 
 @endsection
 @section('footer')
-    <!--jquery-dependency-fields -->
-    <script src="/vendor/core/js/jquery-dependency-fields/scripts.js"></script>
-    <!--end jquery-dependency-fields -->
-    <script src="{{ asset('public/admin-assets/js/index-operations.js') }}"></script>
+    <script src="{{ asset('assets/js/index-operations.js') }}"></script>
     <script>
         function changeStatus(user_id, user_status)
         {
@@ -141,7 +147,7 @@
             jQuery.get("{{url('/')}}/users/change-status", obj_params, function (msg) {
                 if (msg.error == "1")
                 {
-                    alert("عذرا، أخفقت العملية");
+                    alert("Sorry, the operation failed");
                 }
                 else
                 {

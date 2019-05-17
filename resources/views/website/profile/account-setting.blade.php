@@ -41,7 +41,7 @@
                             </div>
                             <form id="frm_change_password" method="post" action="{{ action('WebsiteController@updatePassword') }}">
                                 {{ csrf_field() }}
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"/>
+                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"/>
                                 <div class="view-user-img-blk">
                                     <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }} {{ trans('Stores::stores.store_main_img') }}" media-data-field-name="main_image_id" media-data-required>
                                         <div class="media-item">

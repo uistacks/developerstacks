@@ -87,7 +87,7 @@ class FaqsApiController extends Controller
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
         $faq->faq_url = $this->seoUrl($request->name_en);
         $faq->active = false;
@@ -161,7 +161,7 @@ class FaqsApiController extends Controller
         if ($request->author) {
             $author = $request->author;
         } else {
-            $author = Auth::user()->id;
+            $author = auth()->user()->id;
         }
 //        $faq->faq_url = strtolower($request->name_en);
         $faq->active = false;
