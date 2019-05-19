@@ -18,7 +18,7 @@ class Category extends Model
 
     protected $hidden = ['options', 'created_by', 'updated_by'];
 
-    protected $with = ['trans', 'author', 'lastUpdateBy', 'parents', 'skills'];
+    protected $with = ['trans', 'author', 'lastUpdateBy', 'parents'];
     
     /**
      * The attributes that should be casted to native types.
@@ -62,10 +62,10 @@ class Category extends Model
      * @return string
      */
 
-    public function skills()
+    /*public function skills()
     {
         return $this->hasMany('\Uistacks\Skills\Models\Skill','category_id','id')->where('active', true);
-    }
+    }*/
 
 	/**
      * Author relation.

@@ -18,11 +18,11 @@
 @endphp
 
 @extends('admin.master')
-@section('page_title')
+@section('title')
     {{ trans('Categories::categories.categories') }}: {{ $pageNameMode }} {{ trans('Categories::categories.category') }}
 @endsection
 @section('header')
-    <link rel="stylesheet" href="{{ asset('public/media-dev.css')}}" />
+    <link rel="stylesheet" href="{{ asset('media-dev.css')}}" />
 @endsection
 @section('content')
     <!-- Include Media model -->
@@ -32,19 +32,18 @@
     <!-- Include Media model -->
     @include('Media::modals.gallery-modal')
     <!-- end include Media model -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="livicon" data-name="list" data-size="18" data-c="#fff" data-hc="#fff" data-loop="true"></i> {{ $pageNameMode }} {{ trans('Categories::categories.category') }}</h3>
-                </div>
-                <div class="panel-body">
-                    <form action="{{ $action }}" method="POST" role="form" >
-                        @if($method === 'PATCH')
-                            <input type="hidden" name="_method" value="PATCH">
-                        @endif
-                        {{ csrf_field() }}
-                        <div class="col-md-9">
+
+    <div class="card">
+        <div class="card-body">
+            <form id="frm_create_edit" action="{{ $action }}" method="POST" role="form">
+                @if($method === 'PATCH')
+                    <input type="hidden" name="_method" value="PATCH">
+                @endif
+                @csrf
+                <fieldset class="mb-3">
+                    <legend class="text-uppercase font-size-sm font-weight-bold">{{ $pageNameMode }}</legend>
+                    <div class="row">
+                        <div class="col-md-8">
 
                         @php
                             $options[] = ['value' => '0', 'name' => 'No Parent'];
@@ -70,15 +69,15 @@
                             'value' => $value
                         ])
 
-                            <!-- <div class="form-group">
+                        <!-- <div class="form-group">
                                 <label for="parent_id">{{ trans('Core::operations.with_select') }}</label>
                                 <select name="parent_id" id="parent_id" class="form-control" required="required">
                                     <option value="0">No Parent</option>
                                     @if(isset($categories))
-                                        @foreach($categories as $k => $catItem)
-                                        <option value="{{ $catItem->id }}">{{ $catItem->trans->name }}</option>
+                            @foreach($categories as $k => $catItem)
+                                <option value="{{ $catItem->id }}">{{ $catItem->trans->name }}</option>
                                         @endforeach
-                                    @endif
+                        @endif
                                 </select>
                             </div> -->
 
@@ -96,7 +95,7 @@
                                         'type' => 'textarea',
                                         'properties' => [
                                             'field_name' => 'description',
-                                            'name' => trans('Core::operations.description'),
+                                            'name' => 'Description',
                                             'placeholder' => ''
                                         ]
                                     ]
@@ -141,19 +140,21 @@
                                 ]
                             ])
 
+
                         </div>
-                        <div class="col-md-3 sidbare">
-                        <!-- Media main image -->
-                        <div class="form-group {{ $errors->has('main_image_id') ? 'has-error': '' }}" style="text-align: center;">
+
+                        <div class="col-md-4">
+                            <!-- Media main image -->
+                            <div class="form-group {{ $errors->has('main_image_id') ? 'has-error': '' }}" style="text-align: center;">
                                 <label style="display: block;">{{ trans('Users::users.avatar') }}</label>
 
-                                <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }}ر{{ trans('Users::users.avatar') }}" media-data-field-name="main_image_id" media-data-required>
+                                <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }} Category Image" media-data-field-name="main_image_id" media-data-required>
                                     <div class="media-item">
                                         @if(isset($item->media) && isset($item->media->main_image) && isset($item->media->main_image->styles['thumbnail']))
                                             <img src="{{url('/')}}/{{ $item->media->main_image->styles['thumbnail'] }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
                                             <input type="hidden" name="main_image_id" value="{{$item->media->main_image->id}}">
                                         @else
-                                            <img src="{{ asset('public/images/select_main_img.png') }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
+                                            <img src="{{ asset('assets/images/qurative-org.png') }}" style="max-width: 100%; border: 2px solid rgb(204, 204, 204);">
                                         @endif
                                     </div>
                                 </a>
@@ -173,13 +174,14 @@
                                 <label><input name="back" type="checkbox" value="1" class="minimal-blue" @if(old('back') == 1) checked @endif> {{$backFieldLabel}}</label>
                             </div>
 
-                            <button type="submit" class="btn btn-block btn-primary">{{ $submitButton }}</button>
+                            <button type="submit" id="btn_create" class="btn btn-outline-success btn-block"><i class="material-icons">save</i> {{ $submitButton }}</button>
                         </div>
-                    </form>
-                </div>
-            </div>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     </div>
+
 @endsection
 
 @section('footer')
@@ -190,12 +192,9 @@
     <!--Media -->
     @include('Media::scripts.scripts')
     <!--end media -->
-<!--Media -->
-<script src="{{ asset('public/media-dev.js')}}"></script>
+    <!--Media -->
+    <script src="{{ asset('media-dev.js')}}"></script>
     <!--end media -->
-    <!--jquery-dependency-fields -->
-    <script src="/vendor/core/js/jquery-dependency-fields/scripts.js"></script>
-    <!--end jquery-dependency-fields -->
     <script type="text/javascript">
         $(document).ready(function () {
             $('#lang-en').attr('onClick','return false');

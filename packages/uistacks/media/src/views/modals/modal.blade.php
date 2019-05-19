@@ -151,7 +151,7 @@
                                                 </button>
                                             </span>
                                             {{--<i class="icon-spinner9 spinner" id="go_spin" style="display:none;"></i>--}}
-                                            <img src="{{ url('/') }}/assets/images/loader.gif" id="go_spin" style="display:none;" />
+                                            <img src="{{ url('/') }}/assets/images/loading.gif" id="go_spin" style="display:none;" />
                                         </div>
                                     </div>
                                 </div>

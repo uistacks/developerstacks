@@ -34,7 +34,7 @@ class BannersController extends BannersApiController
         $items = $this->api->listItems($request);
         
 //        $sections = Section::get();
-        return view('Banners::index', compact('items'));
+        return view('Banners::banners.index', compact('items'));
     }
 
     /**
@@ -45,7 +45,7 @@ class BannersController extends BannersApiController
      */
     public function create()
     {
-        return view('Banners::create-edit');
+        return view('Banners::banners.create-edit');
     }
 
 
@@ -84,7 +84,7 @@ class BannersController extends BannersApiController
 //        $item = Banner::findOrFail($id);
         $item = Banner::findOrFail($id);
         $trans = BannerTrans::where('banner_id', $id)->get()->keyBy('lang')->toArray();
-        return view('Banners::create-edit', compact('item','trans'));
+        return view('Banners::banners.create-edit', compact('item','trans'));
     }
 
     /**

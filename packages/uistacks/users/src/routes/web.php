@@ -18,7 +18,8 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => $locale . '/admin'],
     Route::GET('admin-users', 'Uistacks\Users\Controllers\AdminController@index');
     Route::GET('admin-users/create', 'Uistacks\Users\Controllers\AdminController@create');
     Route::POST('admin-users', 'Uistacks\Users\Controllers\AdminController@store');
-    Route::GET('admin-users/{id}/edit', 'Uistacks\Users\Controllers\AdminController@edit');
+    Route::GET('admin-users/{id}/edit', 'Uistacks\Users\Controllers\AdminController@edit')
+        ->name('admin.edit-profile');
     Route::PATCH('admin-users/{id}', 'Uistacks\Users\Controllers\AdminController@update');
     Route::POST('admin-users/bulk-operations', 'Uistacks\Users\Controllers\AdminController@bulkOperations');
 

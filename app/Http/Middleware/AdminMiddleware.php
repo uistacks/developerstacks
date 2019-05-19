@@ -32,7 +32,7 @@ class AdminMiddleware {
                         request()->session()->flush();
                         request()->session()->flash('alert-class', 'alert-danger');
                         request()->session()->flash('message', trans('admin.inactive_alert'));
-                        return redirect(url('/')."/admin/login");
+                        return redirect(app()->getLocale() . '/admin/login');
                     }
 
                     if (Request::segment(3) != NULL) {
@@ -55,8 +55,8 @@ class AdminMiddleware {
 //                }
             }
         } else {
-//            return redirect(Lang::getLocale() . '/admin/login');
-            return redirect( 'admin/login');
+            return redirect(app()->getLocale() . '/admin/login');
+//            return redirect( 'admin/login');
         }
         return $next($request);
     }

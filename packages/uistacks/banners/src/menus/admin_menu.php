@@ -1,7 +1,7 @@
 <?php
 
 $adminMenu[9] = [
-    'icon' => 'image',
+    'icon' => 'images2',
     'list_head' => [
         'name' => trans('Banners::banners.banners'),
         'link' => action('Uistacks\Banners\Controllers\BannersController@index'),

@@ -42,7 +42,7 @@
                             <th>
                                 <input type="checkbox" name="check_all" id="checkall">
                             </th>
-                            <th>{{ trans('Core::operations.id') }}</th>
+                            <th>Title</th>
                             <th>{{trans('Banners::banners.image')}}</th>
                             <th>{{trans('Banners::banners.start_at')}}</th>
                             <th>{{trans('Banners::banners.end_at')}}</th>
@@ -52,13 +52,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {{--{{ dd($items) }}--}}
                         @foreach($items as $item)
                             <tr>
                                 <td>
                                     <input type="checkbox" name="ids[]" class="check_list" value="{{$item->id}}">
                                 </td>
-                                <td>{{ $item->id }}</td>
+                                <td class="user_name_col_{{$item->id}}">
+                                    @if($item->trans)
+                                        {{ $item->trans->name }}
+                                    @endif
+                                </td>
                                 <td>
                                     @if(isset($item->trans->banner_img) && file_exists(public_path('/uploads/banners').'/'.$item->trans->banner_img))
                                         <img width="60" height="60" src="{{url('/uploads/banners')}}/{{ $item->trans->banner_img }}" alt="">

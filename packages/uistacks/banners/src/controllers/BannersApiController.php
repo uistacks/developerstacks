@@ -7,8 +7,7 @@ use Illuminate\Http\Request;
 use Uistacks\Banners\Models\Banner;
 use Uistacks\Banners\Models\BannerTrans;
 use Illuminate\Support\Facades\Input;
-use Auth;
-use Image;
+use Intervention\Image\Facades\Image;
 
 class BannersApiController extends Controller {
     /*
@@ -29,7 +28,7 @@ class BannersApiController extends Controller {
         $languages = config('uistacks.locales');
 
         $rules['language'] = 'required';
-        $rules['banner_img'] = 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096';
+        $messages = [];
 //        $rules['name'] = 'unique:activities_trans';
         if (count($languages)) {
             foreach ($languages as $key => $language) {
@@ -37,14 +36,17 @@ class BannersApiController extends Controller {
                 if ($request->language) {
                     foreach ($request->language as $lang) {
                         $rules['name_' . $code . ''] = 'required|max:255';
+                        $messages['name_' . $code . ''] = 'Please enter banner title.';
                     }
                 }
             }
         }
+        $rules['banner_img'] = 'required|image|mimes:jpeg,png,jpg,gif,svg|max:4096';
+//        $messages['banner_img.']
         if ($request->segment(2) === 'api') {
             $rules['author'] = 'required|integer';
         }
-        return \Validator::make($request->all(), $rules);
+        return \Validator::make($request->all(), $rules, $messages);
     }
 
     /**

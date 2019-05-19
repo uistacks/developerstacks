@@ -74,8 +74,8 @@ class AdminLoginController extends Controller
 
 
         if (auth()->attempt($credentials, $request->has('remember'))) {
-//            return redirect(Lang::getLocale().'/admin');
-            return redirect('admin');
+            return redirect(app()->getLocale().'/admin');
+//            return redirect('admin');
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
@@ -87,7 +87,7 @@ class AdminLoginController extends Controller
         // }
 
 //        return redirect(Lang::getLocale().'/admin/login')
-        return redirect('admin/login')
+        return redirect(app()->getLocale().'/admin/login')
             ->withInput($request->only($this->username(), 'remember'))
             ->withErrors([
                 $this->username() => $this->getFailedLoginMessage(),
@@ -102,8 +102,8 @@ class AdminLoginController extends Controller
     public function getAdminLogout()
     {
         auth()->logout();
-//        return redirect(Lang::getLocale().'/admin')->withErrors(['User' => 'This user has been logged out']);
-        return redirect('admin')->withErrors(['User' => 'This user has been logged out']);
+        return redirect(app()->getLocale().'/admin')->withErrors(['User' => 'This user has been logged out']);
+//        return redirect('admin')->withErrors(['User' => 'This user has been logged out']);
     }
 
     /**

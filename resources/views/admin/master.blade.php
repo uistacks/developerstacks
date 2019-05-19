@@ -43,6 +43,9 @@
         .error {
             color: #da2b6a;
         }
+        a.dtp-select-month-before i, a.dtp-select-year-before i, a.dtp-select-month-after i, a.dtp-select-year-after i {
+            font-size: 24px;
+        }
     </style>
     <script>
         var javascript_site_path = "{{url('/')}}" + "/";
