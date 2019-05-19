@@ -1,42 +1,87 @@
-<input type="hidden" id="base_path" value="{{url('/')}}/" />
+{{--<div class="navbar navbar-expand-md navbar-dark" style="background-color: rgba(0,0,0,0.075); border-bottom-color: rgba(255,255,255,0.35)">--}}
+<div class="navbar navbar-expand-md navbar-dark" style="background: linear-gradient(to right,#f077ff,#6283ff);">
+    <div class="container">
+        <div class="navbar-brand wmin-0 mr-5">
+            <a href="index.html" class="d-inline-block">
+{{--                <img src="{{ asset('assets/images/logo_light.png') }}" alt="">--}}
+                <img src="{{ asset('assets/images/qt.png') }}" alt="">
+            </a>
+        </div>
 
-<header class="animate">
-    <nav class="cust-head">
-        <div class="head-top">
-            <div class="head-top-left">
-                <ul class="clearfix">
-                    <li><i class="fa fa-envelope"></i><span>{{ \Uistacks\Settings\Models\Setting::find(3)->value }}</span></li>
-                    <li><i class="fa fa-mobile-phone"></i><span>{{ \Uistacks\Settings\Models\Setting::find(4)->value }}</span></li>
-                </ul>
-            </div>
+        <div class="d-md-none">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+                <i class="icon-tree5"></i>
+            </button>
         </div>
-        <div class="head-bottom clearfix animate">
-            <div class="head-bot-left pull-left">
-                <div class="logo">
-                    <a href="{{ url('/') }}/"><img src="{{ url('/') }}/public/website-assets/images/logo.jpg"></a>
-                </div>
-            </div>
-            <div class="head-bot-right clearfix pull-right">
-                <div class="head-login-blk">
-                    <ul class="clearfix">
-                        <li>
-                            {{--<a href="javascript:void(0)" data-toggle="modal" data-target="#login"><i class="fa fa-user "></i><span>Login</span></a>--}}
-                            <a href="{{ action('Auth\LoginController@login') }}" ><i class="fa fa-user "></i><span>Login</span></a>
-                        </li>
-                        <li>
-                            {{--<a href="javascript:void(0)" data-toggle="modal" data-target="#register"><i class="fa fa-edit"></i><span>Register</span></a>--}}
-                            <a href="{{ action('Auth\RegisterController@register') }}" ><i class="fa fa-edit"></i><span>Register</span></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="head-social-blk">
-                    <ul class="clearfix">
-                        <li><a href="javascript:void(0)" class="bg-fb"><i class="fa fa-facebook animate"></i></a></li>
-                        <li><a href="javascript:void(0)" class="bg-gp"><i class="fa fa-google-plus animate"></i></a></li>
-                        <li><a href="javascript:void(0)" class="bg-tw"><i class="fa fa-twitter animate"></i></a></li>
-                    </ul>
-                </div>
-            </div>
+
+        <div class="justify-content-center">
+            <form class="form-inline my-2 my-lg-0 ">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
-    </nav>
-</header>
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+
+            <ul class="navbar-nav ml-md-auto">
+                <li class="nav-item">
+                    <a href="https://themeforest.net/item/limitless-responsive-web-application-kit/13080328/comments" class="navbar-nav-link" target="_blank">
+                        Comments
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('login') }}" class="btn btn-sm bg-danger-400 font-weight-semibold shadow mt-2 mr-2" target="_blank">
+                        LOG IN
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('signup') }}" class="btn btn-sm bg-orange-400 font-weight-semibold shadow mt-2" target="_blank">
+                        SIGN UP
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="navbar navbar-expand-md navbar-dark gradient-2 navbar-sticky navbar-static" style="">
+    <div class="text-center d-md-none w-100">
+        <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-second">
+            <i class="icon-unfold mr-2"></i>
+            Alternative navbar
+        </button>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-second">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="#" class="navbar-nav-link legitRipple">
+                    <i class="icon-git-branch mr-2"></i>
+                    Branches
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="navbar-nav-link legitRipple">
+                    <i class="icon-git-merge mr-2"></i>
+                    Merges
+                    <span class="badge badge-pill bg-teal-800 position-static ml-auto ml-md-2">5</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="navbar-nav-link legitRipple">
+                    <i class="icon-git-pull-request mr-2"></i>
+                    Pull Requests
+                </a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-md-auto">
+            <li class="nav-item">
+                <a href="#" class="navbar-nav-link legitRipple">
+                    <i class="icon-repo-forked mr-2"></i>
+                    Repositories
+                    <span class="badge badge-pill bg-teal-800 position-static ml-auto ml-md-2">28</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

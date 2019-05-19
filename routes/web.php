@@ -19,9 +19,11 @@ Route::get('/', 'HomeController@index');
 // Auth
 Route::get('/authentication', 'WebsiteController@authentication');
 
-Route::get('register', 'Auth\RegisterController@register');
+Route::get('register', 'Auth\RegisterController@register')
+    ->name('signup');
 Route::post('register', 'Auth\RegisterController@postRegister');
-Route::get('login', 'Auth\LoginController@login');
+Route::get('login', 'Auth\LoginController@login')
+    ->name('login');
 Route::post('login', 'Auth\LoginController@postLogin');
 
 // Forgot password
