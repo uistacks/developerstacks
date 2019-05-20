@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ config('app.name') }} - @yield('title', 'Administrator Login')</title>
+    <title>{{ config('app.name') }} - @yield('title', 'Home')</title>
 
     <!-- Global stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
@@ -27,12 +27,23 @@
     <!-- /core JS files -->
 
     <!-- Theme JS files -->
-    <script src="{{ asset('assets/js/plugins/ui/sticky.min.js') }}"></script>
-    <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/navbar_multiple_sticky.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
-    <!-- /theme JS files -->
-
+{{--<script src="{{ asset('assets/js/plugins/ui/sticky.min.js') }}"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('assets/js/pages/navbar_multiple_sticky.js') }}"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>--}}
+<!-- /theme JS files -->
+    <style>
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            margin: 10px auto 0;
+            background: linear-gradient(to right,#f077ff,#6283ff);
+            border-radius: 100px;
+        }
+    </style>
+    @yield('header')
 </head>
 <body>
 <input type="hidden" id="base_path" value="{{url('/')}}/" />
@@ -46,35 +57,9 @@
         @include('website.regions.header')
         <!-- /main navbar -->
 
-
             <!-- Jumbotron -->
-        @include('website.home.blocks.banner')
+        @yield('banner')
         <!-- /jumbotron -->
-
-
-            <!-- Tabs navigation -->
-            <div class="bg-dark-alpha mt-1">
-                <div class="container px-0 px-sm-2">
-                    <ul class="nav nav-tabs nav-tabs-light flex-nowrap text-nowrap overflow-auto nav-justified border-0 mb-0">
-                        <li class="nav-item">
-                            <a href="#bs4" class="nav-link active" data-toggle="tab">Bootstrap 4</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#bs3" class="nav-link" data-toggle="tab">Bootstrap 3</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#github" class="nav-link" data-toggle="tab">Github access</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://kopyov.ticksy.com" class="nav-link" target="_blank">Support</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#hire" class="nav-link" data-toggle="tab">Customization</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /tabs navigation -->
 
         </div>
         <!-- /hero unit -->

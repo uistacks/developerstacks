@@ -2,7 +2,7 @@
 <div class="navbar navbar-expand-md navbar-dark" style="background: linear-gradient(to right,#f077ff,#6283ff);">
     <div class="container">
         <div class="navbar-brand wmin-0 mr-5">
-            <a href="index.html" class="d-inline-block">
+            <a href="{{ route('home-page') }}" class="d-inline-block">
 {{--                <img src="{{ asset('assets/images/logo_light.png') }}" alt="">--}}
                 <img src="{{ asset('assets/images/qt.png') }}" alt="">
             </a>
@@ -14,27 +14,27 @@
             </button>
         </div>
 
-        <div class="justify-content-center">
+        {{--<div class="justify-content-center">
             <form class="form-inline my-2 my-lg-0 ">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-        </div>
+        </div>--}}
         <div class="collapse navbar-collapse" id="navbar-mobile">
 
             <ul class="navbar-nav ml-md-auto">
-                <li class="nav-item">
+                {{--<li class="nav-item">
                     <a href="https://themeforest.net/item/limitless-responsive-web-application-kit/13080328/comments" class="navbar-nav-link" target="_blank">
                         Comments
                     </a>
-                </li>
+                </li>--}}
                 <li class="nav-item">
-                    <a href="{{ route('login') }}" class="btn btn-sm bg-danger-400 font-weight-semibold shadow mt-2 mr-2" target="_blank">
+                    <a href="{{ route('login') }}" class="btn btn-sm bg-danger-400 font-weight-semibold shadow mt-2 mr-2">
                         LOG IN
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('signup') }}" class="btn btn-sm bg-orange-400 font-weight-semibold shadow mt-2" target="_blank">
+                    <a href="{{ route('signup') }}" class="btn btn-sm bg-orange-400 font-weight-semibold shadow mt-2">
                         SIGN UP
                     </a>
                 </li>

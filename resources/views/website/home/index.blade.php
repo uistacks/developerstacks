@@ -1,4 +1,7 @@
 @extends('website.master')
+@section('banner')
+    @include('website.home.blocks.banner')
+@endsection
 @section('content')
     <!-- Tab content -->
     <div class="tab-content">

@@ -15,3 +15,27 @@
         </div>
     </div>
 </div>
+
+<!-- Tabs navigation -->
+<div class="bg-dark-alpha mt-1">
+    <div class="container px-0 px-sm-2">
+        <ul class="nav nav-tabs nav-tabs-light flex-nowrap text-nowrap overflow-auto nav-justified border-0 mb-0">
+            <li class="nav-item">
+                <a href="#bs4" class="nav-link active" data-toggle="tab">Bootstrap 4</a>
+            </li>
+            <li class="nav-item">
+                <a href="#bs3" class="nav-link" data-toggle="tab">Bootstrap 3</a>
+            </li>
+            <li class="nav-item">
+                <a href="#github" class="nav-link" data-toggle="tab">Github access</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://kopyov.ticksy.com" class="nav-link" target="_blank">Support</a>
+            </li>
+            <li class="nav-item">
+                <a href="#hire" class="nav-link" data-toggle="tab">Customization</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /tabs navigation -->

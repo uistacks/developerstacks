@@ -1,71 +1,78 @@
 @extends('website.master')
-@section('page_title')
-    Sign in your account
+@section('title')
+    Login
 @endsection
 @section('content')
-    <div class="inner-banner back-img relative" style="background-image:url({{ url('/') }}/public/website-assets/images/blog2.jpg)">
-        {{--<div class="inner-cap">
-            <div class="ttl-blog">
-                About <span>Us</span>
+    <div class="section b-white pt-1">
+        <div class="content container">
+            <div class="section-title text-center mb-2">
+                <h1 class="mb-2 font-weight-light">Get an access to <span class="font-weight-semibold">{{ config('app.name') }}</span> with your existing account.</h1>
+                {{--<div class="text-grey">If you want to submit bug report, track all changes in files, request a new feature, contribute to the project, get latest code and updates before official release or simply participate in discussions, fill in all inputs and request an access to private repository on Github. This service is not automated so kindly expect a minor delay.</div>--}}
             </div>
-            <div class="sm-text-contact">
-                I like the geometric visual, bold typo, easy grid and the well balan ced
-                whitespace. Gallery PhotoCreative Corporate, CommunityCompany Profile,
-                Agency and other.
-            </div>
-        </div>--}}
-    </div>
-    <section class="middle-sec inner-pages">
-        <div class="main-faq-sec">
-            <div class="container">
-                <div class="inner-faq">
-                    <div class="col-md-6 col-md-offset-3">
-                        <div class="sign-form">
-                            <div class="sign-head ">
-                                <h4>Sign in your account</h4>
-                                <p>Don’t have an account? <a href="{{ action('Auth\RegisterController@register') }}">Click here</a> to register</p>
-                            </div>
-                            <div class="sign-body">
-                                <form>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12">
-                                            <div class="sin-inp relative">
-                                                <input class="form-control" placeholder="Email" type="text">
-                                                <div class="form-icons"><i class="fa fa-envelope"></i></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12">
-                                            <div class="sin-inp relative">
-                                                <input class="form-control" placeholder="Password" type="password">
-                                                <div class="form-icons"><i class="fa fa-lock"></i></div>
-                                                <div class="forg-paswd text-right"><a href="javascript:void(0)">Forgot your password?</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12">
-                                            <div class="sign-terms sign-head"><p>By logging in you agree to our <a href="{{ action('CmsController@showPage', ['terms-conditions']) }}" target="_blank">Terms &amp; Conditions.</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12">
-                                            <div class="sin-btn text-center">
-                                                <button class="btn btn-orange cust-btn animate text-uppercase" type="button">sign in</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
 
+            <div class="d-flex justify-content-center align-items-center pt-1">
+                <form class="quform w-100 w-sm-auto wmin-sm-400" method="post" action="{{ action('\Uistacks\Core\Controllers\AdminLoginController@postAdmin') }}">
+                    @csrf
+                    <div class="card mb-5">
+                        <div class="card-body quform-elements">
+                            <div class="text-center mb-3">
+                                {{--<i class="icon-github icon-3x text-slate-800 pt-2 mb-3 mt-1"></i>--}}
+                                <img src="{{ url('/') }}/assets/images/logo.png" class="text-slate-800" style="width: 100px;" />
+                                <h5 class="mb-0">{{ config('app.name') }}</h5>
+                                <span class="d-block text-muted">User Login</span>
                             </div>
+
+                            <div class="form-group">
+                                <label class="">
+                                    Your email
+                                    <span class="text-danger ml-1">*</span>
+                                </label>
+
+                                <div class="">
+                                    <div class="form-group-feedback form-group-feedback-right quform-input">
+                                        <input type="email" class="form-control bg-light @error('email') is-invalid @enderror" name="email" id="email" placeholder="Enter email" value="{{ old('email') }}"/>
+                                        <div class="form-control-feedback">
+                                            <i class="icon-mention text-muted"></i>
+                                        </div>
+                                        <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="">
+                                    Your Password
+                                    <span class="text-danger ml-1">*</span>
+                                </label>
+
+                                <div class="">
+                                    <div class="form-group-feedback form-group-feedback-right quform-input">
+                                        <input type="password" class="form-control bg-light @error('password') is-invalid @enderror" name="password" id="password" placeholder="Enter password">
+                                        <div class="form-control-feedback">
+                                            <i class="icon-key text-muted"></i>
+                                        </div>
+                                        <span class="text-danger">{{ $errors->first('password') }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block bg-indigo text-uppercase">
+                                    Submit
+                                    <i class="icon-paperplane ml-2"></i>
+                                </button>
+                            </div>
+                            <div class="form-group text-center text-muted content-divider">
+                                <a href=""><span class="px-2">Forgot Your Password?</span></a>
+                            </div>
+
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-
         </div>
+    </div>
+@endsection
+@section('footer')
 
-    </section>
 @endsection
