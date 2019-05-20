@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('assets/css/icons/icomoon/styles.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/bootstrap_limitless.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/layout.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/components.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/admin/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/admin/bootstrap_limitless.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/admin/layout.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/admin/components.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/admin/colors.min.css') }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
 
-    <script src="{{ asset('assets/js/plugins/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/main/jquery.min.js') }}"></script>
     <style>
         .material-icons { font-size: 10px; }
         /*.hint-text {
@@ -102,9 +102,9 @@
 <!-- /page content -->
 <!-- Core JS files -->
 {{--<script src="{{ asset('assets/js/plugins/jquery.min.js') }}"></script>--}}
-<script src="{{ asset('assets/js/plugins/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/main/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/loaders/blockui.min.js') }}"></script>
-{{--<script src="{{ asset('assets/js/plugins/ui/ripple.min.js') }}"></script>--}}
+<script src="{{ asset('assets/js/plugins/ui/ripple.min.js') }}"></script>
 <!-- /core JS files -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
 @yield('footer')

@@ -30,10 +30,10 @@ jQuery(document).ready(function($) {
 	$(window).on('load', function () {
 		// Preload images
 		var images = [
-			'quform/images/close.png',
-			'quform/images/success.png',
-			'quform/images/error.png',
-			'quform/images/default-loading.gif'
+			'assets/images/close.png',
+			'assets/images/success.png',
+			'assets/images/error.png',
+			'assets/images/default-loading.gif'
 		];
 
 		// Preload images for any active themes

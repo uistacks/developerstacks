@@ -17,8 +17,8 @@
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->
-    <script src="{{ asset('assets/js/plugins/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/main/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/main/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/select2.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/pickadate/picker.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/pickadate/picker.date.js') }}"></script>
