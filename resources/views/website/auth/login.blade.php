@@ -11,7 +11,7 @@
             </div>
 
             <div class="d-flex justify-content-center align-items-center pt-1">
-                <form class="quform w-100 w-sm-auto wmin-sm-400" method="post" action="{{ action('\Uistacks\Core\Controllers\AdminLoginController@postAdmin') }}">
+                <form class="w-100 w-sm-auto wmin-sm-400" method="post" action="{{ route('website.login') }}" autocomplete="off">
                     @csrf
                     <div class="card mb-5">
                         <div class="card-body quform-elements">
@@ -30,7 +30,7 @@
 
                                 <div class="">
                                     <div class="form-group-feedback form-group-feedback-right quform-input">
-                                        <input type="email" class="form-control bg-light @error('email') is-invalid @enderror" name="email" id="email" placeholder="Enter email" value="{{ old('email') }}"/>
+                                        <input type="text" class="form-control bg-light @error('email') is-invalid @enderror" name="email" id="email" placeholder="Enter email" value="{{ old('email') }}"/>
                                         <div class="form-control-feedback">
                                             <i class="icon-mention text-muted"></i>
                                         </div>

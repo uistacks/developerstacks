@@ -1,6 +1,6 @@
 <div class="jumbotron text-white rounded-0 mb-0">
     <div class="container text-center">
-        <h1 class="display-4 font-weight-thin"><span class="font-weight-light">Limitless</span> - responsive web application kit</h1>
+        <h1 class="display-4 font-weight-thin"><span class="font-weight-light">Qurative</span> - responsive web application kit</h1>
         <p class="lead mb-4">A powerful admin template. One style, 5 layouts, hundreds of components, thousands of pages and unlimited possibilities!</p>
 
         <div class="pt-3">

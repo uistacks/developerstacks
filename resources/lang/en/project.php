@@ -42,7 +42,7 @@ return [
     'activation_code_msg' => 'Account activation code:',
     'account_confirmed_successfully' => 'Your account has been successfully activated',
     'logout_successfully' => 'Logout successfully completed',
-    'login_successfully' => 'Welcome again',
+    'login_successfully' => 'You are logged in successfully.',
     'invalid_login_data' => 'The login data is incorrect, or your account is not active.',
     'reset_password' => 'change Password',
     'reset_your_password' => 'Reset Password',

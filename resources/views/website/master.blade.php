@@ -15,23 +15,6 @@
     <link href="{{ asset('assets/css/components.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
-
-    <!-- Core JS files -->
-    <script src="{{ asset('assets/js/main/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/main/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/pickadate/picker.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/pickadate/picker.date.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins.js') }}"></script>
-    <script src="{{ asset('assets/js/scripts.js') }}"></script>
-    <!-- /core JS files -->
-
-    <!-- Theme JS files -->
-{{--<script src="{{ asset('assets/js/plugins/ui/sticky.min.js') }}"></script>
-<script src="{{ asset('assets/js/app.js') }}"></script>
-<script src="{{ asset('assets/js/pages/navbar_multiple_sticky.js') }}"></script>
-<script src="{{ asset('assets/js/custom.js') }}"></script>--}}
-<!-- /theme JS files -->
     <style>
         .section-title:after {
             content: '';
@@ -74,6 +57,22 @@
     <!-- /main content -->
 
 </div>
-<!-- /page content -->
+<!-- Core JS files -->
+<script src="{{ asset('assets/js/main/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/main/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/select2.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/pickadate/picker.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/pickadate/picker.date.js') }}"></script>
+<script src="{{ asset('assets/js/plugins.js') }}"></script>
+<script src="{{ asset('assets/js/scripts.js') }}"></script>
+<!-- /core JS files -->
+<!-- Theme JS files -->
+{{--<script src="{{ asset('assets/js/plugins/ui/sticky.min.js') }}"></script>
+<script src="{{ asset('assets/js/app.js') }}"></script>
+<script src="{{ asset('assets/js/pages/navbar_multiple_sticky.js') }}"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>--}}
+<!-- /theme JS files -->
+@include('website.blocks.message')
+@yield('footer')
 </body>
 </html>

@@ -4,15 +4,17 @@ namespace App\Http\Controllers\Auth;
 
 //use App\User;
 use App\Http\Controllers\Controller;
+use App\Mail\ActivateAccount;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Uistacks\Media\Controllers\MediaApiController;
 use Uistacks\Users\Models\User;
 use Uistacks\Users\Models\UserRole;
 //use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
-
 
 class RegisterController extends Controller
 {
@@ -56,15 +58,14 @@ class RegisterController extends Controller
         return view('website.auth.register');
     }
 
-    protected function validatation(Request $request)
+    protected function validateRegister(Request $request)
     {
-//        dd($request);
-        $validator = Validator::make($request->all(),
+        $validator = $this->validate($request,
             [
-                'first_name'            => 'required',
-                'last_name'             => 'required',
-//                'name'                  => 'required',
-//                'phone'                 => 'required|numeric',
+//                'first_name'            => 'required',
+//                'last_name'             => 'required',
+                'name'                  => 'required',
+                'phone'                 => 'required|numeric',
                 'email'                 => 'required|email|unique:users',
                 'password'              => 'required|min:6|max:20',
                 'password_confirmation' => 'required|same:password',
@@ -72,9 +73,9 @@ class RegisterController extends Controller
 //                'captcha'               => 'required|min:1'
             ],
             [
-                'first_name.required'   => 'First name is required',
-                'last_name.required'    => 'Last name is required',
-//                'name.required'         => 'Please enter your name.',
+//                'first_name.required'   => 'First name is required',
+//                'last_name.required'    => 'Last name is required',
+                'name.required'         => 'Please enter your full name.',
                 'email.required'        => 'Please enter your email address.',
                 'email.email'           => 'Please enter a valid email address.',
 //                'phone.required'        => 'Please enter your mobile number.',
@@ -89,40 +90,24 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    /*protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }*/
-
-    /**
      * Auth register
      *
      * @var view
      */
     public function postRegister(Request $request) {
-        $validator = $this->validatation($request);
+        $validator = $this->validateRegister($request);
         if ($validator->fails()) {
             return redirect(URL::previous())
                 ->withErrors($validator)
                 ->withInput();
         }
-//dd($request);
         $emaiUsername = explode('@', strtolower($request->email));
         $activation_code = $this->generateReferenceNumber();
         $user = new User;
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-//        $user->name = $request->name;
-        $user->name = $request->first_name.' '.$request->last_name;
+//        $user->first_name = $request->first_name;
+//        $user->last_name = $request->last_name;
+        $user->name = $request->name;
+//        $user->name = $request->first_name.' '.$request->last_name;
         $user->user_type = $request->user_type;
         $user->username = $emaiUsername[0];
 //        $user->username = $request->username;
@@ -130,7 +115,7 @@ class RegisterController extends Controller
 //        $user->area_id = $request->area;
 //        $user->iso2 = $request->iso2;
         $user->email = strtolower($request->email);
-//        $user->phone = $request->phone;
+        $user->phone = $request->phone;
 
         $user->password = bcrypt($request->password);
         $user->email_code = rand(pow(10, 4 - 1), pow(10, 4) - 1);
@@ -141,7 +126,7 @@ class RegisterController extends Controller
         if ($request->avatar) {
             // $request->avatar = $request->avatar->productAs('avatars', $request->phone.'-'.date('Y-m-d-h:i:sa').'.jpg');
             $request->request->add(['files' => $request->avatar]);
-            $media = new MediaAPI;
+            $media = new MediaApiController();
             $media = $media->uploadFiles($request, $user_id);
             $options['media']['main_image_id'] = $media[0]->id;
             $user->options = $options;
@@ -154,10 +139,8 @@ class RegisterController extends Controller
         $userRole->role_id = 3; // member
         $userRole->save();
 
-        //send email
-//assign default membership start
-        \App\Http\Controllers\PricingController()->subscribePlan(1);
-//assign default membership end
+        $user->activation_link = route('verify-user-email', $user->activation_code);
+        Mail::to($user->email)->send(new ActivateAccount($user));
 
         /*try {
             Mail::send('emails.active-user'.'-'.Lang::getlocale(), $arr_keyword_values, function ($message) use ($request, $email, $name, $emailtemplateUser) {
