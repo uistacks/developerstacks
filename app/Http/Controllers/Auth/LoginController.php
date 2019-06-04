@@ -80,10 +80,6 @@ class LoginController extends Controller
                 return redirect('/' . app()->getlocale() . '/admin');
             }
             $user = auth()->user();
-            $userCategories = UserCategory::where('user_id', $user->id)->get()->count();
-            if($user->user_type == '2' && $userCategories == 0) {
-                return redirect(action('UserController@completeProfile', $user->username));
-            }
             return redirect()->intended('/' . app()->getlocale() .'/users');
         }
         elseif (auth()->attempt($credentials2, $request->has('remember'))) {
@@ -93,10 +89,6 @@ class LoginController extends Controller
                 return redirect('/' . app()->getlocale() . '/admin');
             }
             $user = auth()->user();
-            $userCategories = UserCategory::where('user_id', $user->id)->get()->count();
-            if($user->user_type == '2' && $userCategories == 0) {
-                return redirect(action('UserController@completeProfile', $user->username));
-            }
             return redirect()->intended('/' . app()->getlocale() .'/users');
         }
         else {

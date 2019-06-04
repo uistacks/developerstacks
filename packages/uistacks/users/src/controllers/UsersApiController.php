@@ -188,6 +188,7 @@ class UsersApiController extends Controller {
         }
         $user->iso2 = $request->iso2;
         $user->phone = $request->phone;
+        $user->address = $request->address;
         if ($request->phone_show) {
             $user->phone_show = true;
         }
@@ -259,6 +260,7 @@ class UsersApiController extends Controller {
         }
         $user->iso2 = $request->iso2;
         $user->phone = $request->phone;
+        $user->address = $request->address;
         $user->phone_show = false;
         if ($request->phone_show) {
             $user->phone_show = true;

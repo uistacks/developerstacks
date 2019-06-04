@@ -66,6 +66,12 @@
                             ])
 
                             @include('Core::fields.input_text', [
+                                'field_name' => 'address',
+                                'name' => 'Address',
+                                'placeholder' => ""
+                            ])
+
+                            @include('Core::fields.input_text', [
                                 'field_name' => 'password',
                                 'name' => trans('Core::operations.password'),
                                 'placeholder' => '',
@@ -284,4 +290,14 @@
             $("#phone_country_code").val(countryData.iso2);
         });
     </script>
+    <script>
+        function initAutocomplete() {
+            new google.maps.places.Autocomplete(
+                (document.getElementById('address_sample')),
+                {types: ['geocode']}
+            );
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfr3JNDG4YAYRdf0Ir-IBcpT4MnaZ3AQQ&libraries=places&callback=initAutocomplete"
+            async defer></script>
 @endsection

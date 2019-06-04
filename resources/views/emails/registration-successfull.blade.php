@@ -67,7 +67,7 @@
                                                             <a href="{{ url('/') }}/" style="color: #3367d6; text-decoration: none" target="_blank" rel="noreferrer">support centre
                                                             </a>
                                                             or
-                                                            <a href="mailto:{{ \App\Setting::find(3)->value }}" style="color: #3367d6; text-decoration: none" onclick="return rcmail.command('compose', '{{ \App\Setting::find(3)->value }}',this)" rel="noreferrer">email us</a>.
+                                                            <a href="mailto:{{ \Uistacks\Settings\Models\Setting::find(3)->value }}" style="color: #3367d6; text-decoration: none" onclick="return rcmail.command('compose', '{{ \Uistacks\Settings\Models\Setting::find(3)->value }}',this)" rel="noreferrer">email us</a>.
                                                         </p>
                                                     </center>
                                                 </td>

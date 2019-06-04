@@ -29,6 +29,6 @@ class ActivateAccount extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.registration-successfull');
+        return $this->view('emails.registration-successfull')->subject($this->user->subject);
     }
 }

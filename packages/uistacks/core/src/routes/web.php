@@ -42,8 +42,8 @@ Route::group(['middleware' => ['web' ,'admin']], function() use($action) {
 });
 
 Route::group(['middleware' => ['web' ,'admin'], 'prefix' => $locale.'/admin'], function() {
-    Route::POST('delete-item', 'UiStacks\Core\Controllers\OperationsController@delete')
+    Route::POST('delete-item', 'Uistacks\Core\Controllers\OperationsController@delete')
     ->name('admin-delete-item');
-    Route::POST('bulk-delete-items', 'UiStacks\Core\Controllers\OperationsController@bulkDelete')
+    Route::POST('bulk-delete-items', 'Uistacks\Core\Controllers\OperationsController@bulkDelete')
         ->name('admin-bulk-delete-items');
 });

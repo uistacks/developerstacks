@@ -5,8 +5,8 @@
                         ['url' => '', 'name' => trans('Pages::pages.pages')]
     ];
     $dbTable = '';
-    if($items->count()){
-        $dbTable = $items[0]['table'];
+    if(isset($items[0]) && $items[0]->getTable() !== null){
+        $dbTable = $items[0]->getTable();
     }
 @endphp
 

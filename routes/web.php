@@ -1,47 +1,61 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::group(['middleware' => ['web', 'auth']], function() {
+    Route::get('/', 'HomeController@index')->name('home-page');
+    // Pages
+    Route::get('pages/{pageId}', 'CmsController@showPage');
 
-Route::get('/', 'HomeController@index')->name('home-page');
-// Auth
-Route::get('/authentication', 'WebsiteController@authentication');
+});
+Route::group(['middleware' => ['web']], function() {
 
-Route::get('register', 'Auth\RegisterController@register')
-    ->name('signup');
-Route::post('register', 'Auth\RegisterController@postRegister')
-    ->name('website.signup');
-Route::get('login', 'Auth\LoginController@login')
-    ->name('login');
-Route::post('login', 'Auth\LoginController@postLogin')->name('website.login');
+
+    // Auth
+    Route::get('register', 'Auth\RegisterController@register')
+        ->name('signup');
+    Route::post('register', 'Auth\RegisterController@postRegister')
+        ->name('website.signup');
+    Route::get('login', 'Auth\LoginController@login')
+        ->name('login');
+    Route::post('login', 'Auth\LoginController@postLogin')->name('website.login');
 
 // Forgot password
-Route::get('forgot-password', 'Auth\ForgotPasswordController@forgotPassword');
-Route::post('forgot-password', 'Auth\ForgotPasswordController@postForgotPassword');
-Route::get('reset-password/{userId}/{confirmationCode}', 'Auth\ResetPasswordController@resetPassword');
-Route::post('reset-password/{userId}', 'Auth\ResetPasswordController@postResetPassword');
+    Route::get('forgot-password', 'Auth\ForgotPasswordController@forgotPassword');
+    Route::post('forgot-password', 'Auth\ForgotPasswordController@postForgotPassword');
+    Route::get('reset-password/{userId}/{confirmationCode}', 'Auth\ResetPasswordController@resetPassword');
+    Route::post('reset-password/{userId}', 'Auth\ResetPasswordController@postResetPassword');
 
 //email verification
-//Route::get('verify-user-email/{id}', 'Auth\RegisterController@verifyUserEmail');
-/**
- * Email Verification Route(s)
- */
-Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
-Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+    Route::get('verify-user-email/{id}', 'Auth\RegisterController@verifyUserEmail')
+        ->name('verify-user-email');
+    /**
+     * Email Verification Route(s)
+     */
+//Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+//Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+//Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
+});
 
-// Pages
-Route::get('pages/{pageId}', 'CmsController@showPage');
+Route::group(['middleware' => ['web', 'auth']], function() {
+// Registerd user routes
+// User profile
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('dashboard', 'UserController@index')->name('user-dashboard');
+        Route::get('profile', 'UserController@profile')->name('user-profile');
+        Route::get('edit-profile', 'UserController@editProfile')->name('edit-profile');
+        Route::post('change-picture', 'UserController@changePicture')->middleware('auth');
+        Route::get('account-setting', 'UserController@accountSetting')->name('account-setting');
+        Route::post('edit-profile', 'UserController@updateProfile')->middleware('auth');
+        Route::post('change-password', 'UserController@updatePassword')->middleware('auth');
+    });
+
+    Route::group(['prefix' => 'messages'], function () {
+        Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
+//        Route::get('create/{id}', ['as' => 'messages.create', 'uses' => 'MessagesController@create'])->middleware('auth');
+//        Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store'])->middleware('auth');
+//        Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show'])->middleware('auth');
+//        Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update'])->middleware('auth');
+    });
+
+});

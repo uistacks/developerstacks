@@ -35,7 +35,7 @@ return [
     | Full path
     |
     */
-    'dashboard_function' => 'App\Http\Controllers\AdminController@index',
+    'dashboard_function' => 'App\Http\Controllers\Admin\AdminController@index',
 
     /*
     |--------------------------------------------------------------------------
