@@ -19,7 +19,7 @@
                                 {{--<i class="icon-github icon-3x text-slate-800 pt-2 mb-3 mt-1"></i>--}}
                                 <img src="{{ url('/') }}/assets/images/logo.png" class="text-slate-800" style="width: 100px;" />
                                 <h5 class="mb-0">{{ config('app.name') }}</h5>
-                                <span class="d-block text-muted">User Login</span>
+                                <span class="d-block text-muted">User Signup</span>
                             </div>
 
                             <div class="form-group">

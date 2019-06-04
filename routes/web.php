@@ -1,14 +1,10 @@
 <?php
 
 
-Route::group(['middleware' => ['web', 'auth']], function() {
+Route::group(['middleware' => ['web']], function() {
     Route::get('/', 'HomeController@index')->name('home-page');
     // Pages
     Route::get('pages/{pageId}', 'CmsController@showPage');
-
-});
-Route::group(['middleware' => ['web']], function() {
-
 
     // Auth
     Route::get('register', 'Auth\RegisterController@register')
