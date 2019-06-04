@@ -46,10 +46,14 @@
         a.dtp-select-month-before i, a.dtp-select-year-before i, a.dtp-select-month-after i, a.dtp-select-year-after i {
             font-size: 24px;
         }
+        .modal-backdrop {
+            z-index: 50 !important;
+        }
     </style>
     <script>
         var javascript_site_path = "{{url('/')}}" + "/";
     </script>
+    <link rel="stylesheet" href="{{asset('media-dev.css')}}" />
     @yield('header')
 </head>
 <body>
@@ -108,6 +112,9 @@
 <script src="{{ asset('assets/js/plugins/ui/ripple.min.js') }}"></script>
 <!-- /core JS files -->
 <script src="{{ asset('assets/js/app.js') }}"></script>
+
+<script src="{{ asset('assets/js/jquery-ui.min.js') }}" type="text/javascript"></script>
+<script src="{{asset('media-dev.js')}}"></script>
 @yield('footer')
 </body>
 </html>

@@ -1,15 +1,16 @@
-<div class="navbar navbar-expand-md navbar-light navbar-static">
+{{--<div class="navbar navbar-expand-md navbar-light navbar-static">--}}
+<div class="navbar navbar-expand-md navbar-light">
 
     <!-- Header with logos -->
     <div class="navbar-header navbar-dark d-none d-md-flex align-items-md-center">
         <div class="navbar-brand navbar-brand-md">
-            <a href="index.html" class="d-inline-block">
+            <a href="{{ route('home-page') }}" class="d-inline-block">
                 <img src="{{ asset('assets/images/qt.png') }}" alt="Qurative">
             </a>
         </div>
 
         <div class="navbar-brand navbar-brand-xs">
-            <a href="index.html" class="d-inline-block">
+            <a href="{{ route('home-page') }}" class="d-inline-block">
                 <img src="{{ url('/') }}/assets/images/logo.png" alt="Qurative">
             </a>
         </div>
@@ -20,7 +21,7 @@
     <!-- Mobile controls -->
     <div class="d-flex flex-1 d-md-none">
         <div class="navbar-brand mr-auto">
-            <a href="index.html" class="d-inline-block">
+            <a href="{{ route('home-page') }}" class="d-inline-block">
                 <img src="{{ url('/') }}/assets/images/logo_dark.png" alt="">
             </a>
         </div>
@@ -256,8 +257,8 @@
 
             <li class="nav-item dropdown dropdown-user">
                 <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
-                    @if(auth()->user()->image)
-                        <img src="/{{ auth()->user()->image->thumbnail }}" class="rounded-circle" height="34" alt="{{ auth()->user()->name }}"/>
+                    @if(isset(auth()->user()->media) && isset(auth()->user()->media->main_image) && isset(auth()->user()->media->main_image->styles['thumbnail']))
+                        <img src="{{url('/')}}/{{ auth()->user()->media->main_image->styles['thumbnail'] }}" class="rounded-circle" height="34" alt="{{ auth()->user()->name }}"/>
                     @else
                         <img src="{{ url('/') }}/assets/images/user.png" class="rounded-circle" height="34" alt="{{ auth()->user()->name }}"/>
                     @endif
@@ -270,7 +271,7 @@
                     <a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-indigo-400 ml-auto">58</span></a>
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
-                    <a href="#" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+                    <a href="{{ route('user-logout') }}" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
                 </div>
             </li>
         </ul>

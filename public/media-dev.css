@@ -250,10 +250,19 @@
     font-weight: 800;
 }
 
+
 .media-item img{
-    /*max-width: 100%;*/
-    width: 150px;
+    /*width: 150px;*/
+    width: 100px;
+    border-radius: 50%;
     border: 2px solid #FF5622 !important;
+}
+
+.img-selected img{
+    /*max-width: 100%;*/
+    width: 80px;
+    border: 2px solid #FF5622 !important;
+    border-radius: 50%;
     /*background: radial-gradient(#71c55d 50%, rgba(113, 197, 93, 0.15) 52%)*/
 }
 

@@ -54,4 +54,7 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 //        Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update'])->middleware('auth');
     });
 
+    Route::get('/logout', 'UserController@logout')
+    ->name('user-logout');
+
 });

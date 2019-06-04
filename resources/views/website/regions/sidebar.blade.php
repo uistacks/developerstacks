@@ -1,15 +1,20 @@
+<!-- Include Media model -->
+@include('Media::modals.modal')
+<!-- end include Media model -->
 <div class="sidebar-content">
-
     <!-- User menu -->
     <div class="sidebar-user-material">
         <div class="sidebar-user-material-body">
             <div class="card-body text-center">
-                <a href="#">
-                    @if(auth()->user()->image)
-                        <img src="/{{ auth()->user()->image->thumbnail }}" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="{{ auth()->user()->name }}"/>
-                    @else
-                        <img src="{{ url('/') }}/assets/images/user.png" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="{{ auth()->user()->name }}"/>
-                    @endif
+                <a data-toggle="modal" data-target="#qurative_media_modal" href="javascript:void(0)" media-data-button-name="{{ trans('Core::operations.select') }} User Image" media-data-field-name="main_image_id" media-data-required>
+                    <div class="media-item">
+                        @if(isset(auth()->user()->media) && isset(auth()->user()->media->main_image) && isset(auth()->user()->media->main_image->styles['thumbnail']))
+                            <img src="{{url('/')}}/{{ auth()->user()->media->main_image->styles['thumbnail'] }}" class="img-fluid rounded-circle shadow-1 mb-1" width="80" height="80" alt="{{ auth()->user()->name }}"/>
+                            <input type="hidden" name="main_image_id" value="{{auth()->user()->media->main_image->id}}">
+                        @else
+                            <img src="{{ url('/') }}/assets/images/user.png" class="img-fluid rounded-circle shadow-1 mb-1" width="80" height="80" alt="{{ auth()->user()->name }}"/>
+                        @endif
+                    </div>
                 </a>
                 <h6 class="mb-0 text-white text-shadow-dark">{{ auth()->user()->name }}</h6>
                 <span class="font-size-sm text-white text-shadow-dark">{{ auth()->user()->address }}</span>
@@ -313,3 +318,5 @@
     <!-- /main navigation -->
 
 </div>
+<!--Media -->
+@include('Media::scripts.scripts')

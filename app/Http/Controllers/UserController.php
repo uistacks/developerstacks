@@ -140,4 +140,16 @@ class UserController extends Controller
     }
 
 
+    /*
+     * Logout Action
+     */
+
+    public function logout() {
+        auth()->logout();
+        request()->session()->flash('alert-class', 'alert-success');
+        request()->session()->flash('message', trans('project.logout_successfully'));
+        return redirect(route('login'));
+    }
+
+
 }
