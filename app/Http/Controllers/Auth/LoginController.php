@@ -80,7 +80,7 @@ class LoginController extends Controller
                 return redirect('/' . app()->getlocale() . '/admin');
             }
             $user = auth()->user();
-            return redirect()->intended('/' . app()->getlocale() .'/users');
+            return redirect()->intended(route('user-dashboard'));
         }
         elseif (auth()->attempt($credentials2, $request->has('remember'))) {
             request()->session()->flash('alert-class', 'alert-success');
@@ -89,7 +89,7 @@ class LoginController extends Controller
                 return redirect('/' . app()->getlocale() . '/admin');
             }
             $user = auth()->user();
-            return redirect()->intended('/' . app()->getlocale() .'/users');
+            return redirect()->intended(route('user-dashboard'));
         }
         else {
             $user = auth()->user();

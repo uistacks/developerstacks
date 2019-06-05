@@ -48,10 +48,10 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 
     Route::group(['prefix' => 'messages'], function () {
         Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
-//        Route::get('create/{id}', ['as' => 'messages.create', 'uses' => 'MessagesController@create'])->middleware('auth');
-//        Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store'])->middleware('auth');
-//        Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show'])->middleware('auth');
-//        Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update'])->middleware('auth');
+        Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
+        Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
+        Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+        Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
     });
 
     Route::get('/logout', 'UserController@logout')

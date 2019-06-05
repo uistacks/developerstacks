@@ -43,7 +43,9 @@
                     <a href="{{ route('messages') }}" class="nav-link">
                         <i class="icon-comment-discussion"></i>
                         <span>Messages</span>
-                        <span class="badge bg-success-400 badge-pill align-self-center ml-auto">58</span>
+                        <span class="badge bg-success-400 badge-pill align-self-center ml-auto">
+                            @include('website.messages.unread-count')
+                        </span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -53,7 +55,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('user-logout') }}" class="nav-link">
                         <i class="icon-switch2"></i>
                         <span>Logout</span>
                     </a>
@@ -71,12 +73,11 @@
             <!-- Main -->
             <li class="nav-item-header"><div class="text-uppercase font-size-xs line-height-xs">Main</div> <i class="icon-menu" title="Main"></i></li>
             <li class="nav-item">
-                <a href="index.html" class="nav-link active">
+                <a href="{{ route('user-dashboard') }}" class="nav-link active">
                     <i class="icon-home4"></i>
-                    <span>
-                        Dashboard
-									<span class="d-block font-weight-normal opacity-50">No active orders</span>
-								</span>
+                    <span>Dashboard
+                        {{--<span class="d-block font-weight-normal opacity-50">No active orders</span>--}}
+                    </span>
                 </a>
             </li>
             <li class="nav-item nav-item-submenu">

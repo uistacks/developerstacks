@@ -179,6 +179,7 @@ return [
         Uistacks\Locations\LocationsServiceProvider::class,
         Uistacks\Faqs\FaqsServiceProvider::class,
         Uistacks\Blogs\BlogsServiceProvider::class,
+        UiStacks\Messages\MessagesServiceProvider::class,
         /*
          * Application Service Providers...
          */

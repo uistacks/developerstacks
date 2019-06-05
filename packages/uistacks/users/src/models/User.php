@@ -2,6 +2,7 @@
 
 namespace Uistacks\Users\Models;
 
+use App\Traits\Messagable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,7 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable implements MustVerifyEmail
 {
 
-
+    use Messagable;
     /**
      * The database table used by the model.
      *

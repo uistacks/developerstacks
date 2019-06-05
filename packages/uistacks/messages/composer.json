@@ -1,0 +1,33 @@
+{
+    "name": "uistacks/Messages",
+    "description": "Manage UiStacks framework Messages",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ramesh Kumar",
+            "email": "ramesh@panaceatek.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "illuminate/config": "~5.0",
+        "illuminate/support": "~5.0",
+        "illuminate/database": "~5.0",
+        "nesbot/carbon": "~1.0"
+    },
+    "require-dev": {
+        "adamwathan/faktory": "0.3.*",
+        "friendsofphp/php-cs-fixer": "^2.5",
+        "orchestra/testbench": "~3.0",
+        "phpunit/phpunit": "4.*|5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Messages\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}

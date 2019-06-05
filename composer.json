@@ -45,7 +45,8 @@
             "Uistacks\\Categories\\": "packages/uistacks/categories/src",
             "Uistacks\\Locations\\": "packages/uistacks/locations/src",
             "Uistacks\\Faqs\\": "packages/uistacks/faqs/src",
-            "Uistacks\\Blogs\\": "packages/uistacks/blogs/src"
+            "Uistacks\\Blogs\\": "packages/uistacks/blogs/src",
+            "UiStacks\\Messages\\": "packages/uistacks/messages/src"
         },
         "classmap": [
             "database/seeds",

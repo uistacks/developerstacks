@@ -2,10 +2,9 @@
 
 namespace App\Traits;
 
-use UiStacks\Messengers\Models\Message;
-//use UiStacks\Messengers\Models\Models;
-use UiStacks\Messengers\Models\Participant;
-use UiStacks\Messengers\Models\Thread;
+use UiStacks\Messages\Models\Message;
+use UiStacks\Messages\Models\Participant;
+use UiStacks\Messages\Models\Thread;
 use Illuminate\Database\Eloquent\Builder;
 
 trait Messagable
