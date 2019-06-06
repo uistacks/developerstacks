@@ -88,10 +88,11 @@
     <!-- Main content -->
     <div class="content-wrapper">
         <!-- Page header -->
-    {{--@include('admin.regions.breadcrumb')--}}
+    @include('website.regions.breadcrumb')
     <!-- /page header -->
 
-        <!-- Content area -->
+    @yield('profile-cover')
+    <!-- Content area -->
         <div class="content">
             @include('admin.blocks.message')
             @yield('content')

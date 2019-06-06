@@ -53,7 +53,30 @@ class UserController extends Controller
         }
     }
 
+    protected function validateProfileInfo(Request $request)
+    {
+        $userId = auth()->user()->id;
+        $validator = $this->validate($request,
+            [
+                'name'                  => 'required',
+                'phone'                 => 'required|numeric',
+                'email'                 => 'required|email|unique:users,email,' . $userId,
+                'username'              => 'required|unique:users,username,' . $userId,
+                'address'               => 'required'
+            ],
+            [
+                'name.required'         => 'Please enter your full name.',
+                'phone.required'        => 'Please enter your mobile number.',
+//                'email.required'        => 'Please enter your email address.',
+//                'email.email'           => 'Please enter a valid email address.'
+            ]
+        );
+        return $validator;
+    }
+
     public function updateProfile(Request $request) {
+        $validator = $this->validateProfileInfo($request);
+
         if (isset(auth()->user()->id) && $request->user_id !='') {
             $user = User::findOrFail(auth()->user()->id);
             $user_id = auth()->user()->id;
@@ -64,12 +87,14 @@ class UserController extends Controller
                 $options['media']['main_image_id'] = $request->main_image_id;
                 $user->options = $options;
             }
-            $user->first_name = $request->first_name;
-            $user->last_name = $request->last_name;
-            $user->name = $request->first_name. ' '. $request->last_name;
+//            $user->first_name = $request->first_name;
+//            $user->last_name = $request->last_name;
+            $user->name = $request->name;
             $user->phone = $request->phone;
-//            $user->username = $request->username;
+            $user->username = $request->username;
+            $user->address = $request->address;
             $user->dob = date('Y-m-d', strtotime($request->birthdate));
+            $user->gender = $request->gender;
 //            $user->iso2 = $request->iso2;
 //            $user->country_id = $request->country;
 //            $user->area_id = $request->area;

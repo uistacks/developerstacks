@@ -1,5 +1,8 @@
+@php
+    $breadcrumbs[] =  ['url' => '', 'name' => 'Dashboard'];
+@endphp
 @extends('website.layouts.app-dash')
-@section('page_title')
+@section('title')
     Dashboard
 @endsection
 @section('header')

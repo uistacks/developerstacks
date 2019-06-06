@@ -30,46 +30,46 @@
                                 <div class="media-sidebar">
 
                                     {{--<div class="file-info">--}}
-                                        <h2>{{trans('Media::media.file_information')}}</h2>
-                                        <div class="thumbnail thumbnail-image">
-                                            <img src="" draggable="false" alt="">
+                                    <h2>{{trans('Media::media.file_information')}}</h2>
+                                    <div class="thumbnail thumbnail-image">
+                                        <img src="" draggable="false" alt="">
+                                    </div>
+                                    <div class="details">
+                                        <div class="filename"><b></b></div>
+                                        <div class="uploaded"></div>
+                                        <div class="file-size"></div>
+                                        <div class="dimensions"></div>
+                                        {{-- <a class="edit" href="">Edit</a> --}}
+                                        <a id="delete_file" class="btn btn-sm btn-outline-danger" href="javascript:void(0);" data-file-id=""><i class="material-icons">delete</i> {{trans('Media::media.delete')}}</a>
+                                        <div class="compat-meta"></div>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="url">{{trans('Media::media.link')}}</label>
+                                            <input type="text" class="form-control" id="media_item_url" readonly>
                                         </div>
-                                        <div class="details">
-                                            <div class="filename"><b></b></div>
-                                            <div class="uploaded"></div>
-                                            <div class="file-size"></div>
-                                            <div class="dimensions"></div>
-                                            {{-- <a class="edit" href="">Edit</a> --}}
-                                            <a id="delete_file" class="btn btn-sm btn-outline-danger" href="javascript:void(0);" data-file-id=""><i class="material-icons">delete</i> {{trans('Media::media.delete')}}</a>
-                                            <div class="compat-meta"></div>
+
+                                        <div class="form-group">
+                                            <label for="title">{{trans('Media::media.title')}}</label>
+                                            <input type="text" class="form-control" id="media_item_title" value="">
                                         </div>
-                                        <div style="clear: both;"></div>
-                                        <div>
-                                            <div class="form-group">
-                                                <label for="url">{{trans('Media::media.link')}}</label>
-                                                <input type="text" class="form-control" id="media_item_url" readonly>
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label for="title">{{trans('Media::media.title')}}</label>
-                                                <input type="text" class="form-control" id="media_item_title" value="">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="caption">{{trans('Media::media.comment')}}</label>
-                                                <textarea class="form-control" id="media_item_caption" rows="3"></textarea>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="alt">{{trans('Media::media.alt_text')}}</label>
-                                                <input type="text" class="form-control" id="media_item_alt">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="description">{{trans('Media::media.description')}}</label>
-                                                <textarea class="form-control" id="media_item_description" rows="3"></textarea>
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="caption">{{trans('Media::media.comment')}}</label>
+                                            <textarea class="form-control" id="media_item_caption" rows="3"></textarea>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="alt">{{trans('Media::media.alt_text')}}</label>
+                                            <input type="text" class="form-control" id="media_item_alt">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="description">{{trans('Media::media.description')}}</label>
+                                            <textarea class="form-control" id="media_item_description" rows="3"></textarea>
+                                        </div>
+                                    </div>
                                     {{--</div>--}}
                                 </div>
                             </div>
