@@ -7,7 +7,6 @@
     Edit Profile
 @endsection
 @section('header')
-    <link rel="stylesheet" href="{{ asset('public/media-dev.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-material-datetimepicker.css') }}" />
 @endsection
 @section('content')
@@ -162,10 +161,6 @@
     <!-- /inner container -->
 @endsection
 @section('footer')
-    <!--Media -->
-    @include('Media::scripts.scripts')
-    <!--end media -->
-    <script src="{{asset('public/media-dev.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#set-choosed-file').on('click', function () {

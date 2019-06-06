@@ -7,7 +7,6 @@
     Profile
 @endsection
 @section('header')
-    <link rel="stylesheet" href="{{asset('public/media-dev.css')}}" />
 @endsection
 @section('profile-cover')
     @include('website.regions.profile-cover')
@@ -883,13 +882,8 @@
 
     </div>
     <!-- /inner container -->
-
 @endsection
 @section('footer')
-    <!--Media -->
-    @include('Media::scripts.scripts')
-    <!--end media -->
-    <script src="{{asset('public/media-dev.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#set-choosed-file').on('click', function () {
