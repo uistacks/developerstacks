@@ -17,7 +17,7 @@
 </div>
 
 <!-- Tabs navigation -->
-<div class="bg-dark-alpha mt-1">
+{{--<div class="bg-dark-alpha mt-1">
     <div class="container px-0 px-sm-2">
         <ul class="nav nav-tabs nav-tabs-light flex-nowrap text-nowrap overflow-auto nav-justified border-0 mb-0">
             <li class="nav-item">
@@ -37,5 +37,5 @@
             </li>
         </ul>
     </div>
-</div>
+</div>--}}
 <!-- /tabs navigation -->

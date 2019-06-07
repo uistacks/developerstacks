@@ -7,52 +7,221 @@
     <div class="tab-content">
         <div class="tab-pane fade active show" id="bs4">
 
-            <!-- Version links toolbar -->
-            <div class="section bg-white">
-                <div class="content container text-center">
-                    <ul class="list-inline list-inline-dotted mb-0">
-                        <li class="list-inline-item">
-                            <a href="demo/bs4/Documentation/index.html" class="font-weight-semibold" target="_blank">
-                                <i class="icon-stack2 mr-2"></i>
-                                Documentation
-                            </a>
-                        </li>
-
-                        <li class="list-inline-item">
-                            <a href="demo/bs4/Documentation/other_changelog.html" class="font-weight-semibold" target="_blank">
-                                <i class="icon-history mr-2"></i>
-                                Changelog
-                                <span class="badge badge-pill bg-dark ml-2">2.2</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /version links toolbar -->
-
-
             <!-- Main layout preview -->
-            <div class="section border-top pt-5">
+            <div class="section border-top pt-2">
                 <div class="content container text-center">
                     <div class="section-title text-center mb-4">
                         <h1 class="mb-2 font-weight-light"><span class="font-weight-semibold">Limitless</span> - main layout preview</h1>
                         <div class="text-grey">Main layout includes a full set of elements, components, extensions, custom pages, widgets, charts and layout options. Child layouts are shells and include only layout related pages, but support all available components from the main layout. SCSS files are well structured so that you can easily find necessary one, whether it's a component or layout.</div>
                     </div>
 
-                    <div class="pt-2 mb-5">
-                        <a href="demo/bs4/Template/layout_1/LTR/default/full/index.html" class="btn bg-indigo text-uppercase font-size-sm line-height-sm font-weight-semibold d-block d-sm-inline-block py-2 px-3 mb-3 mb-sm-0 shadow" target="_blank">
-                            Default theme demo
-                            <i class="icon-circle-right2 ml-2"></i>
-                        </a>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- Top placement -->
+                            <div class="card">
+                                <div class="card-img-actions">
+                                    <img class="card-img-top img-fluid" src="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" alt="">
+                                    <div class="card-img-actions-overlay card-img-top">
+                                        <a href="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
+                                            Preview
+                                        </a>
+                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
+                                            Details
+                                        </a>
+                                    </div>
+                                </div>
 
-                        <a href="demo/bs4/Template/layout_1/LTR/material/full/index.html" class="btn bg-indigo text-uppercase font-size-sm line-height-sm font-weight-semibold d-block d-sm-inline-block py-2 px-3 ml-sm-3 shadow" target="_blank">
-                            Material theme demo
-                            <i class="icon-circle-right2 ml-2"></i>
-                        </a>
-                    </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Top placement</h5>
+                                    <p class="card-text">Default <code>top</code> placement - image always comes first in the card with text or other content below. Use <code>.card-img-top</code> image class to round top image corners.</p>
+                                </div>
 
-                    <div class="img-preview-multi">
-                        <img src="{{ asset('assets/images/browsers.png') }}" class="img-fluid" alt="">
+                                <div class="card-footer bg-transparent d-flex justify-content-between">
+                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-half font-size-base text-warning-300"></i>
+									<span class="text-muted ml-2">(12)</span>
+								</span>
+                                </div>
+                            </div>
+                            <!-- /top placement -->
+                        </div>
+
+                        <div class="col-md-4">
+                            <!-- Top placement -->
+                            <div class="card">
+                                <div class="card-img-actions">
+                                    <img class="card-img-top img-fluid" src="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" alt="">
+                                    <div class="card-img-actions-overlay card-img-top">
+                                        <a href="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
+                                            Preview
+                                        </a>
+                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
+                                            Details
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Top placement</h5>
+                                    <p class="card-text">Default <code>top</code> placement - image always comes first in the card with text or other content below. Use <code>.card-img-top</code> image class to round top image corners.</p>
+                                </div>
+
+                                <div class="card-footer bg-transparent d-flex justify-content-between">
+                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-half font-size-base text-warning-300"></i>
+									<span class="text-muted ml-2">(12)</span>
+								</span>
+                                </div>
+                            </div>
+                            <!-- /top placement -->
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Top placement -->
+                            <div class="card">
+                                <div class="card-img-actions">
+                                    <img class="card-img-top img-fluid" src="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" alt="">
+                                    <div class="card-img-actions-overlay card-img-top">
+                                        <a href="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
+                                            Preview
+                                        </a>
+                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
+                                            Details
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Top placement</h5>
+                                    <p class="card-text">Default <code>top</code> placement - image always comes first in the card with text or other content below. Use <code>.card-img-top</code> image class to round top image corners.</p>
+                                </div>
+
+                                <div class="card-footer bg-transparent d-flex justify-content-between">
+                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-half font-size-base text-warning-300"></i>
+									<span class="text-muted ml-2">(12)</span>
+								</span>
+                                </div>
+                            </div>
+                            <!-- /top placement -->
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Top placement -->
+                            <div class="card">
+                                <div class="card-img-actions">
+                                    <img class="card-img-top img-fluid" src="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" alt="">
+                                    <div class="card-img-actions-overlay card-img-top">
+                                        <a href="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
+                                            Preview
+                                        </a>
+                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
+                                            Details
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Top placement</h5>
+                                    <p class="card-text">Default <code>top</code> placement - image always comes first in the card with text or other content below. Use <code>.card-img-top</code> image class to round top image corners.</p>
+                                </div>
+
+                                <div class="card-footer bg-transparent d-flex justify-content-between">
+                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-half font-size-base text-warning-300"></i>
+									<span class="text-muted ml-2">(12)</span>
+								</span>
+                                </div>
+                            </div>
+                            <!-- /top placement -->
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Top placement -->
+                            <div class="card">
+                                <div class="card-img-actions">
+                                    <img class="card-img-top img-fluid" src="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" alt="">
+                                    <div class="card-img-actions-overlay card-img-top">
+                                        <a href="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
+                                            Preview
+                                        </a>
+                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
+                                            Details
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Top placement</h5>
+                                    <p class="card-text">Default <code>top</code> placement - image always comes first in the card with text or other content below. Use <code>.card-img-top</code> image class to round top image corners.</p>
+                                </div>
+
+                                <div class="card-footer bg-transparent d-flex justify-content-between">
+                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-half font-size-base text-warning-300"></i>
+									<span class="text-muted ml-2">(12)</span>
+								</span>
+                                </div>
+                            </div>
+                            <!-- /top placement -->
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Top placement -->
+                            <div class="card">
+                                <div class="card-img-actions">
+                                    <img class="card-img-top img-fluid" src="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" alt="">
+                                    <div class="card-img-actions-overlay card-img-top">
+                                        <a href="{{ url('/') }}/assets/images/placeholders/placeholder.jpg" class="btn btn-outline bg-white text-white border-white border-2 legitRipple" data-popup="lightbox">
+                                            Preview
+                                        </a>
+                                        <a href="#" class="btn btn-outline bg-white text-white border-white border-2 ml-2 legitRipple">
+                                            Details
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Top placement</h5>
+                                    <p class="card-text">Default <code>top</code> placement - image always comes first in the card with text or other content below. Use <code>.card-img-top</code> image class to round top image corners.</p>
+                                </div>
+
+                                <div class="card-footer bg-transparent d-flex justify-content-between">
+                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-full2 font-size-base text-warning-300"></i>
+									<i class="icon-star-half font-size-base text-warning-300"></i>
+									<span class="text-muted ml-2">(12)</span>
+								</span>
+                                </div>
+                            </div>
+                            <!-- /top placement -->
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -132,163 +301,6 @@
                                 </h5>
 
                                 <span class="text-muted">The most popular modern layout with main light navbar, transparent page header and full height dark sidebar. Logo has 2 options depending on sidebar width.</span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="mb-5 ml-md-3">
-                                <div class="card-img-actions mb-4 shadow">
-                                    <img class="card-img img-fluid" src="{{ asset('assets/images/layouts/layout_3.png') }}" alt="">
-                                    <div class="card-img-actions-overlay card-img">
-                                        <div>
-                                            <div class="mb-2">Select theme:</div>
-                                            <div class="btn-toolbar justify-content-center">
-                                                <div class="btn-group">
-                                                    <a href="demo/bs4/Template/layout_3/LTR/default/full/index.html" class="btn bg-blue font-weight-semibold font-size-sm line-height-sm text-uppercase mb-1 shadow" target="_blank">
-                                                        Default
-                                                    </a>
-
-                                                    <a href="demo/bs4/Template/layout_3/LTR/material/full/index.html" class="btn bg-blue font-weight-semibold font-size-sm line-height-sm text-uppercase mb-1 shadow" target="_blank">
-                                                        Material
-                                                    </a>
-
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn bg-blue font-weight-semibold font-size-sm line-height-sm text-uppercase dropdown-toggle mb-1 shadow" data-toggle="dropdown" target="_blank">
-                                                            RTL
-                                                        </a>
-
-                                                        <div class="dropdown-menu dropdown-menu-right bg-blue">
-                                                            <a href="demo/bs4/Template/layout_3/RTL/default/full/index.html" class="dropdown-item">Default</a>
-                                                            <a href="demo/bs4/Template/layout_3/RTL/material/full/index.html" class="dropdown-item">Material</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h5 class="font-weight-semibold mb-2">
-                                    Child <span class="font-weight-light">layout #2</span>
-                                </h5>
-
-                                <span class="text-muted">Layout with full width navbar and page header. Sidebar is a part of content and can be either stretched vertically or displayed as a block element with auto height.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-5 pt-md-1 mr-md-3">
-                                <div class="card-img-actions mb-4 shadow">
-                                    <img class="card-img img-fluid" src="{{ asset('assets/images/layouts/layout_4.png') }}" alt="">
-                                    <div class="card-img-actions-overlay card-img">
-                                        <div>
-                                            <div class="mb-2">Select theme:</div>
-                                            <div class="btn-toolbar justify-content-center">
-                                                <div class="btn-group">
-                                                    <a href="demo/bs4/Template/layout_4/LTR/default/full/index.html" class="btn bg-blue font-weight-semibold font-size-sm line-height-sm text-uppercase mb-1 shadow" target="_blank">
-                                                        Default
-                                                    </a>
-
-                                                    <a href="demo/bs4/Template/layout_4/LTR/material/full/index.html" class="btn bg-blue font-weight-semibold font-size-sm line-height-sm text-uppercase mb-1 shadow" target="_blank">
-                                                        Material
-                                                    </a>
-
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn bg-blue font-weight-semibold font-size-sm line-height-sm text-uppercase dropdown-toggle mb-1 shadow" data-toggle="dropdown" target="_blank">
-                                                            RTL
-                                                        </a>
-
-                                                        <div class="dropdown-menu dropdown-menu-right bg-blue">
-                                                            <a href="demo/bs4/Template/layout_4/RTL/default/full/index.html" class="dropdown-item">Default</a>
-                                                            <a href="demo/bs4/Template/layout_4/RTL/material/full/index.html" class="dropdown-item">Material</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h5 class="font-weight-semibold mb-2">
-                                    Child <span class="font-weight-light">layout #3</span>
-                                </h5>
-
-                                <span class="text-muted">Full width layout with multiple static or fixed navbars and horizontal multi level navigation (single or multiple columns). Sidebar is a part of content and optional.</span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="mb-5 pt-md-1 ml-md-3">
-                                <div class="card-img-actions mb-4 shadow">
-                                    <img class="card-img img-fluid" src="{{ asset('assets/images/layouts/layout_5.png') }}" alt="">
-                                    <div class="card-img-actions-overlay card-img">
-                                        <div>
-                                            <div class="mb-2">Select theme:</div>
-                                            <div class="btn-toolbar justify-content-center">
-                                                <div class="btn-group">
-                                                    <a href="demo/bs4/Template/layout_5/LTR/default/full/index.html" class="btn bg-blue font-weight-semibold font-size-sm line-height-sm text-uppercase mb-1 shadow" target="_blank">
-                                                        Default
-                                                    </a>
-
-                                                    <a href="demo/bs4/Template/layout_5/LTR/material/full/index.html" class="btn bg-blue font-weight-semibold font-size-sm line-height-sm text-uppercase mb-1 shadow" target="_blank">
-                                                        Material
-                                                    </a>
-
-                                                    <div class="btn-group">
-                                                        <a href="#" class="btn bg-blue font-weight-semibold font-size-sm line-height-sm text-uppercase dropdown-toggle mb-1 shadow" data-toggle="dropdown" target="_blank">
-                                                            RTL
-                                                        </a>
-
-                                                        <div class="dropdown-menu dropdown-menu-right bg-blue">
-                                                            <a href="demo/bs4/Template/layout_5/RTL/default/full/index.html" class="dropdown-item">Default</a>
-                                                            <a href="demo/bs4/Template/layout_5/RTL/material/full/index.html" class="dropdown-item">Material</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <h5 class="font-weight-semibold mb-2">
-                                    Child <span class="font-weight-light">layout #4</span>
-                                </h5>
-
-                                <span class="text-muted">Layout with multiple navbar and dark page header in between. All top components have the same dark background color, content has extra horizontal spacing.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-5 pt-md-1 mr-md-3">
-                                <div class="coming-soon">
-                                    <img src="{{ asset('assets/images/layouts/soon_1.jpg') }}" class="img-fluid rounded mb-4 shadow">
-                                    <h3 class="opacity-75 mb-0">Coming soon</h3>
-                                </div>
-
-                                <h5 class="font-weight-semibold mb-2">
-                                    Child <span class="font-weight-light">layout #5</span>
-                                </h5>
-
-                                <span class="text-muted">Minimalistic layout with multi level sidebar in 2 width options: normal (with collapsible multi level navigation) and small (with sliding full height navigation).</span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="mb-5 pt-md-1 ml-md-3">
-                                <div class="coming-soon">
-                                    <img src="{{ asset('assets/images/layouts/soon_2.jpg') }}" class="img-fluid rounded mb-4 shadow">
-                                    <h3 class="opacity-75 mb-0">Coming soon</h3>
-                                </div>
-
-                                <h5 class="font-weight-semibold mb-2">
-                                    Child <span class="font-weight-light">layout #6</span>
-                                </h5>
-
-                                <span class="text-muted">Clean layout with transparent sidebar and light content area. Simple and elegant, this layout is a mix of classic styling and new modern look and feel.</span>
                             </div>
                         </div>
                     </div>
