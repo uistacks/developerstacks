@@ -60,7 +60,7 @@
 
 
             <!-- Project numbers -->
-            <div class="section gradient-8 text-white py-2">
+            <div class="section gradient-1 text-white py-2">
                 <div class="content container text-center">
                     <div class="row">
                         <div class="col-6 col-sm-3 font-weight-light my-2">
@@ -775,7 +775,7 @@
     <!-- /tab content -->
 
     <!-- Customers list -->
-    <div class="section gradient-2 text-white py-5">
+    <div class="section gradient-1 text-white py-5">
         <div class="content container text-center">
             <div class="section-title mb-5">
                 <h1 class="mb-2">

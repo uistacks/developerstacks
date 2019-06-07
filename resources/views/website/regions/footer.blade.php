@@ -12,7 +12,7 @@
         color: #fff;
     }
 </style>
-<div class="section gradient-6 text-white pt-1">
+<div class="section gradient-1 text-white pt-1">
     <div id="footer" class="footer ">
         <!-- BEGIN container -->
         <div class="container">

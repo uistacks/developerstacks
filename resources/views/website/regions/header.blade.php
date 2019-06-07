@@ -1,5 +1,5 @@
 {{--<div class="navbar navbar-expand-md navbar-dark" style="background-color: rgba(0,0,0,0.075); border-bottom-color: rgba(255,255,255,0.35)">--}}
-<div class="navbar navbar-expand-md navbar-dark" style="background: linear-gradient(to right,#f077ff,#6283ff);">
+<div class="navbar navbar-expand-md navbar-dark main-header">
     <div class="container">
         <div class="navbar-brand wmin-0 mr-5">
             <a href="{{ route('home-page') }}" class="d-inline-block">
@@ -23,11 +23,15 @@
         <div class="collapse navbar-collapse" id="navbar-mobile">
 
             <ul class="navbar-nav ml-md-auto">
-                {{--<li class="nav-item">
-                    <a href="https://themeforest.net/item/limitless-responsive-web-application-kit/13080328/comments" class="navbar-nav-link" target="_blank">
-                        Comments
-                    </a>
-                </li>--}}
+                <li class="nav-item">
+                    <a class="navbar-nav-link active" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-nav-link" href="#feature">Feature</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-nav-link" href="#pricing">Pricing</a>
+                </li>
                 @auth
                     <li class="nav-item dropdown">
                         <a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
@@ -178,7 +182,8 @@
     </div>
 </div>
 
-<div class="navbar navbar-expand-md navbar-dark gradient-2 navbar-sticky navbar-static" style="">
+
+<div class="navbar navbar-expand-md navbar-dark gradient-1" style="">
     <div class="text-center d-md-none w-100">
         <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-second">
             <i class="icon-unfold mr-2"></i>

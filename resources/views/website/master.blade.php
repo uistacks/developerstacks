@@ -14,6 +14,7 @@
     <link href="{{ asset('assets/css/layout.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/components.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
     <style>
         .section-title:after {
