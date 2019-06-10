@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/tutorials",
+    "description": "Manage UiStacks framework tutorials",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mahmoud Eid",
+            "email": "me@mahmoudeid.net"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/tutorials.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Contactus\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

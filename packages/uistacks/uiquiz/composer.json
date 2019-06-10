@@ -1,0 +1,23 @@
+{
+    "name": "uistacks/uiquiz",
+    "description": "Manage UiStacks framework uiquiz",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Mahmoud Eid",
+            "email": "me@mahmoudeid.net"
+        }
+    ],
+    "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:uistacks/uiquiz.git"
+    }
+    ],
+    "autoload": {
+        "psr-4": {
+            "UiStacks\\Contactus\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
