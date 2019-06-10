@@ -7,6 +7,7 @@
     z-index: 99;
     padding: 18px 0;
 }*/
+
 .main-header {
     background: -webkit-linear-gradient(left,
     #000529 1%,
@@ -17,7 +18,7 @@
     transition: all .4s;
     width: 100%;
     z-index: 99;
-    /*padding: 4px 0;*/
+    padding: 4px 0 !important;
 
 }
 

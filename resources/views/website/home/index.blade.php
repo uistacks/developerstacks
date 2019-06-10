@@ -11,12 +11,12 @@
             <div class="section border-top pt-2">
                 <div class="content container text-center">
                     <div class="section-title text-center mb-4">
-                        <h1 class="mb-2 font-weight-light"><span class="font-weight-semibold">Limitless</span> - main layout preview</h1>
+                        <h1 class="mb-2 font-weight-light"><span class="font-weight-semibold">Qurative</span> - Top Courses</h1>
                         <div class="text-grey">Main layout includes a full set of elements, components, extensions, custom pages, widgets, charts and layout options. Child layouts are shells and include only layout related pages, but support all available components from the main layout. SCSS files are well structured so that you can easily find necessary one, whether it's a component or layout.</div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <!-- Top placement -->
                             <div class="card">
                                 <div class="card-img-actions">
@@ -37,7 +37,7 @@
                                 </div>
 
                                 <div class="card-footer bg-transparent d-flex justify-content-between">
-                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span class="text-muted">3 mins ago</span>
                                     <span>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
@@ -51,7 +51,7 @@
                             <!-- /top placement -->
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <!-- Top placement -->
                             <div class="card">
                                 <div class="card-img-actions">
@@ -72,7 +72,7 @@
                                 </div>
 
                                 <div class="card-footer bg-transparent d-flex justify-content-between">
-                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span class="text-muted">3 mins ago</span>
                                     <span>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
@@ -85,7 +85,7 @@
                             </div>
                             <!-- /top placement -->
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <!-- Top placement -->
                             <div class="card">
                                 <div class="card-img-actions">
@@ -106,7 +106,7 @@
                                 </div>
 
                                 <div class="card-footer bg-transparent d-flex justify-content-between">
-                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span class="text-muted">3 mins ago</span>
                                     <span>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
@@ -119,7 +119,7 @@
                             </div>
                             <!-- /top placement -->
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <!-- Top placement -->
                             <div class="card">
                                 <div class="card-img-actions">
@@ -140,7 +140,7 @@
                                 </div>
 
                                 <div class="card-footer bg-transparent d-flex justify-content-between">
-                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span class="text-muted">5 mins ago</span>
                                     <span>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
@@ -153,7 +153,7 @@
                             </div>
                             <!-- /top placement -->
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <!-- Top placement -->
                             <div class="card">
                                 <div class="card-img-actions">
@@ -174,7 +174,7 @@
                                 </div>
 
                                 <div class="card-footer bg-transparent d-flex justify-content-between">
-                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span class="text-muted">10 mins ago</span>
                                     <span>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
@@ -187,7 +187,7 @@
                             </div>
                             <!-- /top placement -->
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <!-- Top placement -->
                             <div class="card">
                                 <div class="card-img-actions">
@@ -208,7 +208,7 @@
                                 </div>
 
                                 <div class="card-footer bg-transparent d-flex justify-content-between">
-                                    <span class="text-muted">Last updated 3 mins ago</span>
+                                    <span class="text-muted">15 mins ago</span>
                                     <span>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
 									<i class="icon-star-full2 font-size-base text-warning-300"></i>
