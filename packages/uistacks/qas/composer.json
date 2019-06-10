@@ -1,6 +1,6 @@
 {
-    "name": "uistacks/uiquiz",
-    "description": "Manage UiStacks framework uiquiz",
+    "name": "uistacks/qas",
+    "description": "Manage UiStacks framework qas",
     "license": "proprietary",
     "authors": [
         {
@@ -11,12 +11,12 @@
     "repositories": [
     {
         "type": "vcs",
-        "url":  "git@bitbucket.org:uistacks/uiquiz.git"
+        "url":  "git@bitbucket.org:uistacks/qas.git"
     }
     ],
     "autoload": {
         "psr-4": {
-            "UiStacks\\Uiquiz\\": "src"
+            "UiStacks\\Contactus\\": "src"
         }
     },
     "minimum-stability": "dev"

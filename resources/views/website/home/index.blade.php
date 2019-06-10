@@ -1047,5 +1047,23 @@
 
 @endsection
 @section('footer')
-    <script src="{{ asset('public/website_assets/js/customize/home.js') }}" type="text/javascript"></script>
+    {{--    <script src="{{ asset('public/website_assets/js/customize/home.js') }}" type="text/javascript"></script>--}}
+    <script>
+        $(document).ready(function() {
+            $('[rel="tooltip"]').tooltip()
+        });
+
+
+        $(document).ready(function(){
+            var n=0;
+            setInterval(function(){
+                    $(".icons span a").eq(n).css("animation","rotation 1.5s infinite linear"),
+                        setTimeout(function() {
+                                $(".icons span a").each(function(){$(this).css("animation","")})
+                            },
+                            1500),n=(n+1)%10
+                }
+                ,1700)
+        });
+    </script>
 @endsection

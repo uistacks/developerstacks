@@ -101,7 +101,7 @@ class CreateQuizTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('quizes', function (Blueprint $table) { //tests
+        /*Schema::create('quizes', function (Blueprint $table) { //tests
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -142,7 +142,7 @@ class CreateQuizTable extends Migration
             $table->integer('option_id')->unsigned()->nullable();
             $table->string('lang');
             $table->timestamps();
-        });
+        });*/
 
         Schema::create('results', function (Blueprint $table) {
             $table->increments('id');
@@ -178,10 +178,10 @@ class CreateQuizTable extends Migration
     {
         Schema::dropIfExists('results_trans');
         Schema::dropIfExists('results');
-        Schema::dropIfExists('answers_trans');
+        /*Schema::dropIfExists('answers_trans');
         Schema::dropIfExists('answers');
         Schema::dropIfExists('quizes_trans');
-        Schema::dropIfExists('quizes');
+        Schema::dropIfExists('quizes');*/
         Schema::dropIfExists('questions_options_trans');
         Schema::dropIfExists('questions_options');
         Schema::dropIfExists('questions_trans');
